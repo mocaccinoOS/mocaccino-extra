@@ -1,0 +1,7 @@
+name: docker-cli
+category: container
+version: "19.03.12"
+
+labels:
+  github.repo: "cli"
+  github.owner: "docker"
