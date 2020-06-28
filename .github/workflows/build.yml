@@ -53,21 +53,8 @@ jobs:
     - name: Deploy 🚀
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: |
-        curl https://gist.githubusercontent.com/mudler/4fc89a4318e9987509727d4f5b47f546/raw/49e3cb612f8e9885082526744e2d8444320861c5/keybase.sh > keybase.sh
-
-        docker run --rm \
-        -e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
-        -e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
-        -e KEYBASE_SERVICE=1 -v $PWD:/data -v $PWD/keybase.sh:/keybase.sh \
-        keybaseio/client:stable \
-        bash /keybase.sh fs rm -r '/keybase/public/mocaccino/extra/*' || true
-
-        docker run --rm \
-        -e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
-        -e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
-        -e KEYBASE_SERVICE=1 -v $PWD/build:/data -v $PWD/keybase.sh:/keybase.sh \
-        keybaseio/client:stable \
-        bash /keybase.sh fs cp -r -f '/data/*' /keybase/public/mocaccino/extra
+        curl https://gist.githubusercontent.com/mudler/87a5da08bacae8ea69b8f15497534d8d/raw/b00ce3cbe5e4706240f957d56959356f008d9109/keybase_cp.sh > keybase_cp.sh
+        bash keybase_cp.sh $PWD/build /keybase/public/mocaccino/extra
       env:
         KEYBASE_DEVICENAME: ${{ secrets.KEYBASE_DEVICENAME }}
         KEYBASE_PAPERKEY: ${{ secrets.KEYBASE_PAPERKEY }}
