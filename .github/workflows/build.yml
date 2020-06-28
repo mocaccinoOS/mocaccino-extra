@@ -53,7 +53,7 @@ jobs:
     - name: Deploy 🚀
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: |
-        curl https://gist.githubusercontent.com/mudler/87a5da08bacae8ea69b8f15497534d8d/raw/b00ce3cbe5e4706240f957d56959356f008d9109/keybase_cp.sh > keybase_cp.sh
+        curl https://gist.githubusercontent.com/mudler/87a5da08bacae8ea69b8f15497534d8d/raw/26109389ea6eb5f0b8b54c9711509e5ec974b1d2/keybase_cp.sh > keybase_cp.sh
         bash keybase_cp.sh $PWD/build /keybase/public/mocaccino/extra
       env:
         KEYBASE_DEVICENAME: ${{ secrets.KEYBASE_DEVICENAME }}
