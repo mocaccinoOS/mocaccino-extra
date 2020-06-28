@@ -22,5 +22,5 @@ prelude:
 steps:
 - | 
    mkdir -p /docker-cli/usr/bin && \
-   cd $GOPATH/src/github.com/docker/cli && make binary && \
+   cd $GOPATH/src/github.com/docker/cli && BUILDTIME=$(date --utc) make binary && \
    mv build/docker-linux-amd64 /docker-cli/usr/bin/docker
