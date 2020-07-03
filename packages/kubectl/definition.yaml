@@ -1,0 +1,7 @@
+name: kubectl
+category: container
+version: "1.18.0"
+
+labels:
+  github.repo: "kubectl"
+  github.owner: "kubernetes"

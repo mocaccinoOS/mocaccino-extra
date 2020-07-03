@@ -1,0 +1,12 @@
+image: "quay.io/mocaccino/micro:master"
+
+package_dir: /k3s
+
+prelude:
+- luet install libs/libressl utils/ca-certificates utils/curl
+
+steps:
+- | 
+   mkdir -p /k3s/usr/bin && \
+   curl https://github.com/rancher/k3s/releases/download/v${PACKAGE_VERSION}%2Bk3s1/k3s -o /k3s/usr/bin/k3s && \
+   chmod +x /k3s/usr/bin/k3s

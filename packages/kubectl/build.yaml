@@ -1,0 +1,12 @@
+image: "quay.io/mocaccino/micro:master"
+
+package_dir: /kubectl
+
+prelude:
+- luet install libs/libressl utils/ca-certificates utils/curl
+
+steps:
+- | 
+   mkdir -p /kubectl/usr/bin && \
+   curl https://storage.googleapis.com/kubernetes-release/release/v${PACKAGE_VERSION}/bin/linux/amd64/kubectl -o /kubectl/usr/bin/kubectl && \
+   chmod +x /kubectl/usr/bin/kubectl
