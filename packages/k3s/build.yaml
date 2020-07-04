@@ -7,6 +7,7 @@ prelude:
 
 steps:
 - | 
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
    mkdir -p /k3s/usr/bin && \
    curl -L https://github.com/rancher/k3s/releases/download/v${PACKAGE_VERSION}%2Bk3s1/k3s -o /k3s/usr/bin/k3s && \
    chmod +x /k3s/usr/bin/k3s
