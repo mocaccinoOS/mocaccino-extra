@@ -1,0 +1,7 @@
+#!/bin/sh
+
+rm -rf /tmp/blah
+s6-linux-init-maker -1 -G "/sbin/getty 38400 tty1" /tmp/blah
+rm -rf /etc/s6-linux-init/current
+mv /tmp/blah /etc/s6-linux-init/current
+cp -a /etc/s6-linux-init/current/bin/* /sbin/ 

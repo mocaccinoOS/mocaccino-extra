@@ -1,0 +1,2 @@
+install:
+- s6-make-init || true
