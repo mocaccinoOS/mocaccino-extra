@@ -1,0 +1,7 @@
+name: utmps
+category: init
+version: "0.0.3.2"
+
+labels:
+  github.repo: "utmps"
+  github.owner: "skarnet"
