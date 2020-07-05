@@ -2,6 +2,11 @@ name: vim
 category: editors
 version: "8.2.1127"
 
+requires:
+- name: ncurses
+  category: libs
+  version: ">=0"
+
 labels:
   github.repo: "vim"
   github.owner: "vim"
