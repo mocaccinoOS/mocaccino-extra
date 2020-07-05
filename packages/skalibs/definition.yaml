@@ -1,0 +1,7 @@
+name: skalibs
+category: libs
+version: "2.9.2.1"
+
+labels:
+  github.repo: "skalibs"
+  github.owner: "skarnet"

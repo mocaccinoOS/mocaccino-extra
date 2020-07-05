@@ -1,0 +1,7 @@
+name: execline
+category: lang
+version: "2.6.1.0"
+
+labels:
+  github.repo: "execline"
+  github.owner: "skarnet"
