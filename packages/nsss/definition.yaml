@@ -1,0 +1,7 @@
+name: nsss
+category: init
+version: "0.0.2.2"
+
+labels:
+  github.repo: "nsss"
+  github.owner: "skarnet"
