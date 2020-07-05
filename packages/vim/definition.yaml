@@ -1,0 +1,7 @@
+name: vim
+category: editors
+version: "8.2.1127"
+
+labels:
+  github.repo: "vim"
+  github.owner: "vim"
