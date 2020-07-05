@@ -1,0 +1,10 @@
+name: rc
+category: init
+version: "20200705"
+requires:
+- category: "lang"
+  name: "execline"
+  version: ">=0"
+- category: "init"
+  name: "s6"
+  version: ">=0"
