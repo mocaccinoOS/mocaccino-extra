@@ -1,0 +1,7 @@
+name: void-runit
+category: init
+version: "20190906"
+
+labels:
+  github.repo: "void-runit"
+  github.owner: "void-linux"
