@@ -1,0 +1,20 @@
+requires:
+- category: "init"
+  name: "runit"
+  version: ">=0"
+
+env:
+- MUSL_TARGET=x86_64-mocaccino-linux-musl
+- MUSL_ARCH=x86
+- MUSL_CPU=x86-64
+- CFLAGS="-I/include -I/usr/include -static"
+- LDFLAGS="-L/usr/lib/execline -L/usr/lib/skalibs -L/usr/lib/s6"
+
+package_dir: /runit-init
+prelude:
+- |
+   mkdir -p /${PACKAGE_NAME}/sbin
+
+
+steps:
+- install /runit/sbin/runit-init /${PACKAGE_NAME}/sbin/init
