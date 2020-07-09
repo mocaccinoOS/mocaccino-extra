@@ -1,0 +1,7 @@
+name: k3s
+category: runit-srv
+version: "20200706.8"
+
+labels:
+  #  github.repo: "void-runit"
+  # github.owner: "void-linux"

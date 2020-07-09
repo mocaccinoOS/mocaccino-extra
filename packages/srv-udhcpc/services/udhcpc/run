@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec 2>&1
+
+echo 'udhcpc starting.'
+
+LANG=C LC_ALL=C \
+exec /sbin/udhcpc -f 2>&1

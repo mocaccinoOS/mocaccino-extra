@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec 2>&1
+
+echo 'k3s starting.'
+
+LANG=C LC_ALL=C \
+exec /usr/bin/k3s server 2>&1
