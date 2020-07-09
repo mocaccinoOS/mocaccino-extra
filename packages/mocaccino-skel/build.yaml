@@ -1,0 +1,14 @@
+requires:
+- category: "libs"
+  name: "skalibs"
+  version: ">=0"
+
+package_dir: /mocaccino-skel
+prelude:
+- |
+   mkdir -p /${PACKAGE_NAME}/usr/sbin
+steps:
+- cp -rfv mocaccino-init-skel.sh /${PACKAGE_NAME}/usr/sbin/mocaccino-init-skel
+- chmod +x /${PACKAGE_NAME}/usr/sbin/mocaccino-init-skel
+- mkdir -p /${PACKAGE_NAME}/etc/skel/
+- cp -rfv rootfs/* /${PACKAGE_NAME}/etc/skel/

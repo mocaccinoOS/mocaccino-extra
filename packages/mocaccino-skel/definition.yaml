@@ -1,0 +1,7 @@
+name: mocaccino-skel
+category: init
+version: "20200706.2"
+
+labels:
+  #  github.repo: "void-runit"
+  # github.owner: "void-linux"
