@@ -1,0 +1,7 @@
+name: eudev
+category: utils
+version: "3.2.9"
+
+labels:
+  github.repo: "eudev"
+  github.owner: "gentoo"
