@@ -21,6 +21,14 @@ if [ ! -e "/etc/group" ]; then
 	cp -rfv /etc/skel/etc/group /etc/group
 fi
 
+if [ ! -e "/etc/hostname" ]; then
+	cp -rfv /etc/skel/etc/hostname /etc/hostname
+fi
+
+if [ ! -e "/etc/profile" ]; then
+	cp -rfv /etc/skel/etc/profile /etc/profile
+fi
+
 if [ ! -d "/root" ]; then
 	mkdir /root
 fi
