@@ -1,0 +1,13 @@
+image: "quay.io/mocaccino/micro:master"
+
+package_dir: /jq
+
+prelude:
+- luet install libs/libressl utils/ca-certificates utils/curl libs/zlib
+
+steps:
+- | 
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME}/usr/bin && \
+   curl -L https://github.com/stedolan/jq/releases/download/jq-${PACKAGE_VERSION}/jq-linux64 -o /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME} && \
+   chmod +x /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME}
