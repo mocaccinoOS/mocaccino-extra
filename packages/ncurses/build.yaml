@@ -1,10 +1,4 @@
-requires:
-- category: "libs"
-  name: "skalibs"
-  version: ">=0"
-- category: "lang"
-  name: "execline"
-  version: ">=0"
+image: "quay.io/mocaccino/micro-toolchain:latest"
 env:
 - MUSL_TARGET=x86_64-mocaccino-linux-musl
 - MUSL_ARCH=x86
@@ -16,6 +10,7 @@ prelude:
 - |
    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
    mkdir -p /${PACKAGE_NAME} && \
+   luet install shells/bash development/make utils/ca-certificates libs/libressl vcs/git && \
    git clone https://github.com/mirror/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
 
 steps:
