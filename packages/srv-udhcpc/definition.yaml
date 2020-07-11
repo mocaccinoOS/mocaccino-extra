@@ -1,7 +1,4 @@
 name: udhcpc
 category: runit-srv
-version: "20200706.7"
+version: "20200711"
 
-labels:
-  #  github.repo: "void-runit"
-  # github.owner: "void-linux"
