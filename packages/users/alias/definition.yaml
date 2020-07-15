@@ -1,0 +1,10 @@
+category: "user"
+name: "alias"
+version: "0"
+requires:
+- category: "system"
+  name: "entities"
+  version: ">=0.1"
+- category: "init"
+  name: "mocaccino-skel"
+  version: ">=0.1"
