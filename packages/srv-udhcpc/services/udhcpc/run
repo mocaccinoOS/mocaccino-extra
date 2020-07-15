@@ -2,7 +2,10 @@
 
 exec 2>&1
 
+[ -r ./conf ] && . ./conf
+
 echo 'udhcpc starting.'
+
 
 LANG=C LC_ALL=C \
 exec /sbin/udhcpc -f -i "${INTERFACE}" 2>&1
