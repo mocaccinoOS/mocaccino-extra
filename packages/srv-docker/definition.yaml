@@ -1,0 +1,10 @@
+name: docker
+category: runit-srv
+version: "20200715"
+requires:
+- name: e2fsprogs
+  category: utils
+  verison: ">=0"
+labels:
+  #  github.repo: "void-runit"
+  # github.owner: "void-linux"
