@@ -1,0 +1,28 @@
+#!/bin/bash
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+
+src=$1
+dst=$2
+
+
+# As keybase-cli cp -f doesn't work, we make sure the dst doesn't exist already.
+docker run --rm \
+-e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+-e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+-e KEYBASE_SERVICE=1 -v $parent_path/keybase-entrypoint:/keybase.sh \
+keybaseio/client:stable \
+bash /keybase.sh fs rm -r $dst || true
+
+docker run --rm \
+-e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+-e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+-e KEYBASE_SERVICE=1 -v $parent_path/keybase-entrypoint:/keybase.sh \
+keybaseio/client:stable \
+bash /keybase.sh fs mkdir $dst
+
+docker run --rm \
+-e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+-e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+-e KEYBASE_SERVICE=1 -v $src:/data -v $parent_path/keybase-entrypoint:/keybase.sh \
+keybaseio/client:stable \
+bash /keybase.sh fs cp -r -f '/data/*' $dst

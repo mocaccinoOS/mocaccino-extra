@@ -1,0 +1,78 @@
+#!/bin/bash
+# https://github.com/keybase/client/issues/24219
+# ./keybase-append $PWD/test/ /keybase/public/mocaccino/desktop
+src=$1
+dst=$2
+
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+
+
+docker run --rm \
+-e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+-e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+-e KEYBASE_SERVICE=1  \
+keybaseio/client:stable keybase  fs stat "$dst" 
+rt=$?
+
+if [[ $rt != "0" ]]; then
+docker run --rm \
+-e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+-e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+-e KEYBASE_SERVICE=1 -v $parent_path/keybase-entrypoint:/keybase.sh \
+keybaseio/client:stable \
+bash /keybase.sh fs mkdir $dst  || true
+fi
+
+find $src -type f -print0 | while IFS= read -r -d '' file
+do 
+    rel_slash="${file/$src/}"
+    rel="${rel_slash#/}"
+    keybase_dst="${dst%/}/${rel}"
+
+    docker run --rm \
+    -e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+    -e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+    -e KEYBASE_SERVICE=1  \
+    keybaseio/client:stable keybase  fs stat "$keybase_dst" 
+    rt=$?
+
+    if [[ $rt != "0" ]]; then
+        echo "File $rel does not exist in $keybase_dst"
+
+        # Just copy
+         docker run --rm \
+        -e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+        -e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+        -e KEYBASE_SERVICE=1 -v $parent_path/keybase-entrypoint:/keybase.sh -v $src:/data \
+        keybaseio/client:stable \
+        bash /keybase.sh fs cp -r -f /data/$rel $(dirname $keybase_dst)
+
+    else 
+        echo "File $rel exists in $keybase_dst"
+
+        # Remove and copy
+
+        docker run --rm \
+        -e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+        -e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+        -e KEYBASE_SERVICE=1  -v $parent_path/keybase-entrypoint:/keybase.sh \
+        keybaseio/client:stable \
+        bash /keybase.sh fs rm -r $keybase_dst || true
+
+        docker run --rm \
+        -e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+        -e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+        -e KEYBASE_SERVICE=1 -v $parent_path/keybase-entrypoint:/keybase.sh -v $src:/data \
+        keybaseio/client:stable \
+        bash /keybase.sh fs cp -r -f /data/$rel $(dirname $keybase_dst)
+
+    fi
+
+done
+
+
+#docker run --rm \
+#-e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+#-e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+#-e KEYBASE_SERVICE=1 -v $src:/data \
+#keybaseio/client:stable keybase fs cp -r -f $src /data

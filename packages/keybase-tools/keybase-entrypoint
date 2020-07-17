@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# usage:
+# docker run -ti --rm -e KEYBASE_DEVICENAME=temp \
+# -e KEYBASE_USERNAME="user" \
+# -e KEYBASE_PAPERKEY="$(cat ~/.keybase/paperkey)" \
+# -e KEYBASE_SERVICE=1 
+# -v $PWD:/data 
+# -v $PWD/keybase.sh:/keybase.sh keybaseio/client:stable \ 
+# bash /keybase.sh fs cp -r -f /data/file_to_copy.sh /keybase/public/user/
+
+set -ex
+keybase whoami
+keybase fs ls -a /keybase/public/${KEYBASE_USERNAME}
+keybase "$@" # fs cp "$1" "$2"
+
+sleep 10
+until [[ "$(keybase fs uploads)" == "There are currently no uploads in progress" ]]; do
+        sleep 1
+done
+until [[ "$(keybase fs ps)" == "" ]]; do
+        sleep 1
+done
