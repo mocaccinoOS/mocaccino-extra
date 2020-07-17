@@ -1,5 +1,8 @@
 #!/bin/bash
 # ./keybase-download '/keybase/public/mocaccino/desktop/*.yaml' $PWD/test
+
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+
 src=$1
 dst=$2
 
@@ -7,5 +10,5 @@ dst=$2
 docker run --rm \
 -e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
 -e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
--e KEYBASE_SERVICE=1 -v $dst:/data \
-keybaseio/client:stable keybase fs cp -r -f $src /data
+-e KEYBASE_SERVICE=1 -v $dst:/data -v $parent_path/keybase-entrypoint:/keybase.sh \
+keybaseio/client:stable bash /keybase.sh fs cp -r -f $src /data
