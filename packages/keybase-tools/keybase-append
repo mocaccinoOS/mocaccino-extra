@@ -3,6 +3,7 @@
 # ./keybase-append $PWD/test/ /keybase/public/mocaccino/desktop
 src=$1
 dst=$2
+append="${APPEND:-true}"
 
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
@@ -50,21 +51,24 @@ do
     else 
         echo "File $rel exists in $keybase_dst"
 
-        # Remove and copy
+        if [[ "$append" == "false" ]]; then
+            echo "Replacing $keybase_dst"
 
-        docker run --rm \
-        -e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
-        -e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
-        -e KEYBASE_SERVICE=1  -v $parent_path/keybase-entrypoint:/keybase.sh \
-        keybaseio/client:stable \
-        bash /keybase.sh fs rm -r $keybase_dst || true
+            # Remove and copy
+            docker run --rm \
+            -e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+            -e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+            -e KEYBASE_SERVICE=1  -v $parent_path/keybase-entrypoint:/keybase.sh \
+            keybaseio/client:stable \
+            bash /keybase.sh fs rm -r $keybase_dst || true
 
-        docker run --rm \
-        -e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
-        -e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
-        -e KEYBASE_SERVICE=1 -v $parent_path/keybase-entrypoint:/keybase.sh -v $src:/data \
-        keybaseio/client:stable \
-        bash /keybase.sh fs cp -r -f /data/$rel $(dirname $keybase_dst)
+            docker run --rm \
+            -e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+            -e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+            -e KEYBASE_SERVICE=1 -v $parent_path/keybase-entrypoint:/keybase.sh -v $src:/data \
+            keybaseio/client:stable \
+            bash /keybase.sh fs cp -r -f /data/$rel $(dirname $keybase_dst)
+        fi
 
     fi
 

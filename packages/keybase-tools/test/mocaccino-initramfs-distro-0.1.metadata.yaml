@@ -1,0 +1,115 @@
+path: /var/lib/docker/build/7015161855111160643/mocaccino-desktop/build/mocaccino-initramfs-distro-0.1.package.tar.gz
+dependencies: []
+compilespec:
+  steps: []
+  env: []
+  prelude: []
+  image: ""
+  seed: mocaccinoos/desktop-cache:d2b677ac590815fd02dffd32425040d48e1ef1696a5bbe7ed2c42ae222c8b168
+  package:
+    id: 0
+    name: mocaccino-initramfs
+    version: "0.1"
+    category: distro
+    useflags: []
+    state: ""
+    packagerequires:
+    - id: 0
+      name: seed
+      version: '>=0.1'
+      category: distro
+      useflags: []
+      state: ""
+      packagerequires: []
+      packageconflicts: []
+      isset: false
+      provides: []
+      annotations: {}
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      buildtimestamp: ""
+      labels: {}
+    packageconflicts: []
+    isset: false
+    provides: []
+    annotations: {}
+    path: ""
+    description: ""
+    uri: []
+    license: ""
+    buildtimestamp: 2020-07-16 22:49:52.678807231 +0000 UTC m=+2870.236149106
+    labels: {}
+  sourceassertion:
+  - package:
+      id: 0
+      name: seed
+      version: "0.20200706"
+      category: distro
+      useflags: []
+      state: ""
+      packagerequires: []
+      packageconflicts: []
+      isset: false
+      provides: []
+      annotations: {}
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      buildtimestamp: ""
+      labels: {}
+    value: true
+    hash:
+      buildhash: 9d3c3a12671d5b8576d93f58defec4ee2e2e58ee168ac0e8bc5a78dd0b460588
+      packagehash: d2b677ac590815fd02dffd32425040d48e1ef1696a5bbe7ed2c42ae222c8b168
+  - package:
+      id: 0
+      name: mocaccino-initramfs
+      version: "0.1"
+      category: distro
+      useflags: []
+      state: ""
+      packagerequires:
+      - id: 0
+        name: seed
+        version: '>=0.1'
+        category: distro
+        useflags: []
+        state: ""
+        packagerequires: []
+        packageconflicts: []
+        isset: false
+        provides: []
+        annotations: {}
+        path: ""
+        description: ""
+        uri: []
+        license: ""
+        buildtimestamp: ""
+        labels: {}
+      packageconflicts: []
+      isset: false
+      provides: []
+      annotations: {}
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      buildtimestamp: ""
+      labels: {}
+    value: true
+    hash:
+      buildhash: d2b677ac590815fd02dffd32425040d48e1ef1696a5bbe7ed2c42ae222c8b168
+      packagehash: c0d36f75ebc026f787859d18f8eebb7ca05fe321d5c68a49faf6463a9d3b5d3d
+  package_dir: ""
+  retrieve: []
+  outputpath: /var/lib/docker/build/7015161855111160643/mocaccino-desktop/build
+  unpack: false
+  includes: []
+checksums:
+  sha256: 1dbcab28ce46b65c0174e5e82658492107396fead31e9144c343e6bc96e471c7
+sourceassertion: []
+compressiontype: gzip
+files: []
