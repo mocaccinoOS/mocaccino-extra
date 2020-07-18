@@ -12,4 +12,4 @@ steps:
 - chmod +x /${PACKAGE_NAME}/usr/sbin/mocaccino-init-skel
 - mkdir -p /${PACKAGE_NAME}/etc/skel/
 - cp -rfv rootfs/* /${PACKAGE_NAME}/etc/skel/
-- mkdir /${PACKAGE_NAME}/mnt
+- mkdir /${PACKAGE_NAME}/mnt && touch /${PACKAGE_NAME}/mnt/.keep
