@@ -235,11 +235,7 @@ for DEVICE in /dev/* ; do
   rm -rf $DEVICE_MNT 2>/dev/null
 done
 
-if [ -e "/usr/bin/yip" ]; then
-  if [ -e "/etc/runit/core-services/13-yip-load.sh" ]; then
-    STAGE=pre-switch /etc/runit/core-services/13-yip-load.sh
-  fi
-fi
+[ -e "/usr/bin/yip-init" ] && /usr/bin/yip-init pre-switch
 
 if [ ! -e "/mnt/etc/03_init.sh" ]; then
   echo -e "  \\e[31mRootfs not found, dropping to emergency shell\\e[0m"
