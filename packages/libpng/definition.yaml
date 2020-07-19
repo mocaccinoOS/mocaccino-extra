@@ -1,0 +1,8 @@
+name: png
+category: libs
+version: "1.6.35+0"
+
+labels:
+  github.repo: "libpng"
+  github.owner: "glennrp"
+  autobump.string_replace: '{ "libpng-": "" }'
