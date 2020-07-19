@@ -1,6 +1,6 @@
 name: vim
 category: editors
-version: "8.2.1224"
+version: "8.2.1241"
 requires:
 - name: ncurses
   category: libs
