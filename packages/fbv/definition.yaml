@@ -1,3 +1,11 @@
 name: fbv
 category: utils
 version: "0.20200718"
+
+requires:
+- category: libs
+  name: jpeg
+  version: ">=0"
+- category: libs
+  name: png
+  version: ">=0"
