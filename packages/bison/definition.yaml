@@ -1,0 +1,10 @@
+name: bison
+category: development
+version: "3.6.4"
+requires:
+- name: musl
+  category: system
+  version: ">=0"
+labels:
+  github.repo: "bison"
+  github.owner: "akimd"
