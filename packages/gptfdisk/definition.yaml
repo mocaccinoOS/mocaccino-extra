@@ -1,0 +1,7 @@
+name: gptfdisk
+category: utils
+version: "1.0.4"
+
+labels:
+  github.repo: "gptfdisk"
+  github.owner: "samangh"
