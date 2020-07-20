@@ -1,0 +1,7 @@
+name: flex
+category: development
+version: "2.6.4"
+
+labels:
+  github.repo: "flex"
+  github.owner: "westes"
