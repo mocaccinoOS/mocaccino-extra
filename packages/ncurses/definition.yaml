@@ -1,6 +1,6 @@
 name: ncurses
 category: libs
-version: "6.2+1"
+version: "6.2+2"
 
 labels:
   github.repo: "ncurses"
