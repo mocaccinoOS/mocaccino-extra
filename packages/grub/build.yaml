@@ -1,0 +1,32 @@
+requires:
+- name: bison
+  category: development
+  version: ">=0"
+- name: flex
+  category: development
+  version: ">=0"
+env:
+- MUSL_TARGET=x86_64-mocaccino-linux-musl
+- MUSL_ARCH=x86
+- MUSL_CPU=x86-64
+- CFLAGS="-I/include -I/usr/include -static"
+- CPPFLAGS="-I/include -I/usr/include -static"
+- PYTHON=python3
+
+package_dir: /gptfdisk
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME} && \
+   luet install utils/util-linux utils/curl libs/zlib  vcs/git utils/gettext-tools lang/python && \
+   curl -L  https://ftp.gnu.org/gnu/grub/grub-${PACKAGE_VERSION}.tar.xz -o grub-${PACKAGE_VERSION}.tar.xz && \
+   tar -xvf grub-${PACKAGE_VERSION}.tar.xz -C ./ && mv grub-${PACKAGE_VERSION} ${PACKAGE_NAME}
+  
+
+steps:
+- |
+   cd ${PACKAGE_NAME} && ./configure --prefix=/usr && \
+   --disable-werror
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install-strip
+- cd ${PACKAGE_NAME} && make install-strip

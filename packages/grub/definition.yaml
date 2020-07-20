@@ -1,0 +1,8 @@
+name: grub2
+category: utils
+version: "2.04"
+
+labels:
+  github.repo: "grub2"
+  github.owner: "rhboot"
+  autobump.string_replace: '{ "grub-": "" }'
