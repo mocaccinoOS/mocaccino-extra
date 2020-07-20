@@ -1,0 +1,5 @@
+image: "quay.io/mocaccino/micro-toolchain:latest"
+prelude:
+- |
+   luet install \
+   utils/autoconf utils/curl libs/zlib vcs/git development/automake development/pkg-config development/m4
