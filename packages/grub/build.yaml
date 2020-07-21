@@ -13,7 +13,7 @@ env:
 - CPPFLAGS="-I/include -I/usr/include -static"
 - PYTHON=python3
 
-package_dir: /gptfdisk
+package_dir: /grub2
 prelude:
 - |
    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
@@ -25,8 +25,8 @@ prelude:
 
 steps:
 - |
-   cd ${PACKAGE_NAME} && ./configure --prefix=/usr && \
-   --disable-werror
+   cd ${PACKAGE_NAME} && ./configure --prefix=/usr \
+   --disable-werror --disable-nls
 - cd ${PACKAGE_NAME} && make -j8
 - cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install-strip
 - cd ${PACKAGE_NAME} && make install-strip
