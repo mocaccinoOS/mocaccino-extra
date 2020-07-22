@@ -1,6 +1,6 @@
 name: mocaccino-runit
 category: init
-version: "0.2"
+version: "0.3"
 labels:
   github.repo: "runit-boot"
   github.owner: "mocaccinoOS"
