@@ -1,0 +1,3 @@
+install:
+- |
+   [ ! -e "/etc/default/grub" ] && cp -rfv /etc/default/grub.example /etc/default/grub

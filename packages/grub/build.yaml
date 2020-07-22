@@ -12,7 +12,7 @@ env:
 - CFLAGS="-I/include -I/usr/include -static"
 - CPPFLAGS="-I/include -I/usr/include -static"
 - PYTHON=python3
-
+- flavors="efi bios xenhost xenhost_pvh"
 package_dir: /grub2
 prelude:
 - |
@@ -24,9 +24,19 @@ prelude:
   
 
 steps:
+# -bios
+- mkdir -p /grub2/etc/default
+- cp -rfv default /grub2/etc/default/grub.example
+- |
+   cd ${PACKAGE_NAME} && ./configure --prefix=/usr --target=$MUSL_TARGET --build=$MUSL_TARGET --host=$MUSL_TARGET \
+   --disable-werror --disable-nls --with-platform=pc
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install-strip
+- cd ${PACKAGE_NAME} && make install-strip clean
+# -efi
 - |
    cd ${PACKAGE_NAME} && ./configure --prefix=/usr \
-   --disable-werror --disable-nls
+   --disable-werror --disable-nls --with-platform=efi --disable-efiemu
 - cd ${PACKAGE_NAME} && make -j8
 - cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install-strip
 - cd ${PACKAGE_NAME} && make install-strip
