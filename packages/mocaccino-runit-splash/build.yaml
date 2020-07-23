@@ -1,0 +1,16 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+package_dir: /splash
+steps:
+- mkdir -p /splash/usr/bin/
+- mkdir -p /splash/etc/mocaccino/images
+- mkdir -p /splash/etc/runit/core-services
+- cp -rfv run /splash/etc/runit/core-services/00-splash.sh
+- chmod +x /splash/etc/runit/core-services/00-splash.sh
+- |
+  cp -rfv *.png *.jpeg *.jpg /splash/etc/mocaccino/images || true
+- cp -rfv mocaccino-splash /splash/usr/bin/mocaccino-splash
+- chmod +x /splash/usr/bin/mocaccino-splash
