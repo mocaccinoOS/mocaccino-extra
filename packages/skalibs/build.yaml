@@ -1,4 +1,7 @@
-image: "quay.io/mocaccino/micro-toolchain:develop"
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
 
 env:
 - MUSL_TARGET=x86_64-mocaccino-linux-musl

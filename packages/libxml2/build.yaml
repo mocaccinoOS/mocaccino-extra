@@ -1,10 +1,8 @@
 requires:
-- category: "libs"
-  name: "skalibs"
+- category: "development"
+  name: "toolchain"
   version: ">=0"
-- category: "lang"
-  name: "execline"
-  version: ">=0"
+
 env:
 - MUSL_TARGET=x86_64-mocaccino-linux-musl
 - MUSL_ARCH=x86
@@ -15,7 +13,7 @@ env:
 package_dir: /libxml2
 prelude:
 - |
-   luet install utils/autoconf development/automake development/m4 development/pkg-config development/libtool && \
+   luet install utils/autoconf vcs/git development/make development/automake development/m4 development/pkg-config development/libtool && \
    mkdir -p /${PACKAGE_NAME} && \
    git clone https://github.com/GNOME/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
 
