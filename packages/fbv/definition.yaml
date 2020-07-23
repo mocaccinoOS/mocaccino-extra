@@ -9,3 +9,6 @@ requires:
 - category: libs
   name: png
   version: ">=0"
+- category: system
+  name: musl-compat
+  version: ">=0"
