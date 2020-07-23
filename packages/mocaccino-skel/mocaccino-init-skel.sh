@@ -32,3 +32,12 @@ fi
 if [ ! -d "/root" ]; then
 	mkdir /root
 fi
+
+if [ ! -d "/run/vsysctl.d" ]; then
+	mkdir -p /run/vsysctl.d
+fi
+
+# Required on boot
+if [ ! -e "/etc/sysctl.conf" ]; then
+	touch /etc/sysctl.conf
+fi
