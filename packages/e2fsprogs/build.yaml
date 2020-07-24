@@ -1,9 +1,6 @@
 requires:
-- category: "libs"
-  name: "skalibs"
-  version: ">=0"
-- category: "lang"
-  name: "execline"
+- category: "development"
+  name: "toolchain"
   version: ">=0"
 - name: libxslt
   category: libs

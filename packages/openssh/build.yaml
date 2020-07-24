@@ -1,10 +1,8 @@
 requires:
-- category: "libs"
-  name: "skalibs"
+- category: "development"
+  name: "toolchain"
   version: ">=0"
-- category: "lang"
-  name: "execline"
-  version: ">=0"
+
 
 env:
 - MUSL_TARGET=x86_64-mocaccino-linux-musl

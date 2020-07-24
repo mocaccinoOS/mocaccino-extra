@@ -1,6 +1,6 @@
 requires:
-- category: "libs"
-  name: "skalibs"
+- category: "development"
+  name: "toolchain"
   version: ">=0"
 
 env:
@@ -8,7 +8,6 @@ env:
 - MUSL_ARCH=x86
 - MUSL_CPU=x86-64
 - CFLAGS="-I/include -I/usr/include -static"
-- LDFLAGS="-L/usr/lib/skalibs"
 - CC="gcc"
 
 package_dir: /void-runit

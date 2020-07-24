@@ -8,7 +8,6 @@ env:
 - MUSL_ARCH=x86
 - MUSL_CPU=x86-64
 - CFLAGS="-I/include -I/usr/include -static"
-- LDFLAGS="-L/usr/lib/execline -L/usr/lib/skalibs"
 
 package_dir: /libxml2
 prelude:

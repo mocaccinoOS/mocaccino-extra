@@ -1,4 +1,7 @@
-image: "quay.io/mocaccino/micro:master"
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
 
 package_dir: /yq
 
