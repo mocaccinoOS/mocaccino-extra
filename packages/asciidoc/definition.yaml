@@ -1,0 +1,7 @@
+name: asciidoc
+category: utils
+version: "9.0.2"
+requires:
+- name: "python"
+  category: "lang"
+  version: ">=0"
