@@ -41,3 +41,7 @@ fi
 if [ ! -e "/etc/sysctl.conf" ]; then
 	touch /etc/sysctl.conf
 fi
+
+if [ ! -d "/var/tmp" ]; then
+	mkdir -p /var/tmp
+fi
