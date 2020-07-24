@@ -14,7 +14,7 @@ env:
 package_dir: /openssh
 prelude:
 - |
-   luet install utils/autoconf development/automake development/m4 libs/libressl && \
+   luet install development/make utils/autoconf development/automake development/m4 libs/libressl && \
    mkdir -p /${PACKAGE_NAME} && \
    git clone https://github.com/${PACKAGE_NAME}/${PACKAGE_NAME}-portable ${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build V_8_3_P1
 
