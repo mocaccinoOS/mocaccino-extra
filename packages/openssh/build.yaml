@@ -9,12 +9,13 @@ env:
 - MUSL_ARCH=x86
 - MUSL_CPU=x86-64
 - CFLAGS="-I/include -I/usr/include -static"
-- LDFLAGS="-L/usr/lib/execline -L/usr/lib/skalibs"
+- LDFLAGS="-L/usr/lib -L/lib"
 
 package_dir: /openssh
 prelude:
 - |
-   luet install development/make utils/autoconf development/automake development/m4 libs/libressl && \
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   luet install utils/autoconf development/make development/automake vcs/git development/m4 libs/libressl && \
    mkdir -p /${PACKAGE_NAME} && \
    git clone https://github.com/${PACKAGE_NAME}/${PACKAGE_NAME}-portable ${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build V_8_3_P1
 

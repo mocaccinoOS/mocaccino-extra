@@ -13,9 +13,10 @@ env:
 package_dir: /void-runit
 prelude:
 - |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
    luet install shells/bash && \
    luet uninstall utils/busybox-static && \
-   luet install utils/coreutils && \
+   luet install vcs/git utils/coreutils development/make && \
    ln -s /bin/bash /bin/sh && \
    mkdir -p /${PACKAGE_NAME} && \
    git clone https://github.com/void-linux/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build ${PACKAGE_VERSION}
