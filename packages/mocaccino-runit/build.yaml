@@ -14,6 +14,7 @@ env:
 package_dir: /mocaccino-runit
 prelude:
 - |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
    luet install shells/bash && \
    luet uninstall utils/busybox-static && \
    luet install utils/coreutils && \
