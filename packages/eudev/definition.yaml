@@ -1,6 +1,6 @@
 name: eudev
 category: utils
-version: "3.2.9+1"
+version: "3.2.9+2"
 
 labels:
   github.repo: "eudev"
