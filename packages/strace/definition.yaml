@@ -1,0 +1,7 @@
+name: strace
+category: utils
+version: "5.7"
+
+labels:
+  github.repo: "strace"
+  github.owner: "strace"
