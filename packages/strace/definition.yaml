@@ -5,3 +5,7 @@ version: "5.7"
 labels:
   github.repo: "strace"
   github.owner: "strace"
+
+uri:
+- https://strace.io
+license: "BSD"
