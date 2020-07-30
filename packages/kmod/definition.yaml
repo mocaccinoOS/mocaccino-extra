@@ -9,3 +9,7 @@ requires:
 labels:
   github.repo: "kmod"
   github.owner: "lucasdemarchi"
+
+uri:
+- https://git.kernel.org/?p
+license: "LGPL-2"
