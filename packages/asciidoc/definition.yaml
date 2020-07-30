@@ -5,3 +5,8 @@ requires:
 - name: "python"
   category: "lang"
   version: ">=0"
+
+uri:
+- http://asciidoc.org
+- https://github.com/asciidoc/asciidoc-py3
+license: "GPL-2"
