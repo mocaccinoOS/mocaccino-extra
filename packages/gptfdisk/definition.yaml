@@ -11,3 +11,7 @@ requires:
 labels:
   github.repo: "gptfdisk"
   github.owner: "samangh"
+
+uri:
+- https://www.rodsbooks.com/gdisk
+license: "GPL-2"
