@@ -6,3 +6,7 @@ labels:
   github.repo: "grub2"
   github.owner: "rhboot"
   autobump.string_replace: '{ "grub-": "" }'
+
+uri:
+- https://www.gnu.org/software/grub
+license: "GPL-3+ BSD MIT"
