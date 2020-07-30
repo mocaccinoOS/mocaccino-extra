@@ -5,3 +5,8 @@ version: "1.18.0+0"
 labels:
   github.repo: "kubectl"
   github.owner: "kubernetes"
+
+uri:
+- https://github.com/kubernetes/kubernetes
+- https://kubernetes.io
+license: "Apache-2.0"
