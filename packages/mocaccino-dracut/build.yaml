@@ -1,0 +1,14 @@
+image: "quay.io/mocaccino/desktop:master"
+
+package_dir: /mocaccino-dracut
+
+prelude:
+- luet install sys-kernel/dracut
+
+steps:
+- | 
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME}/usr/bin && \
+   cp -rfv mocaccino-dracut  /${PACKAGE_NAME}/usr/bin/ && \
+   rm -rf /${PACKAGE_NAME}/usr/bin/*.dockerfile && \
+   chmod +x /${PACKAGE_NAME}/usr/bin/mocaccino-dracut
