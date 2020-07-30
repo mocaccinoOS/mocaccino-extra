@@ -8,3 +8,8 @@ requires:
 labels:
   github.repo: "vim"
   github.owner: "vim"
+
+uri:
+- https://vim.sourceforge.io
+- https://github.com/vim/vim
+license: "vim"
