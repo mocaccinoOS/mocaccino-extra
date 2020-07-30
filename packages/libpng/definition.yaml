@@ -9,3 +9,7 @@ labels:
   github.repo: "libpng"
   github.owner: "glennrp"
   autobump.string_replace: '{ "libpng-": "" }'
+
+uri:
+- http://www.libpng.org
+license: "libpng2"
