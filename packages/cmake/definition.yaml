@@ -5,3 +5,7 @@ version: "3.18.0"
 labels:
   github.repo: "CMake"
   github.owner: "Kitware"
+
+uri:
+- https://cmake.org
+license: "CMake"
