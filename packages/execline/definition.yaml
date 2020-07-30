@@ -5,3 +5,7 @@ version: "2.6.1.0"
 labels:
   github.repo: "execline"
   github.owner: "skarnet"
+
+uri:
+- https://www.skarnet.org/software/execline
+license: "ISC"
