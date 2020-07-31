@@ -14,6 +14,6 @@ prelude:
 steps:
 - mkdir $GOPATH
 - go get github.com/gotk3/gotk3/cairo
-- cp -rfv custom/* ./
+- cp -rfv custom/* ${PACKAGE_NAME}
 - cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
 - cd ${PACKAGE_NAME} && make install
