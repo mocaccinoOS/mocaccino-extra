@@ -1,11 +1,9 @@
 name: cmake
 category: development
-version: "3.18.0"
-
+version: "3.18.1"
 labels:
   github.repo: "CMake"
   github.owner: "Kitware"
-
 uri:
 - https://cmake.org
 license: "CMake"
