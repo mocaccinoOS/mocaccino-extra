@@ -1,0 +1,4 @@
+install:
+- systemctl enable yip-reconcile.timer || true
+- systemctl enable yip-network.service || true
+- systemctl enable yip-boot.service || true
