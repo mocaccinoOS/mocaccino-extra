@@ -1,0 +1,14 @@
+#!/bin/bash
+# ./keybase-download '/keybase/public/mocaccino/desktop/*.yaml' $PWD/test
+
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+
+kbpath=$1
+resource_path=$2
+
+
+docker run --rm \
+-e KEYBASE_DEVICENAME=$KEYBASE_DEVICENAME -e KEYBASE_USERNAME="$KEYBASE_USERNAME" \
+-e KEYBASE_PAPERKEY="$KEYBASE_PAPERKEY" \
+-e KEYBASE_SERVICE=1 -v $parent_path/keybase-entrypoint:/keybase.sh \
+keybaseio/client:stable bash /keybase.sh fs rm -r ${kbpath}/${resource_path}
