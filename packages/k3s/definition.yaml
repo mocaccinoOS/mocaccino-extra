@@ -1,6 +1,6 @@
 name: k3s
 category: container
-version: "1.18.6+k3s1"
+version: "1.18.8+k3s1"
 labels:
   github.repo: "k3s"
   github.owner: "rancher"
