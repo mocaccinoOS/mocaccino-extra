@@ -21,8 +21,10 @@ jobs:
           PREVIOUS: ${{ github.event.before }}
         run: |
           curl https://gist.githubusercontent.com/mudler/8b8d6c53c4669f4b9f9a72d1a2b92172/raw/e9d38b8e0702e7f1ef9a5db1bfa428add12a2d24/get_luet_root.sh | sudo sh
-          sudo luet install system/container-diff system/luet-extensions repository/mocaccino-extra
-          sudo luet install utils/keybase-tools utils/jq
+          sudo wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O /usr/bin/jq
+          sudo chmod a+x /usr/bin/jq
+          sudo luet install system/container-diff system/luet-extensions
+          sudo luet install utils/keybase-tools
       - name: Set matrix for build
         id: set-matrix
         run: |
@@ -73,7 +75,8 @@ jobs:
         BUILD_ARGS: "--pull --push --image-repository mocaccinoos/extra-amd64-cache"
       run: |
         curl https://gist.githubusercontent.com/mudler/8b8d6c53c4669f4b9f9a72d1a2b92172/raw/e9d38b8e0702e7f1ef9a5db1bfa428add12a2d24/get_luet_root.sh | sudo sh
-        sudo luet install system/container-diff system/luet-extensions repository/mocaccino-extra
+        #sudo luet install system/container-diff system/luet-extensions repository/mocaccino-extra
+        sudo luet install system/container-diff system/luet-extensions
         sudo luet install utils/keybase-tools
 
     - name: Get existing repository metadata
@@ -128,7 +131,8 @@ jobs:
         BUILD_ARGS: "--pull --push --image-repository mocaccinoos/extra-amd64-cache"
       run: |
         curl https://gist.githubusercontent.com/mudler/8b8d6c53c4669f4b9f9a72d1a2b92172/raw/e9d38b8e0702e7f1ef9a5db1bfa428add12a2d24/get_luet_root.sh | sudo sh
-        sudo luet install system/container-diff system/luet-extensions repository/mocaccino-extra
+        #sudo luet install system/container-diff system/luet-extensions repository/mocaccino-extra
+        sudo luet install system/container-diff system/luet-extensions
         sudo luet install utils/keybase-tools
 
     - name: Get existing repository metadata
