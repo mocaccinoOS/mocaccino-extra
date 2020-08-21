@@ -95,9 +95,8 @@ jobs:
         BUILD_ARGS: "--pull --push --image-repository mocaccinoos/extra-amd64-cache --skip-if-metadata-exists=true"
         CLEAN: "false"
         TARGET: "target"
-        PACK: ${{ matrix.category }}/${{ matrix.name }}
+        PACKAGES: ${{ matrix.category }}/${{ matrix.name }}
       run: |
-        echo "$PACK" > $TARGET
         make rebuild
         ls -liah $PWD/build
 
