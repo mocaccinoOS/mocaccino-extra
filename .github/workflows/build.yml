@@ -79,14 +79,14 @@ jobs:
         sudo luet install system/container-diff system/luet-extensions
         sudo luet install utils/keybase-tools
 
-#    - name: Get existing repository metadata
-#      env:
-#        KEYBASE_DEVICENAME: ${{ secrets.KEYBASE_DEVICENAME }}
-#        KEYBASE_PAPERKEY: ${{ secrets.KEYBASE_PAPERKEY }}
-#        KEYBASE_USERNAME: ${{ secrets.KEYBASE_USERNAME }}
-#      run: |
-#        mkdir $PWD/build
-#        chmod -R 777 $PWD/build
+    - name: Get existing repository metadata
+      env:
+        KEYBASE_DEVICENAME: ${{ secrets.KEYBASE_DEVICENAME }}
+        KEYBASE_PAPERKEY: ${{ secrets.KEYBASE_PAPERKEY }}
+        KEYBASE_USERNAME: ${{ secrets.KEYBASE_USERNAME }}
+      run: |
+        mkdir $PWD/build
+        chmod -R 777 $PWD/build
 #        keybase-download '/keybase/public/mocaccino/extra/*.yaml' $PWD/build
 #        ls -liah $PWD/build
 
