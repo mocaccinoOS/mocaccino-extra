@@ -20,6 +20,7 @@ prelude:
 
 steps:
 - cd ${PACKAGE_NAME} && sed -i 's/--nonet//g' a2x.py
+- cd ${PACKAGE_NAME} && sed -i 's/--noout//g' a2x.py
 - cd ${PACKAGE_NAME} && autoconf
 - cd ${PACKAGE_NAME} && ./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib
 - cd ${PACKAGE_NAME} && make -j8
