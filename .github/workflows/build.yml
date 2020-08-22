@@ -87,8 +87,8 @@ jobs:
       run: |
         mkdir $PWD/build
         chmod -R 777 $PWD/build
-#        keybase-download '/keybase/public/mocaccino/extra/*.yaml' $PWD/build
-#        ls -liah $PWD/build
+        keybase-download '/keybase/public/mocaccino/extra/*.yaml' $PWD/build
+        ls -liah $PWD/build
 
     - name: Build packages 🔧
       env:
@@ -96,6 +96,7 @@ jobs:
         CLEAN: "false"
         TARGET: "target"
         PACKAGES: ${{ matrix.category }}/${{ matrix.name }}
+        SUDO: "sudo -E"
       run: |
         make rebuild
         ls -liah $PWD/build
@@ -148,9 +149,12 @@ jobs:
     #- name: Setup tmate session
     #  uses: mxschmitt/action-tmate@v2
     - name: Create repo 🔧
+      env:
+        SUDO: "sudo -E"
       run: |
         make create-repo
         ls -liah $PWD/build
+
     - name: Update repository 🚀
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: |
