@@ -5,6 +5,9 @@ requires:
 - category: "libs"
   name: "libxml2"
   version: ">=0"
+- category: "libs"
+  name: "libxslt"
+  version: ">=0"
 
 env:
 - MUSL_TARGET=x86_64-mocaccino-linux-musl
@@ -12,7 +15,7 @@ env:
 - MUSL_CPU=x86-64
 - CFLAGS="-g -O2 -I/include -I/usr/include -static"
 - CPPFLAGS="-I/include -I/usr/include -static"
-- LUET_PACKAGES="lang/python vcs/git shells/bash development/libtool libs/libressl development/make development/pkg-config libs/zlib development/m4 shells/bash utils/autoconf development/automake systeml/musl-compat"
+- LUET_PACKAGES="lang/python vcs/git shells/bash development/libtool libs/libressl development/make development/pkg-config libs/zlib development/m4 shells/bash utils/autoconf development/automake systeml/musl-compat utils/file"
 
 package_dir: /asciidoc
 prelude:
