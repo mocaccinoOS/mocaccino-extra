@@ -1,0 +1,2 @@
+install:
+- entities create -f /etc/group /etc/entities/mottainai-group_entity.yaml || true
