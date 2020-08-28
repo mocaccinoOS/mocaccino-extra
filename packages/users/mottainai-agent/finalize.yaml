@@ -1,0 +1,2 @@
+install:
+- entities create -f /etc/passwd /etc/entities/mottainai_agent_entity_add.yaml || true
