@@ -1,0 +1,7 @@
+category: "dev-util"
+name: "mottainai-cli"
+version: "0.0.1_pre20200828"
+labels:
+  github.repo: "MottainaiCI"
+  github.owner: "mottainai-cli"
+
