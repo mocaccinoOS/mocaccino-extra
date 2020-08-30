@@ -9,8 +9,8 @@ requires:
 
 prelude:
 - luet install development/make lang/go vcs/git
-- mkdir -p go/src/github.com/MottainaiCI/ -p
-- cd go/src/github/MottainaiCI && git clone https://github.com/MottainaiCI/${PACKAGE_NAME}.git
+- mkdir -p go/src/github.com/MottainaiCI/
+- cd go/src/github.com/MottainaiCI && git clone https://github.com/MottainaiCI/${PACKAGE_NAME}.git
 env:
 - GOPATH=/luetbuild/go/
 - GIT_HASH=fef9fb3d651ef9dd39655d9b3fceec2132a70fd3
@@ -18,7 +18,7 @@ env:
 - SRV_DIR=/srv/mottainai
 package_dir: /mottainai-agent
 steps:
-- cd ${PACKAGE_NAME} && git checkout "${GIT_HASH}" && make build
+- cd ${GOPATH}/src/github.com/MottainaiCI/${PACKAGE_NAME} && git checkout "${GIT_HASH}" && make build
 # TODO: fix this with DESTDIR install on Makefile
 - mkdir /${PACKAGE_NAME}
 - mkdir -p /${PACKAGE_NAME}/usr/bin
