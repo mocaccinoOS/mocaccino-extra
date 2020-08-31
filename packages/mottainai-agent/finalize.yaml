@@ -1,0 +1,2 @@
+install:
+- chown mottainai-agent:mottainai -R /srv/mottainai
