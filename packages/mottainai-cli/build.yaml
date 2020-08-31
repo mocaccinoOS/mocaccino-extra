@@ -1,12 +1,13 @@
 image: "quay.io/mocaccino/extra"
 prelude:
 - luet install development/make lang/go vcs/git
-- mkdir go/src/github.com/MottainaiCI/ -p
-- cd go/src/github.com/MottainaiCI/ && git clone https://github.com/MottainaiCI/mottainai-cli.git
+- mkdir go/src/github.com/${GITHUB_ORG}/ -p
+- cd go/src/github.com/${GITHUB_ORG}/ && git clone https://github.com/${GITHUB_ORG}/${PACKAGE_NAME}.git
 env:
 - GOPATH=/luetbuild/go/
+- GITHUB_ORG=MottainaiCI
 - GIT_HASH=97be4108f8778e28c00371bdb6a635e62d94048a
 steps:
-- cd go/src/github.com/MottainaiCI/${PACKAGE_NAME} && git checkout "${GIT_HASH}" && make build && mv ${PACKAGE_NAME} /usr/bin/${PACKAGE_NAME}
+- cd go/src/github.com/${GITHUB_ORG}/${PACKAGE_NAME} && git checkout "${GIT_HASH}" && make build && mv ${PACKAGE_NAME} /usr/bin/${PACKAGE_NAME}
 includes:
 - /usr/bin/mottainai-cli
