@@ -1,6 +1,6 @@
 name: skalibs
 category: libs
-version: "2.9.2.1"
+version: "2.9.2.1+1"
 
 labels:
   github.repo: "skalibs"
