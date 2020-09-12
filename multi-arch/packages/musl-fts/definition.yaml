@@ -1,6 +1,6 @@
 name: musl-fts
 category: libs
-version: "1.2.7+0"
+version: "1.2.7+1"
 requires:
 - name: "zlib"
   category: "libs"
