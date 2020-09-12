@@ -1,6 +1,6 @@
 name: utmps
 category: init
-version: "0.0.3.2"
+version: "0.0.3.2+1"
 
 labels:
   github.repo: "utmps"
