@@ -1,6 +1,6 @@
 name: png
 category: libs
-version: "1.6.35+0"
+version: "1.6.35+1"
 requires:
 - name: zlib
   category: libs
