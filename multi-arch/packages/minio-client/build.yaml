@@ -1,7 +1,7 @@
 image: "quay.io/mocaccino/extra"
 prelude:
 - luet install utils/curl && luet cleanup
-- curl -L https://dl.min.io/client/mc/release/linux-amd64/mc --output /usr/bin/mc
+- curl -L https://dl.min.io/client/mc/release/linux-${MUSL_ARCH}/mc --output /usr/bin/mc
 package_dir: /minio-client
 steps:
 - chmod a+x /usr/bin/mc && mkdir /${PACKAGE_NAME}/usr/bin -p
