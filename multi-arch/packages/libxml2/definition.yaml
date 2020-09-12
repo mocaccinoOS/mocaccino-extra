@@ -1,6 +1,6 @@
 name: libxml2
 category: libs
-version: "2.9.10+1"
+version: "2.9.10+2"
 
 labels:
   github.repo: "libxml2"
