@@ -1,6 +1,6 @@
 name: s6
 category: init
-version: "2.9.2.0"
+version: "2.9.2.0+1"
 
 labels:
   github.repo: "s6"
