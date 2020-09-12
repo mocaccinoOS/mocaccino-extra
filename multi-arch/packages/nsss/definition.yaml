@@ -1,6 +1,6 @@
 name: nsss
 category: init
-version: "0.0.2.2"
+version: "0.0.2.2+1"
 
 labels:
   github.repo: "nsss"
