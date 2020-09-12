@@ -1,6 +1,6 @@
 name: libxslt
 category: libs
-version: "1.1.34"
+version: "1.1.34+1"
 
 labels:
   github.repo: "libxslt"
