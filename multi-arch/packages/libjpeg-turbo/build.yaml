@@ -3,9 +3,6 @@ requires:
   name: cmake
   version: ">=0"
 env:
-- MUSL_TARGET=x86_64-mocaccino-linux-musl
-- MUSL_ARCH=x86
-- MUSL_CPU=x86-64
 - CFLAGS="-I/include -I/usr/include"
 - REAL_PACKAGE_NAME=libjpeg-turbo
 
