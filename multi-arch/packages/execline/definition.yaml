@@ -1,6 +1,6 @@
 name: execline
 category: lang
-version: "2.6.1.0"
+version: "2.6.1.0+1"
 
 labels:
   github.repo: "execline"
