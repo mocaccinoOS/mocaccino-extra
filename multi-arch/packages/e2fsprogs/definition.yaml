@@ -1,6 +1,6 @@
 name: e2fsprogs
 category: utils
-version: "1.45.6"
+version: "1.45.6+1"
 
 labels:
   github.repo: "e2fsprogs"
