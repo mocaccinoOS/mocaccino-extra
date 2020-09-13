@@ -1,0 +1,24 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+- category: "utils"
+  name: "gawk"
+  version: ">=0"
+env:
+- CFLAGS="-I/include -I/usr/include -static -Wno-error=format"
+
+package_dir: /strace
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME} && \
+   luet install shells/bash development/make utils/ca-certificates libs/libressl utils/curl libs/zlib && \
+   curl -L https://github.com/${PACKAGE_NAME}/${PACKAGE_NAME}/releases/download/v${PACKAGE_VERSION}/${PACKAGE_NAME}-${PACKAGE_VERSION}.tar.xz -o strace-${PACKAGE_VERSION}.tar.xz && \
+   tar -xvf ${PACKAGE_NAME}-${PACKAGE_VERSION}.tar.xz -C ./ &&  mv ${PACKAGE_NAME}-${PACKAGE_VERSION} ${PACKAGE_NAME}
+
+steps:
+- cd ${PACKAGE_NAME} && ./configure --prefix=/usr
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
+- cd ${PACKAGE_NAME} && make install

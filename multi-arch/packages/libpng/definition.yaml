@@ -1,0 +1,15 @@
+name: png
+category: libs
+version: "1.6.35+1"
+requires:
+- name: zlib
+  category: libs
+  version: ">=0"
+labels:
+  github.repo: "libpng"
+  github.owner: "glennrp"
+  autobump.string_replace: '{ "libpng-": "" }'
+
+uri:
+- http://www.libpng.org
+license: "libpng2"

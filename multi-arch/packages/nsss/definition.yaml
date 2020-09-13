@@ -1,0 +1,12 @@
+name: nsss
+category: init
+version: "0.0.2.2+1"
+
+labels:
+  github.repo: "nsss"
+  github.owner: "skarnet"
+
+uri:
+- https://skarnet.org/software/nsss
+- https://github.com/skarnet/nsss
+license: "ISC"

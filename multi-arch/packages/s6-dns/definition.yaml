@@ -1,0 +1,7 @@
+name: s6-dns
+category: init
+version: "2.3.2.0+1"
+
+labels:
+  github.repo: "s6-dns"
+  github.owner: "skarnet"

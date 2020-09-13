@@ -1,0 +1,23 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+env:
+- CFLAGS="-I/include -I/usr/include -static"
+- LUET_PACKAGES="utils/autoconf vcs/git development/make development/automake development/m4 development/pkg-config development/libtool lang/python system/musl-compat"
+
+package_dir: /libxml2
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   luet install ${LUET_PACKAGES} && \
+   mkdir -p /${PACKAGE_NAME} && \
+   git clone https://github.com/GNOME/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
+
+steps:
+- cd ${PACKAGE_NAME} && ./autogen.sh
+- cd ${PACKAGE_NAME} && ./configure --prefix=/usr
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
+- cd ${PACKAGE_NAME} && make install

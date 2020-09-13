@@ -1,0 +1,22 @@
+requires:
+- name: "ncurses"
+  category: "libs"
+  version: ">=0"
+env:
+- CFLAGS="-I/include -I/usr/include -static"
+- LDFLAGS="-L/usr/lib"
+
+package_dir: /procps
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   luet install utils/autoconf development/automake vcs/git libs/gettext-tools development/m4 development/gperf development/pkg-config development/libtool && \
+   mkdir -p /${PACKAGE_NAME} && \
+   git clone https://gitlab.com/procps-ng/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
+
+steps:
+- cd ${PACKAGE_NAME} && ./autogen.sh
+- cd ${PACKAGE_NAME} && ./configure --prefix=/usr
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
+- cd ${PACKAGE_NAME} && make install

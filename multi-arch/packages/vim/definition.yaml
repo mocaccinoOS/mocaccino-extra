@@ -1,0 +1,14 @@
+name: vim
+category: editors
+version: "8.2.1584+1"
+requires:
+- name: ncurses
+  category: libs
+  version: ">=0"
+labels:
+  github.repo: "vim"
+  github.owner: "vim"
+uri:
+- https://vim.sourceforge.io
+- https://github.com/vim/vim
+license: "vim"

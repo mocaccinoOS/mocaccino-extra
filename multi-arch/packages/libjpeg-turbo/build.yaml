@@ -1,0 +1,22 @@
+requires:
+- category: development
+  name: cmake
+  version: ">=0"
+env:
+- CFLAGS="-I/include -I/usr/include"
+- REAL_PACKAGE_NAME=libjpeg-turbo
+
+package_dir: /libjpeg-turbo
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${REAL_PACKAGE_NAME} && \
+   luet install shells/bash development/make utils/ca-certificates libs/libressl vcs/git && \
+   git clone https://github.com/${REAL_PACKAGE_NAME}/${REAL_PACKAGE_NAME}.git /${REAL_PACKAGE_NAME}_src && cd /${REAL_PACKAGE_NAME}_src && git checkout -b build ${PACKAGE_VERSION}
+
+steps:
+- mkdir /build
+- cd /build && cmake -G"Unix Makefiles" /${REAL_PACKAGE_NAME}_src
+- cd /build && make -j8
+- cd /build && make DESTDIR=/${REAL_PACKAGE_NAME} install
+- cd /build && make install

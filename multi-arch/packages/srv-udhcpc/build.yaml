@@ -1,0 +1,20 @@
+requires:
+- category: "libs"
+  name: "skalibs"
+  version: ">=0"
+
+env:
+- CFLAGS="-I/include -I/usr/include -static"
+- LDFLAGS="-L/usr/lib/skalibs"
+- CC="gcc"
+
+package_dir: /udhcpc
+prelude:
+- |
+   mkdir -p /${PACKAGE_NAME}/etc/sv && \
+   mkdir -p /${PACKAGE_NAME}/etc/runit/runsvdir
+
+steps:
+- cp -rfv services/* /${PACKAGE_NAME}/etc/sv/
+#- cp -rfv runlevels/* /${PACKAGE_NAME}/etc/runit/runsvdir
+- mkdir -p /${PACKAGE_NAME}/var/log/udhcpc

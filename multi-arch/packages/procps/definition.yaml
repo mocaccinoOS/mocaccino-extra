@@ -1,0 +1,8 @@
+name: procps
+category: utils
+version: "3.3.16+1"
+
+uri:
+- http://procps-ng.sourceforge.net
+- https://gitlab.com/procps-ng/procps
+license: "GPL-2"

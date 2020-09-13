@@ -1,0 +1,39 @@
+requires:
+- name: bison
+  category: development
+  version: ">=0"
+- name: flex
+  category: development
+  version: ">=0"
+env:
+- CFLAGS="-I/include -I/usr/include -static"
+- CPPFLAGS="-I/include -I/usr/include -static"
+- PYTHON=python3
+- flavors="efi bios xenhost xenhost_pvh"
+package_dir: /grub2
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME} && \
+   luet install utils/util-linux utils/curl libs/zlib  vcs/git utils/gettext-tools lang/python && \
+   curl -L  https://ftp.gnu.org/gnu/grub/grub-${PACKAGE_VERSION}.tar.xz -o grub-${PACKAGE_VERSION}.tar.xz && \
+   tar -xvf grub-${PACKAGE_VERSION}.tar.xz -C ./ && mv grub-${PACKAGE_VERSION} ${PACKAGE_NAME}
+  
+
+steps:
+# -bios
+- mkdir -p /grub2/etc/default
+- cp -rfv default /grub2/etc/default/grub.example
+- |
+   cd ${PACKAGE_NAME} && ./configure --prefix=/usr --target=$MUSL_TARGET --build=$MUSL_TARGET --host=$MUSL_TARGET \
+   --disable-werror --disable-nls --with-platform=pc
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install-strip
+- cd ${PACKAGE_NAME} && make install-strip clean
+# -efi
+- |
+   cd ${PACKAGE_NAME} && ./configure --prefix=/usr \
+   --disable-werror --disable-nls --with-platform=efi --disable-efiemu
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install-strip
+- cd ${PACKAGE_NAME} && make install-strip

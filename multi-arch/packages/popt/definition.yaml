@@ -1,0 +1,7 @@
+name: popt
+category: libs
+version: "1.18+1"
+
+uri:
+- https://github.com/rpm-software-management/popt
+license: "MIT"

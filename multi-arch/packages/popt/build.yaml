@@ -1,0 +1,21 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+env:
+- CFLAGS="-I/include -I/usr/include -static"
+
+package_dir: /popt
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME} && \
+   luet install shells/bash development/make utils/ca-certificates libs/libressl utils/curl libs/zlib && \
+   curl -L http://ftp.rpm.org/popt/releases/popt-1.x/popt-${PACKAGE_VERSION}.tar.gz -o popt-${PACKAGE_VERSION}.tar.gz && \
+   tar -xvf popt-${PACKAGE_VERSION}.tar.gz -C ./ &&  mv ${PACKAGE_NAME}-${PACKAGE_VERSION} ${PACKAGE_NAME}
+
+steps:
+- cd ${PACKAGE_NAME} && ./configure --prefix=/usr
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
+- cd ${PACKAGE_NAME} && make install

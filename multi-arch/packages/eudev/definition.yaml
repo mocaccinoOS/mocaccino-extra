@@ -1,0 +1,11 @@
+name: eudev
+category: utils
+version: "3.2.9+3"
+
+labels:
+  github.repo: "eudev"
+  github.owner: "gentoo"
+
+uri:
+- https://github.com/gentoo/eudev
+license: "LGPL-2.1 MIT GPL-2"

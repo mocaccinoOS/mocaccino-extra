@@ -1,0 +1,29 @@
+requires:
+- category: libs
+  name: jpeg
+  version: ">=0"
+- category: libs
+  name: png
+  version: ">=0"
+env:
+- CFLAGS="-I/include -I/usr/include -I/usr/include/libpng16 -static"
+- CPPFLAGS="-I/include -I/usr/include -I/usr/include/libpng16 -static"
+- LDFLAGS="-L/lib -L/usr/lib -ljpeg -lpng"
+- PACKAGE_COMMIT=c8ab559217a084e25d711585e85f0bb419bc0d7f
+
+package_dir: /fbv
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME} && \
+   luet install shells/bash development/autoconf development/make utils/ca-certificates libs/libressl vcs/git && \
+   git clone https://github.com/godspeed1989/fbv ${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build ${PACKAGE_COMMIT}
+
+steps:
+- cd ${PACKAGE_NAME} && ./configure --prefix=/usr
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make install
+- mkdir -p /${PACKAGE_NAME}/usr/man/man1/
+- cp -rfv /usr/man/man1/fbv.1.gz /${PACKAGE_NAME}/usr/man/man1/
+- mkdir -p /${PACKAGE_NAME}/usr/bin/
+- cp -rfv /usr/bin/fbv /${PACKAGE_NAME}/usr/bin/

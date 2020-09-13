@@ -1,0 +1,35 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+- category: "system"
+  name: "kmod"
+  version: ">=0"
+- name: musl-fts
+  category: libs
+  version: ">=0"
+- name: asciidoc
+  category: utils
+  version: ">=0"
+env:
+- CFLAGS="-I/usr/include -shared -fPIC"
+- LDFLAGS="-L/lib -L/usr/lib -lfts -shared -fPIC"
+- CC="gcc"
+
+package_dir: /dracut
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME}/ && \
+   luet install vcs/git shells/bash development/pkg-config utils/util-linux && \
+   git clone https://github.com/dracutdevs/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build ${PACKAGE_VERSION}
+
+steps:
+#- cd ${PACKAGE_NAME} && sed -i 's/-nonet//g' Makefile
+
+- cd ${PACKAGE_NAME} && ./configure --disable-documentation --prefix=/usr --sysconfdir=/etc
+- cd ${PACKAGE_NAME} && make LDLIBS="-lfts" -j8
+- luet install --nodeps --force utils/coreutils
+
+- cd ${PACKAGE_NAME} && make DESTDIR="/${PACKAGE_NAME}" install
+- cd ${PACKAGE_NAME} && make install

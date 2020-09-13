@@ -1,0 +1,28 @@
+requires:
+- category: "libs"
+  name: "skalibs"
+  version: ">=0"
+- category: "lang"
+  name: "execline"
+  version: ">=0"
+- category: "init"
+  name: "s6"
+  version: ">=0"
+env:
+- CFLAGS="-I/include -I/usr/include -static"
+- LDFLAGS="-L/usr/lib/execline -L/usr/lib/skalibs -L/usr/lib/s6"
+
+package_dir: /s6-linux-init
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME} && \
+   git clone https://github.com/skarnet/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
+
+steps:
+- mkdir -p /${PACKAGE_NAME}/sbin/ && cp -rfv s6-make-init /${PACKAGE_NAME}/sbin/
+- chmod +x /${PACKAGE_NAME}/sbin/s6-make-init
+- cd ${PACKAGE_NAME} && ./configure
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
+- cd ${PACKAGE_NAME} && make install

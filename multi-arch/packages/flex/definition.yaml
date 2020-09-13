@@ -1,0 +1,12 @@
+name: flex
+category: development
+version: "2.6.4+1"
+
+labels:
+  github.repo: "flex"
+  github.owner: "westes"
+
+uri:
+- https://flex.sourceforge.net
+- https://github.com/westes/flex
+license: "FLEX"

@@ -1,0 +1,18 @@
+name: dracut
+category: system
+version: "050+1"
+requires:
+- name: "bash"
+  category: "shells"
+  version: ">=0"
+- name: musl-fts
+  category: libs
+  version: ">=0"
+
+labels:
+  github.repo: "dracut"
+  github.owner: "dracutdevs"
+
+uri:
+- https://dracut.wiki.kernel.org
+license: "GPL-2"

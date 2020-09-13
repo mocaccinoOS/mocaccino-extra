@@ -1,0 +1,23 @@
+requires:
+- category: "libs"
+  name: "skalibs"
+  version: ">=0"
+
+env:
+- CFLAGS="-I/include -I/usr/include -static"
+- LDFLAGS="-L/usr/lib/execline -L/usr/lib/skalibs -L/usr/lib/s6"
+
+package_dir: /runit
+prelude:
+- |
+   luet install utils/curl && \
+   mkdir -p /${PACKAGE_NAME} && \
+   mkdir -p /package && \
+   chmod 1755 /package && \
+   curl -L http://smarden.org/runit/runit-${PACKAGE_VERSION}.tar.gz -o runit-${PACKAGE_VERSION}.tar.gz && \
+   tar xvf runit-${PACKAGE_VERSION}.tar.gz && \
+   cp -rfv install_runit.sh admin/runit-${PACKAGE_VERSION}/src 
+
+
+steps:
+- cd admin/runit-${PACKAGE_VERSION}/src && make && sh install_runit.sh

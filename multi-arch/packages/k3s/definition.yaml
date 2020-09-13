@@ -1,0 +1,9 @@
+name: k3s
+category: container
+version: "1.18.8+k3s2"
+labels:
+  github.repo: "k3s"
+  github.owner: "rancher"
+uri:
+- https://k3s.io
+license: "Apache-2.0"

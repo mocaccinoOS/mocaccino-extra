@@ -1,0 +1,15 @@
+name: kmod
+category: system
+version: "27+1"
+requires:
+- name: "zlib"
+  category: "libs"
+  version: ">=0"
+
+labels:
+  github.repo: "kmod"
+  github.owner: "lucasdemarchi"
+
+uri:
+- https://git.kernel.org/?p
+license: "LGPL-2"

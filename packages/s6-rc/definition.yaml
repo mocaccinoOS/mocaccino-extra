@@ -1,7 +1,0 @@
-name: s6-rc
-category: init
-version: "0.5.1.4"
-
-labels:
-  github.repo: "s6-rc"
-  github.owner: "skarnet"

@@ -1,0 +1,21 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+env:
+- CFLAGS="-I/include -I/usr/include -static"
+- LDFLAGS="-L/usr/lib -L/lib"
+package_dir: /flex
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME} && \
+   luet install utils/curl libs/zlib development/m4 development/libtool shells/bash development/make utils/ca-certificates libs/libressl && \
+   curl -L https://github.com/westes/${PACKAGE_NAME}/releases/download/v${PACKAGE_VERSION}/${PACKAGE_NAME}-${PACKAGE_VERSION}.tar.gz -o ${PACKAGE_NAME}-${PACKAGE_VERSION}.tar.gz && \
+   tar xvf ${PACKAGE_NAME}-${PACKAGE_VERSION}.tar.gz -C ./ && mv ${PACKAGE_NAME}-${PACKAGE_VERSION} ${PACKAGE_NAME}
+steps:
+- cd ${PACKAGE_NAME} && ./configure --prefix=/usr ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes --enable-static
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
+- cd ${PACKAGE_NAME} && make install

@@ -1,0 +1,11 @@
+name: docker-cli
+category: container
+version: "19.03.12+1"
+
+labels:
+  github.repo: "cli"
+  github.owner: "docker"
+
+uri:
+- https://github.com/docker/cli
+license: "Apache-2.0"

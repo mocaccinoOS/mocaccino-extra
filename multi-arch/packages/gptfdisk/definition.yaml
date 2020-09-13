@@ -1,0 +1,17 @@
+name: gptfdisk
+category: utils
+version: "1.0.4+1"
+requires:
+- name: "util-linux"
+  category: "utils"
+  version: ">=0"
+- name: "musl-compat"
+  category: "system"
+  version: ">=0"
+labels:
+  github.repo: "gptfdisk"
+  github.owner: "samangh"
+
+uri:
+- https://www.rodsbooks.com/gdisk
+license: "GPL-2"

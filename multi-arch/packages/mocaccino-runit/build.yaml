@@ -1,0 +1,25 @@
+requires:
+- category: "libs"
+  name: "skalibs"
+  version: ">=0"
+
+env:
+- CFLAGS="-I/include -I/usr/include -static"
+- LDFLAGS="-L/usr/lib/skalibs"
+- CC="gcc"
+
+package_dir: /mocaccino-runit
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   luet install shells/bash && \
+   luet uninstall utils/busybox-static && \
+   luet install utils/coreutils && \
+   ln -s /bin/bash /bin/sh && \
+   mkdir -p /${PACKAGE_NAME} && \
+   git clone https://github.com/mocaccinoOS/runit-boot ${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
+
+steps:
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make PREFIX=/usr DESTDIR=/${PACKAGE_NAME} install
+- cd ${PACKAGE_NAME} && make install

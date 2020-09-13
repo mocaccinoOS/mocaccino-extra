@@ -1,0 +1,12 @@
+name: ncurses
+category: libs
+version: "6.2+3"
+
+labels:
+  github.repo: "ncurses"
+  github.owner: "mirror"
+
+uri:
+- https://www.gnu.org/software/ncurses
+- https://invisible-island.net/ncurses
+license: "MIT"

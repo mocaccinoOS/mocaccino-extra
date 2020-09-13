@@ -1,0 +1,10 @@
+name: k3s
+category: runit-srv
+version: "20200717+1"
+requires:
+- name: e2fsprogs
+  category: utils
+  version: ">=0"
+labels:
+  #  github.repo: "void-runit"
+  # github.owner: "void-linux"

@@ -1,0 +1,27 @@
+requires:
+- name: popt
+  category: libs
+  version: ">=0"
+- name: ncurses
+  category: libs
+  version: ">=0"
+env:
+- CFLAGS="-I/include -I/usr/include -I/usr/include/uuid -static"
+- CPPFLAGS="-I/include -I/usr/include -I/usr/include/uuid -static"
+
+package_dir: /gptfdisk
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME}/usr/bin && \
+   luet install utils/util-linux vcs/git && \
+   git clone https://github.com/samangh/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
+
+steps:
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && cp -rfv cgdisk gdisk sgdisk fixparts /${PACKAGE_NAME}/usr/bin
+- |
+   chmod +x /${PACKAGE_NAME}/usr/bin/cgdisk && \
+   chmod +x /${PACKAGE_NAME}/usr/bin/gdisk && \
+   chmod +x /${PACKAGE_NAME}/usr/bin/sgdisk && \
+   chmod +x /${PACKAGE_NAME}/usr/bin/fixparts

@@ -1,0 +1,7 @@
+name: openssh
+category: utils
+version: "8.3+1"
+
+uri:
+- https://www.openssh.com
+license: "BSD GPL-2"

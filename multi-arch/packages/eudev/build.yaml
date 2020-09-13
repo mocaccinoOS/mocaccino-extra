@@ -1,0 +1,22 @@
+requires:
+- name: libxslt
+  category: libs
+  version: ">=0"
+env:
+- CFLAGS="-I/include -I/usr/include -static"
+- LDFLAGS="-L/usr/lib"
+
+package_dir: /eudev
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   luet install utils/autoconf development/automake development/m4 development/gperf development/pkg-config development/libtool && \
+   mkdir -p /${PACKAGE_NAME} && \
+   wget https://dev.gentoo.org/~blueness/${PACKAGE_NAME}/${PACKAGE_NAME}-${PACKAGE_VERSION}.tar.gz -O ${PACKAGE_NAME}-${PACKAGE_VERSION}.tar.gz && \
+   tar xvf ${PACKAGE_NAME}-${PACKAGE_VERSION}.tar.gz -C ./ && mv ${PACKAGE_NAME}-${PACKAGE_VERSION} ${PACKAGE_NAME}
+
+steps:
+- cd ${PACKAGE_NAME} && ./configure --prefix=/usr  --bindir=/bin --includedir=/usr/include --libdir=/usr/lib	--with-rootlibexecdir=/lib/udev --sysconfdir=/etc --enable-static --enable-split-usr --with-rootprefix= --with-rootrundir=/run
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
+- cd ${PACKAGE_NAME} && make install

@@ -1,0 +1,22 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+env:
+- CFLAGS="-I/include -I/usr/include -static"
+- LDFLAGS="-L/usr/lib -L/lib"
+package_dir: /ncurses
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME} && \
+   luet install shells/bash development/make utils/ca-certificates libs/libressl vcs/git && \
+   git clone https://github.com/mirror/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
+
+steps:
+- cd ${PACKAGE_NAME} && ./configure --prefix=/usr -enable-termcap --with-terminfo-dirs="/etc/terminfo:/usr/share/terminfo:/lib/terminfo:/usr/lib/terminfo" --enable-pc-files --enable-widec
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
+- cd ${PACKAGE_NAME} && make install
+- sh ncursesw.sh

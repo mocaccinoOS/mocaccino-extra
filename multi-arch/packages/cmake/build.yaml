@@ -1,0 +1,21 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+env:
+- CFLAGS="-I/include -I/usr/include"
+
+package_dir: /cmake
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME} && \
+   luet install shells/bash development/make utils/ca-certificates libs/libressl vcs/git && \
+   git clone https://github.com/Kitware/CMake ${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
+
+steps:
+- cd ${PACKAGE_NAME} && ./bootstrap
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
+- cd ${PACKAGE_NAME} && make install

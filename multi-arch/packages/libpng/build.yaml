@@ -1,0 +1,23 @@
+requires:
+- name: jpeg
+  category: libs
+  version: ">=0"
+env:
+- CPPFLAGS="-I/include -I/usr/include"
+- LDFLAGS="-L/lib -L/usr/lib"
+- REAL_PACKAGE_NAME=libpng
+
+package_dir: /libpng
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${REAL_PACKAGE_NAME} && \
+   luet install libs/zlib shells/bash development/autoconf development/make utils/ca-certificates libs/libressl vcs/git && \
+   git clone https://github.com/glennrp/libpng ${REAL_PACKAGE_NAME} && cd ${REAL_PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
+
+steps:
+#- cd ${REAL_PACKAGE_NAME} && ./autogen.sh
+- cd ${REAL_PACKAGE_NAME} && ./configure --prefix=/usr
+- cd ${REAL_PACKAGE_NAME} && make -j8
+- cd ${REAL_PACKAGE_NAME} && make DESTDIR=/${REAL_PACKAGE_NAME} install
+- cd ${REAL_PACKAGE_NAME} && make install

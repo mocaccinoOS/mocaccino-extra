@@ -1,0 +1,7 @@
+name: s6-linux-init
+category: init
+version: "1.0.4.2+1"
+
+labels:
+  github.repo: "s6-linux-init"
+  github.owner: "skarnet"

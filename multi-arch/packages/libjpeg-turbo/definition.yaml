@@ -1,0 +1,12 @@
+name: jpeg-turbo
+category: libs
+version: "2.0.5+1"
+
+labels:
+  github.repo: "libjpeg-turbo"
+  github.owner: "libjpeg-turbo"
+
+uri:
+- https://libjpeg-turbo.virtualgl.org
+- https://sourceforge.net/projects/libjpeg-turbo
+license: "BSD"

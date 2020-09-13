@@ -1,0 +1,24 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+env:
+- CFLAGS="-I/include -I/usr/include -static"
+- CC="gcc"
+
+package_dir: /void-runit
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   luet install shells/bash && \
+   luet uninstall utils/busybox-static && \
+   luet install vcs/git utils/coreutils development/make && \
+   ln -s /bin/bash /bin/sh && \
+   mkdir -p /${PACKAGE_NAME} && \
+   git clone https://github.com/void-linux/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build ${PACKAGE_VERSION}
+
+steps:
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
+- cd ${PACKAGE_NAME} && make install

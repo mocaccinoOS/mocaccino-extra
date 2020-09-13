@@ -1,0 +1,28 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+- category: "libs"
+  name: "libxslt"
+  version: ">=0"
+
+env:
+- CFLAGS="-g -O2 -I/include -I/usr/include -static"
+- CPPFLAGS="-I/include -I/usr/include -static"
+
+package_dir: /kmod
+prelude:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME}/ && \
+   luet install vcs/git shells/bash development/libtool libs/libressl development/make development/pkg-config libs/zlib development/m4 shells/bash utils/autoconf development/automake && \
+   git clone https://github.com/lucasdemarchi/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
+
+steps:
+- cd ${PACKAGE_NAME} && sed -i 's/--nonet//g' man/Makefile.am
+
+- cd ${PACKAGE_NAME} && ./autogen.sh
+- cd ${PACKAGE_NAME} && ./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib --disable-dependency-tracking --with-openssl --with-zlib --disable-manpages
+- cd ${PACKAGE_NAME} && make -j8
+- cd ${PACKAGE_NAME} && make DESTDIR="/${PACKAGE_NAME}" install
+- cd ${PACKAGE_NAME} && make install
