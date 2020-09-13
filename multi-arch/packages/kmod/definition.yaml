@@ -1,6 +1,6 @@
 name: kmod
 category: system
-version: "27+0"
+version: "27+1"
 requires:
 - name: "zlib"
   category: "libs"
