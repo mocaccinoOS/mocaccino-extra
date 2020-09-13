@@ -6,9 +6,6 @@ requires:
   name: png
   version: ">=0"
 env:
-- MUSL_TARGET=x86_64-mocaccino-linux-musl
-- MUSL_ARCH=x86
-- MUSL_CPU=x86-64
 - CFLAGS="-I/include -I/usr/include -I/usr/include/libpng16 -static"
 - CPPFLAGS="-I/include -I/usr/include -I/usr/include/libpng16 -static"
 - LDFLAGS="-L/lib -L/usr/lib -ljpeg -lpng"
