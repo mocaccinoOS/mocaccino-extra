@@ -1,6 +1,6 @@
 name: grub2
 category: utils
-version: "2.04+0"
+version: "2.04+1"
 
 labels:
   github.repo: "grub2"
