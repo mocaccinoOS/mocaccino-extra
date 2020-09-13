@@ -4,13 +4,15 @@ requires:
   version: ">=0"
 
 package_dir: /docker
-
+env:
+- DOCKER_ARCH=x86_64
 prelude:
 - luet install libs/libressl utils/ca-certificates utils/curl libs/zlib
 
 steps:
 - | 
    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   if [ "${MUSL_ARCH}" == "arm" ] ; then DOCKER_ARCH=armhf ; fi && \
    mkdir -p /${PACKAGE_NAME}/usr/bin && \
-   curl -L https://download.docker.com/linux/static/stable/x86_64/docker-${PACKAGE_VERSION}.tgz -o docker.tgz && \
+   curl -L https://download.docker.com/linux/static/stable/${DOCKER_ARCH}/docker-${PACKAGE_VERSION}.tgz -o docker.tgz && \
    tar -xvf docker.tgz && cp -rfv docker/* /${PACKAGE_NAME}/usr/bin/
