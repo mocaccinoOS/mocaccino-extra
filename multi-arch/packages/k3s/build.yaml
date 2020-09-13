@@ -13,6 +13,6 @@ steps:
 - | 
    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
    mkdir -p /k3s/usr/bin && \
-   if [ "{MUSL_ARCH}" == "arm" ] ; then BINARY=k3s-armhf ; fi &&
+   if [ "${MUSL_ARCH}" == "arm" ] ; then BINARY=k3s-armhf ; fi && \
    curl -L https://github.com/rancher/k3s/releases/download/v${PACKAGE_VERSION}%2Bk3s1/${BINARY} -o /k3s/usr/bin/k3s && \
    chmod +x /k3s/usr/bin/k3s
