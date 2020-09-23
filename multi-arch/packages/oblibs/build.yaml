@@ -19,7 +19,7 @@ package_dir: /oblibs
 prelude:
 - |
    mkdir -p /${PACKAGE_NAME} && \
-   git clone https://framagit.org/Obarun/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
+   git clone https://framagit.org/Obarun/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION%\+*}
 
 steps:
 - cd ${PACKAGE_NAME} && ./configure
