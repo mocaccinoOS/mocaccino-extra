@@ -16,7 +16,7 @@ package_dir: /s6-rc
 prelude:
 - |
    mkdir -p /${PACKAGE_NAME} && \
-   git clone https://github.com/skarnet/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
+   git clone https://github.com/skarnet/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION%\+*}
 
 steps:
 - cd ${PACKAGE_NAME} && ./configure

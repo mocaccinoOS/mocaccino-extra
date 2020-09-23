@@ -1,7 +1,6 @@
 name: s6-rc
+version: 0.5.1.4+2
 category: init
-version: "0.5.1.4+1"
-
 labels:
-  github.repo: "s6-rc"
-  github.owner: "skarnet"
+  github.owner: skarnet
+  github.repo: s6-rc
