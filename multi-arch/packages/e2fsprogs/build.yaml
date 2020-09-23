@@ -14,7 +14,7 @@ prelude:
 - |
    luet install utils/autoconf development/automake development/m4 development/gperf development/pkg-config development/libtool && \
    mkdir -p /${PACKAGE_NAME} && \
-   git clone https://github.com/tytso/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION}
+   git clone https://github.com/tytso/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build v${PACKAGE_VERSION%\+*}
 
 steps:
 - |

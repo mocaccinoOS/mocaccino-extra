@@ -1,12 +1,10 @@
 name: e2fsprogs
+version: 1.45.6+2
 category: utils
-version: "1.45.6+1"
-
-labels:
-  github.repo: "e2fsprogs"
-  github.owner: "tytso"
-
 uri:
 - https://github.com/tytso/e2fsprogs
 - https://github.com/tytso/e2fsprogs/blob/master/NOTICE
-license: "GPL2"
+license: GPL2
+labels:
+  github.owner: tytso
+  github.repo: e2fsprogs
