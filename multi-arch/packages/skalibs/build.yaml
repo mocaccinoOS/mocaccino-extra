@@ -11,7 +11,7 @@ prelude:
 - |
    mkdir -p /${PACKAGE_NAME} && \
    luet install shells/bash development/make utils/ca-certificates libs/libressl vcs/git && \
-   git clone https://github.com/skarnet/skalibs && cd skalibs && git checkout -b build v${PACKAGE_VERSION}
+   git clone https://github.com/skarnet/skalibs && cd skalibs && git checkout -b build v${PACKAGE_VERSION%\+*}
 
 steps:
 - cd ${PACKAGE_NAME} && ./configure
