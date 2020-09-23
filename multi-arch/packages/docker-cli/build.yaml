@@ -12,7 +12,7 @@ prelude:
 - |
    luet install shells/bash development/make utils/ca-certificates libs/libressl vcs/git lang/go && \
    git clone https://github.com/docker/cli.git && \
-   cd cli && git checkout -b build v${PACKAGE_VERSION} && cd .. && \
+   cd cli && git checkout -b build v${PACKAGE_VERSION%\+*} && cd .. && \
    mkdir -p $GOPATH/src && \
    mv cli/vendor/* $GOPATH/src && \
    mv cli $GOPATH/src/github.com/docker
