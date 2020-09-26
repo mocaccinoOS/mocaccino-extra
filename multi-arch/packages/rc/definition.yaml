@@ -1,6 +1,6 @@
 name: rc
 category: init
-version: "20200705"
+version: "20200705+1"
 requires:
 - category: "lang"
   name: "execline"

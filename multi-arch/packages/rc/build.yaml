@@ -4,10 +4,12 @@ requires:
   version: ">=0"
 
 package_dir: /rc
+env:
+- GIT_HASH=113e962383972a8ba2831d789069e075207258a6
 prelude:
 - |
    mkdir -p /${PACKAGE_NAME} && \
-   git clone https://github.com/smaeul/rc && cd ${PACKAGE_NAME} && git checkout -b build 113e962383972a8ba2831d789069e075207258a6
+   git clone https://github.com/smaeul/rc && cd ${PACKAGE_NAME} && git checkout -b build ${GIT_HASH}
 
 steps:
 - mkdir -p /${PACKAGE_NAME}/etc/rc && cp -rfv rc/* /${PACKAGE_NAME}/etc/rc
