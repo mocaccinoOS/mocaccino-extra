@@ -18,8 +18,9 @@ env:
 package_dir: /lowdown
 prelude:
 - |
-   mkdir -p /${PACKAGE_NAME} && \
-   git clone https://github.com/kristapsdz/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build VERSION_0_7_1
+  PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+  mkdir -p /${PACKAGE_NAME} && \
+  git clone https://github.com/kristapsdz/${PACKAGE_NAME} && cd ${PACKAGE_NAME} && git checkout -b build VERSION_${PACKAGE_VERSION//./_}
 
 steps:
 - cd ${PACKAGE_NAME} && ./configure
