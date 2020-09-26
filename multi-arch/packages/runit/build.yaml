@@ -21,4 +21,6 @@ prelude:
 
 
 steps:
-- cd admin/runit-${PACKAGE_VERSION}/src && make && sh install_runit.sh
+- |
+  PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+  cd admin/runit-${PACKAGE_VERSION}/src && make && sh install_runit.sh
