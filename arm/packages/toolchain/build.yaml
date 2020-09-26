@@ -2,7 +2,9 @@ image: "quay.io/mocaccino/micro-toolchain:latest"
 prelude:
 - |
    luet install \
-   utils/autoconf utils/curl development/make libs/zlib vcs/git development/automake development/pkg-config development/m4
+   utils/autoconf utils/curl development/make libs/zlib vcs/git \
+   development/automake development/pkg-config development/m4 \
+   system/musl-compat
 env:
 - MUSL_TARGET=armv7a-mocaccino-linux-musleabihf
 - MUSL_ARCH=arm
