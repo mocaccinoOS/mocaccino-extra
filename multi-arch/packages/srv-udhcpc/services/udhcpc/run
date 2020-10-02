@@ -6,6 +6,14 @@ exec 2>&1
 
 echo 'udhcpc starting.'
 
+iface=${INTERFACE}
+if [ -z "${INTERFACE}" ] ; then
+  # Trying to retrieve the first eth available
+  ifaces="$(cat /proc/net/dev | grep ':' | awk '{ print $1 }' | cut -d':' -f 1)"
+  ifaces=${ifaces//lo/}
+  iface=$(echo ${ifaces} | awk '{ print $1 }')
+fi
 
+echo "udhcpc: Using iface $iface.."
 LANG=C LC_ALL=C \
-exec /sbin/udhcpc -f -i "${INTERFACE}" 2>&1
+exec /sbin/udhcpc -f -i "${iface}" 2>&1

@@ -1,1 +1,3 @@
-INTERFACE=enp0s3
+# Default interface is the first returned by /proc/net/dev != lo.
+# We currently support only one interface configuration.
+# INTERFACE=enp0s3
