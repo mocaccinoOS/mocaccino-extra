@@ -1,6 +1,6 @@
 name: kubectl
 category: container
-version: "0.20.0-alpha.0+1"
+version: "0.20.0-alpha.1"
 labels:
   github.repo: "kubectl"
   github.owner: "kubernetes"
