@@ -33,9 +33,11 @@ jobs:
     - name: Login to DockerHub Registry
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: echo ${{ secrets.DOCKERIO_PASSWORD }} | docker login -u ${{ secrets.DOCKERIO_USERNAME }} --password-stdin
-    - name: Login to DockerHub Registry
+
+    - name: Set Push options
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-      run: echo ${{ secrets.DOCKERIO_PASSWORD }} | docker login -u ${{ secrets.DOCKERIO_USERNAME }} --password-stdin
+      run: echo ::set-env name=BUILD_ARGS::--pull --push --image-repository mocaccinoos/extra-amd64-cache --skip-if-metadata-exists=true
+
     - name: Install minio and login
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       env:
@@ -48,9 +50,6 @@ jobs:
         mc alias set minio $MINIO_API_URL $MINIO_ACCESS_KEY $MINIO_SECRET_KEY
 
     - name: Install deps
-      env:
-        PREVIOUS: ${{ github.event.before }}
-        BUILD_ARGS: "--pull --push --image-repository mocaccinoos/extra-amd64-cache"
       run: |
         curl https://get.mocaccino.org/luet/get_luet_root.sh | sudo sh
         #sudo luet install system/container-diff system/luet-extensions repository/mocaccino-extra
@@ -78,7 +77,6 @@ jobs:
 
     - name: Build packages 🔧
       env:
-        BUILD_ARGS: "--pull --push --image-repository mocaccinoos/extra-amd64-cache --skip-if-metadata-exists=true"
         CLEAN: "false"
         TARGET: "target"
         SUDO: "sudo -E"
