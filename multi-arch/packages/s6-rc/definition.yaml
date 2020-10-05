@@ -1,5 +1,5 @@
 name: s6-rc
-version: 0.5.1.4+2
+version: "0.5.2.0"
 category: init
 labels:
   github.owner: skarnet
