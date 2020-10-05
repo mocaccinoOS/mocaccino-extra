@@ -1,5 +1,5 @@
 name: docker-cli
-version: 19.03.12+2
+version: "19.03.13"
 category: container
 uri:
 - https://github.com/docker/cli
