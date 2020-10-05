@@ -1,7 +1,6 @@
 name: clr-installer
 category: system
-version: "2.7.0"
-
+version: "test"
 labels:
   github.repo: "clr-installer"
   github.owner: "clearlinux"
