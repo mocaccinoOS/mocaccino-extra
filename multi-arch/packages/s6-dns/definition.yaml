@@ -1,5 +1,5 @@
 name: s6-dns
-version: 2.3.2.0+2
+version: "2.3.3.0"
 category: init
 labels:
   github.owner: skarnet
