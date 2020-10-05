@@ -13,7 +13,7 @@ export COMMON_TREE?=${ROOT_DIR}/multi-arch/packages
 export TREE?=$(ROOT_DIR)/amd64/packages
 REPO_CACHE?=mocaccinoos/extra-amd64-cache
 export REPO_CACHE
-BUILD_ARGS?=--pull --no-spinner --image-repository mocaccinoos/extra-amd64-cache
+BUILD_ARGS?=--pull --no-spinner
 SUDO?=
 VALIDATE_OPTIONS?=-s
 ARCH?=amd64
