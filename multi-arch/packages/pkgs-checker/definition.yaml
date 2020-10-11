@@ -1,0 +1,6 @@
+category: "dev-util"
+name: "pkgs-checker"
+version: "0.7.1"
+labels:
+  github.repo: "Sabayon"
+  github.owner: "pkgs-checker"
