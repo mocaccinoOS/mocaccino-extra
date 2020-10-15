@@ -174,7 +174,7 @@ jobs:
         run: |
           JSON="{\"include\":"
 
-          JSONline="$(luet tree pkglist --tree packages -o json | jq -rc '.packages')"
+          JSONline="$(luet tree pkglist --tree amd64 --tree multi-arch -o json | jq -rc '.packages')"
           JSON="$JSON$JSONline"
           JSON="$JSON}"
 
