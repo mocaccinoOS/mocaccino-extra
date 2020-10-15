@@ -37,6 +37,7 @@ jobs:
   build:
     runs-on: self-hosted 
     needs: generate-matrix
+    continue-on-error: true
     strategy:
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     steps:
@@ -58,7 +59,7 @@ jobs:
         PREVIOUS: ${{ github.event.before }}
         BUILD_ARGS: "--pull --push --image-repository mocaccinoos/extra-amd64-cache"
       run: |
-        sudo apt-get install -y wget
+        sudo apt-get install -y wget make
         curl https://get.mocaccino.org/luet/get_luet_root.sh | sudo sh
         #sudo luet install system/container-diff system/luet-extensions repository/mocaccino-extra
         sudo luet install system/container-diff system/luet-extensions
@@ -115,7 +116,8 @@ jobs:
         PREVIOUS: ${{ github.event.before }}
         BUILD_ARGS: "--pull --push --image-repository mocaccinoos/extra-amd64-cache"
       run: |
-        curl https://gist.githubusercontent.com/mudler/8b8d6c53c4669f4b9f9a72d1a2b92172/raw/e9d38b8e0702e7f1ef9a5db1bfa428add12a2d24/get_luet_root.sh | sudo sh
+        sudo apt-get install -y wget make
+        curl https://get.mocaccino.org/luet/get_luet_root.sh | sudo sh
         #sudo luet install system/container-diff system/luet-extensions repository/mocaccino-extra
         sudo luet install system/container-diff system/luet-extensions
         sudo luet install utils/keybase-tools
