@@ -73,5 +73,7 @@ serve-repo:
 auto-bump:
 	TREE_DIR=$(ROOT_DIR) $(LUET) autobump-github
 
+autobump: auto-bump
+
 validate:
 	$(LUET)  tree validate --tree $(TREE) --tree=$(COMMON_TREE) $(VALIDATE_OPTIONS)
