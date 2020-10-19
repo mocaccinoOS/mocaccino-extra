@@ -1,13 +1,13 @@
 name: vim
-version: "8.2.1860"
+version: "8.2.1866"
 category: editors
 requires:
-- name: ncurses
-  version: '>=0'
-  category: libs
+  - name: ncurses
+    version: '>=0'
+    category: libs
 uri:
-- https://vim.sourceforge.io
-- https://github.com/vim/vim
+  - https://vim.sourceforge.io
+  - https://github.com/vim/vim
 license: vim
 labels:
   github.owner: vim
