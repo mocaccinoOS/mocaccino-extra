@@ -1,6 +1,6 @@
 image: "quay.io/mocaccino/extra"
 prelude:
-- luet install development/make lang/go vcs/git
+- luet install development/make lang/go vcs/git shells/bash
 - mkdir go/src/github.com/${GITHUB_ORG}/ -p
 - cd go/src/github.com/${GITHUB_ORG}/ && git clone https://github.com/${GITHUB_ORG}/{{ .Values.name }}.git
 env:
@@ -9,6 +9,6 @@ env:
 - GIT_HASH={{ ( index .Values.labels "git.hash" ) }}
 - CGO_ENABLED=0
 steps:
-- cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/  && git checkout v"${PACKAGE_VERSION}" && ./script/build -o bin/hub && mv bin/{{ .Values.name }} /usr/bin/{{ .Values.name }}
+- cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/  && git checkout v"${PACKAGE_VERSION}" -b build && ./script/build -o bin/hub && mv bin/{{ .Values.name }} /usr/bin/{{ .Values.name }}
 includes:
 - /usr/bin/hub
