@@ -4,7 +4,6 @@ version: "2.14.2"
 labels:
   github.repo: "hub"
   github.owner: "github"
-
 uri:
   - https://github.com/github/hub
 license: "MIT"
