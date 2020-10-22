@@ -1,0 +1,14 @@
+image: "quay.io/mocaccino/extra"
+prelude:
+- luet install development/make lang/go vcs/git
+- git clone https://github.com/${GITHUB_ORG}/{{ .Values.name }}.git
+- cd go/src/github.com/${GITHUB_ORG}/ && git clone https://github.com/${GITHUB_ORG}/{{ .Values.name }}.git
+env:
+- GOPATH=/luetbuild/go/
+- GITHUB_ORG={{ ( index .Values.labels "github.repo" ) }}
+- GIT_HASH={{ ( index .Values.labels "git.hash" ) }}
+- CGO_ENABLED=0
+steps:
+- cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/  && git checkout v"${PACKAGE_VERSION}" && ./script/build -o bin/hub && mv bin/{{ .Values.name }} /usr/bin/{{ .Values.name }}
+includes:
+- /usr/bin/hub
