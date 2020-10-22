@@ -1,7 +1,7 @@
 image: "quay.io/mocaccino/extra"
 prelude:
 - luet install development/make lang/go vcs/git
-- git clone https://github.com/${GITHUB_ORG}/{{ .Values.name }}.git
+- mkdir go/src/github.com/${GITHUB_ORG}/ -p
 - cd go/src/github.com/${GITHUB_ORG}/ && git clone https://github.com/${GITHUB_ORG}/{{ .Values.name }}.git
 env:
 - GOPATH=/luetbuild/go/
