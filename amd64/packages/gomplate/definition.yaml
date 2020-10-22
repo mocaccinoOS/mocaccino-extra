@@ -1,0 +1,10 @@
+name: gomplate
+category: utils
+version: "3.8.0"
+labels:
+  github.repo: "hairyhenderson"
+  github.owner: "gomplate"
+
+uri:
+  - https://github.com/hairyhenderson/gomplate
+license: "MIT"
