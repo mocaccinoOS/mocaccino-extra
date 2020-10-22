@@ -5,5 +5,5 @@ labels:
   github.repo: "k3s"
   github.owner: "rancher"
 uri:
-- https://k3s.io
+  - https://k3s.io
 license: "Apache-2.0"
