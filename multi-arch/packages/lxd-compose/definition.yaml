@@ -1,6 +1,6 @@
 category: "app-emulation"
 name: "lxd-compose"
-version: "0.1.1_pre20201025"
+version: "0.1.1_pre20201026"
 labels:
   github.repo: "MottainaiCI"
   github.owner: "lxd-compose"
