@@ -1,0 +1,9 @@
+name: k9s
+category: utils
+version: "0.23.1"
+labels:
+  github.repo: "k9s"
+  github.owner: "derailed"
+uri:
+  - https://github.com/derailed/k9s
+license: "Apache License"
