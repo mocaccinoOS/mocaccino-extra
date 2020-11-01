@@ -3,6 +3,7 @@ requires:
   name: "toolchain"
   version: ">=0"
 prelude:
+- luet install lang/go
 - mkdir -p /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}
 - cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }} && git clone https://github.com/{{ ( index .Values.labels  "github.repo" ) }}/{{.Values.name}}
 env:
