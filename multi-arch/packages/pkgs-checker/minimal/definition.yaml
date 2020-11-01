@@ -1,11 +1,12 @@
 category: "dev-util"
 name: "pkgs-checker-minimal"
 description: "pkgs-checker version (without CGO stuff)"
-version: "0.8.0"
+version: "0.8.0+1"
 labels:
   github.repo: "Sabayon"
   github.owner: "pkgs-checker"
   original.package.version: "0.8.0"
+  original.package.name: "pkgs-checker"
 conflicts:
 - name: "pkgs-checker"
   category: "dev-util"
