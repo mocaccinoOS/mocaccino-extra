@@ -1,0 +1,16 @@
+image: "quay.io/mocaccino/extra"
+prelude:
+- luet install development/make lang/go vcs/git
+- mkdir -p /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}
+- cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }} && git clone https://github.com/{{ ( index .Values.labels  "github.repo" ) }}/{{ ( index .Values.labels "original.package.name" ) }}
+env:
+- GOPATH=/go
+- PKGNAME={{ ( index .Values.labels "original.package.name" ) }}
+steps:
+- |
+  cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}/${PKGNAME} && \
+  git checkout v{{ ( index .Values.labels "original.package.version" ) }} && \
+  sed -e 's|CGO_ENABLED=1|CGO_ENABLED=0|g' -i Makefile && \
+  make ${PKGNAME} && mv ${PKGNAME} /usr/bin/${PKGNAME}
+includes:
+- /usr/bin/{{ ( index .Values.labels "original.package.name" ) }}
