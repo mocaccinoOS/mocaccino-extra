@@ -1,11 +1,17 @@
-image: "quay.io/mocaccino/extra"
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
 prelude:
-- luet install development/make lang/go vcs/git
 - mkdir -p /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}
 - cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }} && git clone https://github.com/{{ ( index .Values.labels  "github.repo" ) }}/{{.Values.name}}
 env:
 - GOPATH=/go
 steps:
-- cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}/{{.Values.name}} && git checkout v{{.Values.version}} && make {{.Values.name}} && mv {{.Values.name}} /usr/bin/{{.Values.name}}
+- |
+  cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}/{{.Values.name}} && \
+  git checkout v{{.Values.version}} && \
+  CC=${MUSL_TARGET}-gcc make {{.Values.name}} && \
+  mv {{.Values.name}} /usr/bin/{{.Values.name}}
 includes:
 - /usr/bin/{{.Values.name}}
