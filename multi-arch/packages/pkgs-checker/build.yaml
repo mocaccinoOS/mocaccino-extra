@@ -10,7 +10,7 @@ env:
 steps:
 - |
   cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}/{{.Values.name}} && \
-  git checkout v{{.Values.version}} && \
+  git checkout v{{ ( index .Values.labels "original.package.version" ) }} && \
   CC=${MUSL_TARGET}-gcc make {{.Values.name}} && \
   mv {{.Values.name}} /usr/bin/{{.Values.name}}
 includes:
