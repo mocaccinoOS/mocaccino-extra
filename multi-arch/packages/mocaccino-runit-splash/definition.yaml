@@ -1,10 +1,10 @@
 name: mocaccino-runit-splash
+version: 0.4+1
 category: system
-version: "0.4"
 requires:
 - name: fbv
+  version: '>=0'
   category: utils
-  version: ">=0"
 - name: musl-compat
+  version: '>=0'
   category: system
-  version: ">=0"
