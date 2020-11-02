@@ -1,18 +1,16 @@
 name: fbv
+version: 0.20200718+2
 category: utils
-version: "0.20200718+1"
-
 requires:
-- category: libs
-  name: jpeg
-  version: ">=0"
-- category: libs
-  name: png
-  version: ">=0"
-- category: system
-  name: musl-compat
-  version: ">=0"
-
+- name: jpeg
+  version: '>=0'
+  category: libs
+- name: png
+  version: '>=0'
+  category: libs
+- name: musl-compat
+  version: '>=0'
+  category: system
 uri:
 - http://s-tech.elsat.net.pl/fbv
-license: "GPL"
+license: GPL
