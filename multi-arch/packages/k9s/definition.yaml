@@ -1,6 +1,6 @@
 name: k9s
 category: utils
-version: "0.23.1"
+version: "0.23.4"
 labels:
   github.repo: "k9s"
   github.owner: "derailed"
