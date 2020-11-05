@@ -2,8 +2,8 @@ requires:
 - category: "development"
   name: "toolchain"
   version: ">=0"
-- category: "libmnl"
-  name: "libs"
+- name: "libmnl"
+  category: "libs"
   version: ">=0"
 
 env:
