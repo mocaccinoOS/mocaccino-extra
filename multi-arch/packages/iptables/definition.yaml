@@ -7,8 +7,8 @@ uri:
 license: "GPL-2.0-or-later"
 
 requires:
-- category: "libmnl"
-  name: "libs"
+- name: "libmnl"
+  category: "libs"
   version: ">=0"
 - name: libnftnl
   category: libs
