@@ -5,3 +5,8 @@ version: "1.1.8"
 uri:
 - https://www.netfilter.org/projects/libmnl/index.html
 license: "LGPLv2.1+"
+
+requires:
+- name: "libmnl"
+  category: "libs"
+  version: ">=0"
