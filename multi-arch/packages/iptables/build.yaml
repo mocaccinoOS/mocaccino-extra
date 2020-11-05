@@ -2,12 +2,15 @@ requires:
 - category: "development"
   name: "toolchain"
   version: ">=0"
+- name: libnftnl
+  category: libs
+  version: ">=0"
 - name: "libmnl"
   category: "libs"
   version: ">=0"
 
 env:
-- CFLAGS="-D_GNU_SOURCE -I/include -I/usr/include -static"
+- CFLAGS="-D_GNU_SOURCE -I/include -I/usr/include -static -fPIC"
 - LDFLAGS="-L/usr/lib -L/lib"
 
 package_dir: /{{.Values.name}}
@@ -18,9 +21,7 @@ prelude:
    mkdir -p /${PACKAGE_NAME} && mkdir ${PACKAGE_NAME} && \
    wget https://www.netfilter.org/projects/iptables/files/iptables-${PACKAGE_VERSION}.tar.bz2 -O iptables.tar.bz2 && tar -xvf iptables.tar.bz2 -C ./ && mv iptables-$PACKAGE_VERSION ${PACKAGE_NAME}
 steps:
-- cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && ./configure
+- cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && ./configure --prefix=/usr
 - cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && make -j8
 - cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && make DESTDIR=/${PACKAGE_NAME} install
-- cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && \
-  install -m644 include/iptables.h include/ip6tables.h "/${PACKAGE_NAME}"/usr/include/ && \
-  install include/libiptc/*.h "${PACKAGE_NAME}"/usr/include/libiptc/
+- cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && cp -rfv include "/${PACKAGE_NAME}"/usr

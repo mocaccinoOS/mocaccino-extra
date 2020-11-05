@@ -10,3 +10,6 @@ requires:
 - category: "libmnl"
   name: "libs"
   version: ">=0"
+- name: libnftnl
+  category: libs
+  version: ">=0"
