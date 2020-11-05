@@ -5,3 +5,8 @@ version: "1.8.5"
 uri:
 - https://www.netfilter.org/projects/iptables/
 license: "GPL-2.0-or-later"
+
+requires:
+- category: "libmnl"
+  name: "libs"
+  version: ">=0"
