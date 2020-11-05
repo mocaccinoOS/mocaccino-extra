@@ -24,4 +24,4 @@ steps:
 - cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && ./configure
 - cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && make -j8
 - cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && make DESTDIR=/${PACKAGE_NAME} install
-- cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && install -m644 include/iptables.h include/ip6tables.h "/${PACKAGE_NAME}"/usr/include/ && install include/libiptc/*.h "${PACKAGE_NAME}"/usr/include/libiptc/
+- cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && cp -rfv include "/${PACKAGE_NAME}"/usr
