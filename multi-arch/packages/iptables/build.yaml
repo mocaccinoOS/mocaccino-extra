@@ -2,7 +2,9 @@ requires:
 - category: "development"
   name: "toolchain"
   version: ">=0"
-
+- category: "libmnl"
+  name: "libs"
+  version: ">=0"
 
 env:
 - CFLAGS="-D_GNU_SOURCE -I/include -I/usr/include -static"
@@ -14,17 +16,9 @@ prelude:
    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
    luet install utils/autoconf development/make development/automake vcs/git development/m4 libs/libressl && \
    mkdir -p /${PACKAGE_NAME} && mkdir ${PACKAGE_NAME} && \
-   wget https://www.netfilter.org/projects/iptables/files/iptables-${PACKAGE_VERSION}.tar.bz2 -O iptables.tar.bz2 && tar -xvf iptables.tar.bz2 -C ${PACKAGE_NAME}
+   wget https://www.netfilter.org/projects/iptables/files/iptables-${PACKAGE_VERSION}.tar.bz2 -O iptables.tar.bz2 && tar -xvf iptables.tar.bz2 -C ./ && mv iptables-$PACKAGE_VERSION ${PACKAGE_NAME}
 steps:
-- cd ${PACKAGE_NAME} && ./configure \
-  --prefix=/usr \
-  --mandir=/usr/share/man \
-  --sbindir=/sbin \
-  --sysconfdir=/etc \
-  --without-kernel \
-  --enable-devel \
-  --enable-libipq \
-  --enable-shared
+- cd ${PACKAGE_NAME} && ./configure
 - cd ${PACKAGE_NAME} && make -j8
 - cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
 - cd ${PACKAGE_NAME} && \
