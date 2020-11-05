@@ -16,7 +16,7 @@ prelude:
    mkdir -p /${PACKAGE_NAME} && mkdir ${PACKAGE_NAME} && \
    wget https://www.netfilter.org/pub/${PACKAGE_NAME}/${PACKAGE_NAME}-${PACKAGE_VERSION}.tar.bz2 -O ${PACKAGE_NAME}.tar.bz2 && tar -xvf ${PACKAGE_NAME}.tar.bz2 -C ./ && mv ${PACKAGE_NAME}-$PACKAGE_VERSION ${PACKAGE_NAME}
 steps:
-- cd ${PACKAGE_NAME} && ./configure
-- cd ${PACKAGE_NAME} && make -j8
-- cd ${PACKAGE_NAME} && make DESTDIR=/${PACKAGE_NAME} install
-- cd ${PACKAGE_NAME} && make install
+- cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION  && ./configure
+- cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && make -j8
+- cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && make DESTDIR=/${PACKAGE_NAME} install
+- cd ${PACKAGE_NAME}/${PACKAGE_NAME}-$PACKAGE_VERSION && make install
