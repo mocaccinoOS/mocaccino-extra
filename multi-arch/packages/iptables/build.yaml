@@ -10,7 +10,7 @@ requires:
   version: ">=0"
 
 env:
-- CFLAGS="-D_GNU_SOURCE -I/include -I/usr/include -static"
+- CFLAGS="-D_GNU_SOURCE -I/include -I/usr/include -static -fPIC"
 - LDFLAGS="-L/usr/lib -L/lib"
 
 package_dir: /{{.Values.name}}
