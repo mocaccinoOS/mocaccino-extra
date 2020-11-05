@@ -1,0 +1,10 @@
+name: kind
+category: utils
+version: "0.9.0"
+labels:
+  github.repo: "kind"
+  github.owner: "kubernetes-sigs"
+
+uri:
+- https://kind.sigs.k8s.io/
+license: "Apache-2.0 License"
