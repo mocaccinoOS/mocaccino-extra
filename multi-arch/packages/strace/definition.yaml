@@ -1,9 +1,9 @@
 name: strace
 category: utils
-version: "5.8+1"
+version: "5.9"
 labels:
   github.repo: "strace"
   github.owner: "strace"
 uri:
-- https://strace.io
+  - https://strace.io
 license: "BSD"
