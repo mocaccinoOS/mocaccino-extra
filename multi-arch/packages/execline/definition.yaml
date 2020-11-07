@@ -1,9 +1,0 @@
-name: execline
-version: "2.6.1.1"
-category: lang
-uri:
-- https://www.skarnet.org/software/execline
-license: ISC
-labels:
-  github.owner: skarnet
-  github.repo: execline

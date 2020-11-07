@@ -1,0 +1,10 @@
+image: golang
+prelude:
+- apt-get update
+- apt-get install git
+- git clone https://github.com/mudler/${PACKAGE_NAME} ${PACKAGE_NAME}
+steps:
+- cd ${PACKAGE_NAME} && git checkout "${PACKAGE_VERSION}" && make build && mv yip /usr/bin/yip
+- chmod +x /usr/bin/yip
+includes:
+- /usr/bin/yip

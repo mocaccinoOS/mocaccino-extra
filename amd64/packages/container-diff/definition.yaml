@@ -1,0 +1,7 @@
+category: "system"
+name: "container-diff"
+version: "0.15.0"
+
+labels:
+  github.repo: "container-diff"
+  github.owner: "GoogleContainerTools"

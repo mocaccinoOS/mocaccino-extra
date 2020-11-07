@@ -1,9 +1,0 @@
-name: skalibs
-version: "2.9.3.0"
-category: libs
-uri:
-- https://www.skarnet.org/software/skalibs
-license: ISC
-labels:
-  github.owner: skarnet
-  github.repo: skalibs

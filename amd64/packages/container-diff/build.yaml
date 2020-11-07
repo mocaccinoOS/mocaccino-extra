@@ -1,0 +1,12 @@
+image: golang
+environment:
+- GOPATH=/go
+prelude:
+- apt-get update
+- apt-get install git
+- mkdir -p $GOPATH/src/github.com/GoogleContainerTools
+- git clone https://github.com/GoogleContainerTools/container-diff $GOPATH/src/github.com/GoogleContainerTools/container-diff
+steps:
+- cd $GOPATH/src/github.com/GoogleContainerTools/container-diff && git checkout -b build v${PACKAGE_VERSION} && go build && mv container-diff /usr/bin/container-diff
+includes:
+- /usr/bin/container-diff

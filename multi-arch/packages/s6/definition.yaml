@@ -1,6 +1,0 @@
-name: s6
-version: 2.9.2.0+2
-category: init
-labels:
-  github.owner: skarnet
-  github.repo: s6

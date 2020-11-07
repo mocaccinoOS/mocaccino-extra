@@ -1,0 +1,7 @@
+image: alpine
+prelude:
+- apk update
+- apk add make git
+- git clone https://github.com/mudler/git-encfs
+steps:
+- cd git-encfs && make install

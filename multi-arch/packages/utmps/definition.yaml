@@ -1,9 +1,0 @@
-name: utmps
-version: 0.0.3.2+2
-category: init
-uri:
-- https://skarnet.org/software/utmps/overview.html
-license: ISC
-labels:
-  github.owner: skarnet
-  github.repo: utmps
