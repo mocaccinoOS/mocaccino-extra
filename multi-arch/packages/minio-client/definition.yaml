@@ -4,3 +4,4 @@ version: "20201003"
 labels:
   github.repo: "minio"
   github.owner: "minio"
+  autobump.strategy: "snapshot"
