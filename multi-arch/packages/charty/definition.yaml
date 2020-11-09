@@ -1,6 +1,6 @@
 category: "utils"
 name: "charty"
-version: "0.2.0"
+version: "0.2.1"
 labels:
   github.repo: "charty"
   github.owner: "mudler"
