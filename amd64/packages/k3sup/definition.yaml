@@ -1,0 +1,10 @@
+name: k3sup
+category: utils
+version: "0.9.11"
+labels:
+  github.repo: "k3sup"
+  github.owner: "alexellis"
+
+uri:
+  - https://github.com/alexellis/k3sup
+license: "MIT"
