@@ -25,9 +25,7 @@ jobs:
         git fetch --prune --unshallow
     - name: Validate 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
       run: |
-        wget https://github.com/mudler/luet/releases/download/0.8.5/luet-0.8.5-linux-amd64 -O luet
-        sudo mv luet /usr/bin/luet
-        sudo chmod +x /usr/bin/luet
+        curl https://get.mocaccino.org/luet/get_luet_root.sh | sudo sh
         git clone https://github.com/Luet-lab/luet-repo multi-arch/packages/luet-repo
         git clone https://github.com/mocaccinoOS/mocaccino-micro micro
         # We need hardlink (symlink aren't not handled correctly by luet)
