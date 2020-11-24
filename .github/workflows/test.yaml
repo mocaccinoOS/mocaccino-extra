@@ -34,9 +34,10 @@ jobs:
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: echo ${{ secrets.DOCKERIO_PASSWORD }} | docker login -u ${{ secrets.DOCKERIO_USERNAME }} --password-stdin
 
+
     - name: Set Push options
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-      run: echo ::set-env name=BUILD_ARGS::--pull --push --skip-if-metadata-exists=true
+      run: echo "BUILD_ARGS=--pull --push --skip-if-metadata-exists=true" >> $GITHUB_ENV
 
     - name: Install minio and login
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
