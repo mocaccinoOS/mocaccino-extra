@@ -1,7 +1,10 @@
 category: "app-emulation"
 name: "lxd-compose"
-version: "0.2.1_pre20201112+1"
+version: "0.2.1_pre20201124"
 labels:
   github.repo: "MottainaiCI"
   github.owner: "lxd-compose"
-
+description: "Supply a way to deploy a complex environment to an LXD Cluster or LXD standalone installation"
+uri:
+- "https://github.com/MottainaiCI/lxd-compose"
+license: "GPL-3.0"
