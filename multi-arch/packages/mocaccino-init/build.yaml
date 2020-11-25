@@ -1,5 +1,6 @@
 image: "quay.io/mocaccino/micro:latest"
-
+env:
+- LUET_YES=true
 prelude:
 - luet install vcs/git utils/ca-certificates
 - git clone https://github.com/ivandavidov/minimal.git
