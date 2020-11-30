@@ -1,0 +1,9 @@
+kind: "user"
+username: "root"
+password: "x"
+uid: 0
+gid: 0
+info: ""
+homedir: "/root"
+shell: "/bin/bash"
+

@@ -3,5 +3,5 @@ ID=MocaccinoOS
 PRETTY_NAME="MocaccinoOS"
 ANSI_COLOR="1;32"
 HOME_URL="https://www.mocaccino.org/"
-SUPPORT_URL="https://www.mocaccino.org/community/"
+SUPPORT_URL="https://community.mocaccino.org/"
 BUG_REPORT_URL="https://github.com/mocaccinoOS/issue-tracker"

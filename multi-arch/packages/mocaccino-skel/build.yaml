@@ -7,6 +7,8 @@ prelude:
 steps:
 - cp -rfv mocaccino-init-skel.sh /${PACKAGE_NAME}/usr/sbin/mocaccino-init-skel
 - chmod +x /${PACKAGE_NAME}/usr/sbin/mocaccino-init-skel
-- mkdir -p /${PACKAGE_NAME}/etc/skel/
+- mkdir -p /${PACKAGE_NAME}/etc/skel/entities
+- cp -rfv entities/* /${PACKAGE_NAME}/etc/skel/entities
 - cp -rfv rootfs/* /${PACKAGE_NAME}/etc/skel/
+- cp -rfv os-release /${PACKAGE_NAME}/etc
 - mkdir /${PACKAGE_NAME}/mnt && touch /${PACKAGE_NAME}/mnt/.keep

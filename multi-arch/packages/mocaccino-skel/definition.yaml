@@ -1,4 +1,7 @@
 name: mocaccino-skel
 category: init
 version: "20201118"
-
+requires:
+- name: "entities"
+  category: "system"
+  version: ">=0"

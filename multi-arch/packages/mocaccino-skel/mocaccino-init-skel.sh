@@ -6,11 +6,12 @@ fi
 
 if [ ! -e "/etc/passwd" ]; then
 	cp -rfv /etc/skel/etc/passwd /etc/passwd
-	echo "root:mocaccino" | chpasswd
+	entities apply -f /etc/passwd /etc/skel/entities/root_passwd.yaml
 fi
 
 if [ ! -e "/etc/shadow" ]; then
 	cp -rfv /etc/skel/etc/shadow /etc/shadow
+	entities apply -f /etc/shadow /etc/skel/entities/root_shadow.yaml
 fi
 
 if [ ! -e "/etc/hosts" ]; then
@@ -45,3 +46,4 @@ fi
 if [ ! -d "/var/tmp" ]; then
 	mkdir -p /var/tmp
 fi
+
