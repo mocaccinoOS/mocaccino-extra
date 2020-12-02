@@ -1,0 +1,14 @@
+category: "dev-util"
+name: "mottainai-server"
+version: "0.0.1_pre20201202"
+requires:
+- category: "users"
+  name: "mottainai-server"
+  version: ">=0"
+- category: "groups"
+  name: "mottainai"
+  version: ">=0"
+
+labels:
+  github.repo: "MottainaiCI"
+  github.owner: "mottainai-server"
