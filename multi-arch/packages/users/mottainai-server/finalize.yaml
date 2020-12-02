@@ -1,0 +1,2 @@
+install:
+- entities apply -f /etc/passwd /etc/entities/mottainai_server_entity_add.yaml || true

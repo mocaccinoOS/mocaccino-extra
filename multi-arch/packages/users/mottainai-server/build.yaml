@@ -1,0 +1,4 @@
+steps:
+- mkdir /etc/entities/|| true
+- cp -rfv ${PACKAGE_NAME/-/_}*.yaml /etc/entities/
+image: "quay.io/mocaccino/micro:latest"

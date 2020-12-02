@@ -1,0 +1,8 @@
+kind: "user"
+username: "mottainai-server"
+password: "x"
+uid: 501
+gid: 500
+info: "Created by entities"
+homedir: "/srv/mottainai"
+shell: "/sbin/nologin"
