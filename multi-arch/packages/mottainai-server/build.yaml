@@ -1,12 +1,4 @@
 image: "quay.io/mocaccino/extra"
-requires:
-- category: "users"
-  name: "mottainai-server"
-  version: ">=0"
-- category: "groups"
-  name: "mottainai"
-  version: ">=0"
-
 prelude:
 - luet install development/make lang/go vcs/git
 - mkdir -p go/src/github.com/MottainaiCI/
@@ -35,15 +27,9 @@ steps:
   cd ${GOPATH}/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/ && \
   mv {{ .Values.name }} /{{ .Values.name }}/usr/bin/{{ .Values.name }} && \
   cp contrib/config/mottainai-server.yaml.example /{{ .Values.name }}/etc/mottainai/mottainai-server.yaml && \
-- |
-  cd ${GOPATH}/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/ && \
-  cp -Rv templates /{{ .Values.name }}${LIB_DIR}/
-- |
-  cd ${GOPATH}/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/ && \
+  cp -Rv templates /{{ .Values.name }}${LIB_DIR}/ && \
   cp -Rv public /{{ .Values.name }}${LIB_DIR}
-- chown -R mottainai-server:mottainai /{{ .Values.name }}${LIB_DIR}
 - chmod -R 770 /{{ .Values.name }}${LIB_DIR}
 - chmod -R 774 /{{ .Values.name }}${LIB_DIR}/public
-- chown -R mottainai-server:mottainai /{{ .Values.name }}${SRV_DIR}
 - chmod -R 774 /{{ .Values.name }}${SRV_DIR}
 
