@@ -19,6 +19,7 @@ env:
 - LIB_DIR=/var/lib/mottainai
 - SRV_DIR=/srv/mottainai
 - GITHUB_ORG=MottainaiCI
+- LUET_YES=true
 package_dir: /{{ .Values.name }}
 steps:
 - go env
