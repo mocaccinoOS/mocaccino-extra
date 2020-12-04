@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#equo up 
-
-#echo 3 | equo i sys-apps/gptfdisk
-#echo 3 | equo i sys-fs/e2fsprogs
-
 sgdisk \
   -n 1:0:+128M -t 1:8300 -c 1:"linux-boot" \
   -n 2:0:+32M  -t 2:ef02 -c 2:"bios-boot"  \
@@ -20,4 +15,4 @@ mkfs.ext4 /dev/sda4
 mkswap /dev/sda3 && swapon /dev/sda3
 
 mkdir /mnt/mocaccino
-mount /dev/sda4 /mnt/mocaccino
+mount -t ext4 /dev/sda4 /mnt/mocaccino
