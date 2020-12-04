@@ -30,6 +30,32 @@ if [ ! -e "/etc/profile" ]; then
 	cp -rfv /etc/skel/etc/profile /etc/profile
 fi
 
+if [ ! -e "/etc/issue" ]; then
+cat > /etc/issue << "MOCHA"
+        ..
+      ..  ..
+            ..
+             ..
+            ..
+           ..
+         ..
+##       ..    ####
+##.............##  ##
+##.............##   ##
+##.............## ##
+##.............###
+ ##...........##
+  #############
+  #############
+#################
+MOCHA
+
+cat >> /etc/issue << "EOF"
+Welcome to MocaccinoOS (login with user: root, password: mocaccino)
+EOF
+
+fi
+
 if [ ! -d "/root" ]; then
 	mkdir /root
 fi
