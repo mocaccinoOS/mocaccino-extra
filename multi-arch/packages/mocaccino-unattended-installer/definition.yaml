@@ -1,0 +1,21 @@
+# Requires gptdisk and e2fsprogs grub2 rsync
+#
+
+name: "unattended-install"
+category: mocaccino
+version: "0.1"
+
+requires:
+- name: gptfdisk
+  category: utils
+  version: ">=0"
+- name: rsync
+  category: utils
+  version: ">=0"
+- name: grub2
+  category: utils
+  version: ">=0"
+- name: e2fsprogs
+  category: utils
+  version: ">=0"
+

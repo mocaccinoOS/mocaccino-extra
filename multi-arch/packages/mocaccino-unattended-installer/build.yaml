@@ -1,0 +1,11 @@
+image: "quay.io/mocaccino/extra:latest"
+
+package_dir: /installer
+prelude:
+- |
+   mkdir -p /installer/usr/sbin && \
+   mkdir -p /installer/usr/share/installer
+steps:
+- cp -rfv install.sh /installer/usr/sbin/mocaccino-unattended-installer
+- chmod +x /installer/usr/sbin/mocaccino-unattended-installer
+- cp -rfv scripts /installer/usr/share/installer
