@@ -3,7 +3,7 @@
 
 name: "unattended-install"
 category: mocaccino
-version: "0.3"
+version: "0.4"
 
 requires:
 - name: gptfdisk
@@ -18,4 +18,10 @@ requires:
 - name: e2fsprogs
   category: utils
   version: ">=0"
+- name: luet-extensions
+  category: system
+  version: ">=0"
 
+- name: xz
+  category: utils
+  version: ">=0"

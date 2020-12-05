@@ -65,6 +65,8 @@ DEFAULT_WORK_DIR="/tmp/minimal/work"
 
 depmod -a 2>/dev/null
 
+modprobe ext2 2>/dev/null
+modprobe ext4 2>/dev/null
 modprobe uas 2>/dev/null
 modprobe usb_storage 2>/dev/null
 modprobe usbcore 2>/dev/null

@@ -2,11 +2,15 @@
 
 export LC_ALL=en_US.UTF-8
 export INSTALL_DEVICE="${INSTALL_DEVICE:-/dev/sda}"
+
 export INITRAMFS_PACKAGES="${INITRAMFS_PACKAGES:-utils/busybox kernel/sabayon-minimal system/mocaccino-init system/mocaccino-live-boot init/mocaccino-skel utils/yip utils/yip-integration}"
 if [[ -z $SCRIPTS ]]
 then
   SCRIPTS=/usr/share/installer
 fi
+
+echo "Bundling the following packages in initramfs: "
+echo "$INITRAMFS_PACKAGES"
 
 chmod +x $SCRIPTS/scripts/*.sh
 
