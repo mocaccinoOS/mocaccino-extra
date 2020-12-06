@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chroot /mnt/mocaccino /bin/sh <<EOF
+chroot ${TARGET} /bin/sh <<EOF
 cat > /etc/fstab <<'DATA'
 # <fs>		<mount>	<type>	<opts>		<dump/pass>
 ${INSTALL_DEVICE}1	/boot	ext2	noatime	1 2

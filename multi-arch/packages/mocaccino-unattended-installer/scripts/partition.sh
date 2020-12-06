@@ -1,5 +1,19 @@
 #!/bin/bash
 
+cat <<'EOF'
+   .
+  .
+ . .
+  ...
+\~~~~~/
+ \   /
+  \ /
+   V
+   |
+   |
+  ---
+EOF
+
 echo "Partitioning ${INSTALL_DEVICE}"
 
 sgdisk \
@@ -16,5 +30,5 @@ mkfs.ext4 ${INSTALL_DEVICE}4
 
 mkswap ${INSTALL_DEVICE}3 && swapon ${INSTALL_DEVICE}3
 
-mkdir /mnt/mocaccino
-mount -t ext4 ${INSTALL_DEVICE}4 /mnt/mocaccino
+mkdir ${TARGET}
+mount -t ext4 ${INSTALL_DEVICE}4 ${TARGET}

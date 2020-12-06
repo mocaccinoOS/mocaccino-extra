@@ -1,13 +1,13 @@
 #!/bin/bash
 
 cd /
-mkdir /mnt/mocaccino/proc
-mkdir /mnt/mocaccino/boot
-mkdir /mnt/mocaccino/dev
-mkdir /mnt/mocaccino/sys
-mkdir /mnt/mocaccino/tmp
+mkdir ${TARGET}/proc
+mkdir ${TARGET}/boot
+mkdir ${TARGET}/dev
+mkdir ${TARGET}/sys
+mkdir ${TARGET}/tmp
 
-mount -t ext2 ${INSTALL_DEVICE}1 /mnt/mocaccino/boot
-mount -t proc proc /mnt/mocaccino/proc
-mount --rbind /dev /mnt/mocaccino/dev
-mount --rbind /sys /mnt/mocaccino/sys
+mount -t ext2 ${INSTALL_DEVICE}1 ${TARGET}/boot
+mount -t proc proc ${TARGET}/proc
+mount --rbind /dev ${TARGET}/dev
+mount --rbind /sys ${TARGET}/sys

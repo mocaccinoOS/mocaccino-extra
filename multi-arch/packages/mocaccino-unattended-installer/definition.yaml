@@ -3,7 +3,7 @@
 
 name: "unattended-install"
 category: mocaccino
-version: "0.4"
+version: "0.5"
 
 requires:
 - name: gptfdisk
@@ -23,5 +23,11 @@ requires:
   version: ">=0"
 
 - name: xz
+  category: utils
+  version: ">=0"
+- name: yq
+  category: utils
+  version: ">=0"
+- name: jq
   category: utils
   version: ">=0"
