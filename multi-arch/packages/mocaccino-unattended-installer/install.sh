@@ -103,9 +103,15 @@ function ok {
 
 load_vars() {
   local file=$1
-  export ROOTFS_PACKAGES="${ROOTFS_PACKAGES:-$(yq r -j $file 'packages.rootfs' | jq -r '.[]' | xargs echo)}"
+  export ROOTFS_PACKAGES="${ROOTFS_PACKAGES:-$(yq r -j $file 'packages.rootfs.install' | jq -r '.[]' | xargs echo)}"
+  export TO_REMOVE="${TO_REMOVE:-$(yq r -j $file 'packages.rootfs.uninstall' | jq -r '.[]' | xargs echo)}"
+  export LUET_BIN="${LUET_BIN:-$(yq r -j $file 'luet.bin')}"
+  export LUET_REPOS="$(yq r -j $file 'packages.repos' | jq -r '.[]' | xargs echo)"
+  export CA_CERTIFICATES="$(yq r $file 'ca_certificate')"
+  export HOOK_SCRIPT="$(yq r $file 'hook_script')"
+
   export INITRAMFS_PACKAGES="${INITRAMFS_PACKAGES:-$(yq r -j $file 'packages.initramfs' | jq -r '.[]' | xargs echo)}"
-  export LUET_CONFIG="${LUET_CONFIG:-$(yq r -j $file 'luet_config')}"
+  export LUET_CONFIG="${LUET_CONFIG:-$(yq r -j $file 'luet.config')}"
   export TARGET="${TARGET:-$(yq r -j $file 'target')}"
   export INSTALL_DEVICE="${INSTALL_DEVICE:-$(yq r -j $file 'install_device')}"
 }
@@ -114,11 +120,12 @@ load_vars() {
 
 export INSTALL_DEVICE="${INSTALL_DEVICE:-/dev/sda}"
 export TARGET="${TARGET:-/mnt/mocaccino}"
+export LUET_BIN="${LUET_BIN:-/usr/bin/luet}"
+export LUET_CONFIG="${LUET_CONFIG:-/etc/luet/luet.yaml}"
 
 # Try to grab current kernel package name, excluding modules
 CURRENT_KERNEL_PACKAGE_NAME=$(luet search --installed kernel --output json | jq -r '.packages[] | select( .category == "kernel" ) | select( .name | test("modules") | not).name')
 MINIMAL_NAME="${CURRENT_KERNEL_PACKAGE_NAME/full/minimal}"
-
 export INITRAMFS_PACKAGES="${INITRAMFS_PACKAGES:-utils/busybox kernel/$MINIMAL_NAME system/mocaccino-init system/mocaccino-live-boot init/mocaccino-skel utils/yip utils/yip-integration}"
 
 if [[ -z $SCRIPTS ]]
@@ -138,18 +145,33 @@ cat <<EOF
   Optionally, mocaccino-unattended-installer takes a yaml file like the following:
 
 packages:
+  repos:
+  - repository/mocaccino-micro
   rootfs:
-  - foo/bar
-  - foo/baz
+    # Packages to install in the rootfs with luet install
+    install:
+    - foo/bar
+    - foo/baz
+    # Packages to remove (useful if rsyncing)
+    uninstall:
+    - foo/bar
+    - foo/baz
   initramfs:
   - init/foo
   - kernels/blah
+ca_certificate: "path/to/valid/ca_bundle"
+
+# Set of commands that are run inside the chroot after process is completed
+hook_script: |
+            luet ...
 
 install_device: /dev/sda
-luet_config: /etc/luet/luet.yaml
+luet:
+  config: /etc/luet/luet.yaml
+  bin: /usr/bin/luet
 
 ---------
-Note, you don't need to set any 'packages.rootfs'. If set, the installer will install these packages instead of the current running system.
+Note, you don't need to set any of those options. If 'packages.rootfs.install' is set, the installer will install these packages instead of the current running system.
 EOF
   exit 0
   else
@@ -217,4 +239,4 @@ do
   "$SCRIPTS/scripts/$script.sh"
 done
 
-ok "Done"
+ok "Done, now you can reboot"

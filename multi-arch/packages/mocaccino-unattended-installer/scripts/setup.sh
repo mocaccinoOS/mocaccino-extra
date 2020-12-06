@@ -1,4 +1,11 @@
 #!/bin/bash
+
+if [ -n "$HOOK_SCRIPT" ]; then
+chroot ${TARGET} /bin/sh <<EOF
+    $HOOK_SCRIPT
+EOF
+fi
+
 rm -rf ${TARGET}/tmp/*
 rm -rf ${TARGET}/var/log/*
 rm -rf ${TARGET}/var/tmp/*

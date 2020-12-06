@@ -31,7 +31,7 @@ if [ ! -e "/etc/profile" ]; then
 fi
 
 if [ ! -e "/etc/issue" ]; then
-cat > /etc/issue << "MOCHA"
+cat > /etc/issue << MOCHA
         ..
       ..  ..
             ..
@@ -48,10 +48,15 @@ cat > /etc/issue << "MOCHA"
   #############
   #############
 #################
+
 MOCHA
 
 cat >> /etc/issue << "EOF"
+
 Welcome to MocaccinoOS (login with user: root, password: mocaccino)
+
+You can install this system in a partition using: "mocaccino-unattended-installer", see "mocaccino-unattended-installer help"
+
 EOF
 
 fi

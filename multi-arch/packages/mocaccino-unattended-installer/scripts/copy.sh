@@ -65,3 +65,9 @@ else
     echo "Rsyncing / to ${TARGET}"
     rsync -aqz --exclude='mnt' --exclude='proc' --exclude='sys' --exclude='dev' --exclude='tmp' / ${TARGET}
 fi
+
+if [ -n "$TO_REMOVE" ]; then
+
+    chroot ${TARGET} /bin/sh /usr/bin/luet uninstall -y "$TO_REMOVE"
+
+fi
