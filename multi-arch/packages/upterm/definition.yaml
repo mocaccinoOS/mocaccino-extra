@@ -1,0 +1,9 @@
+name: upterm
+category: utils
+version: "0.5.0"
+labels:
+  github.repo: "upterm"
+  github.owner: "owenthereal"
+uri:
+  - https://github.com/owenthereal/upterm
+license: "Apache 2.0 License"

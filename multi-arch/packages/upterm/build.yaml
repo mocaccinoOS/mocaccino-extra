@@ -1,0 +1,18 @@
+image: "quay.io/mocaccino/extra"
+prelude:
+- luet install -y development/make lang/go vcs/git
+- mkdir go/src/github.com/${GITHUB_ORG}/ -p
+- cd go/src/github.com/${GITHUB_ORG}/ && git clone https://github.com/${GITHUB_ORG}/{{ .Values.name }}.git
+env:
+- GOPATH=/luetbuild/go/
+- GITHUB_ORG={{ ( index .Values.labels "github.owner" ) }}
+- GIT_HASH={{ ( index .Values.labels "git.hash" ) }}
+- CGO_ENABLED=0
+steps:
+- luet install -y shells/bash
+- cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/  && git checkout v"${PACKAGE_VERSION}" -b build && make build && mv build/* /usr/bin/
+- chmod +x /usr/bin/upterm
+- chmod +x /usr/bin/uptermd
+includes:
+- /usr/bin/upterm
+- /usr/bin/uptermd
