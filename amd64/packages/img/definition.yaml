@@ -1,0 +1,7 @@
+category: "container"
+name: "img"
+version: "0.5.11"
+
+labels:
+  github.repo: "img"
+  github.owner: "genuinetools"
