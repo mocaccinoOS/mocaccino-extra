@@ -1,0 +1,11 @@
+name: stern
+category: container
+version: "1.11.0"
+labels:
+  github.repo: "stern"
+  github.owner: "wercker"
+uri:
+  - https://github.com/wercker/stern
+
+description: "Multi pod and container log tailing for Kubernetes"
+license: "Apache-2.0"
