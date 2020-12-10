@@ -1,0 +1,9 @@
+name: wireguard-go
+category: utils
+version: "0.0.20201118"
+labels:
+  github.repo: "wireguard-go"
+  github.owner: "WireGuard"
+uri:
+  - https://github.com/WireGuard/wireguard-go
+license: "MIT"
