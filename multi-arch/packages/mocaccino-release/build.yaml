@@ -1,0 +1,5 @@
+image: quay.io/mocaccino/extra
+package_dir: /release
+steps:
+- mkdir -p /release/etc/mocaccino
+- echo "{{.Values.name}}" > /release/etc/mocaccino/release
