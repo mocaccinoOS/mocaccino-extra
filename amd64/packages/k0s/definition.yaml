@@ -1,0 +1,10 @@
+name: k0s
+category: container
+version: "0.8.1"
+labels:
+  github.repo: "k0s"
+  github.owner: "k0sproject"
+uri:
+  - https://github.com/k0sproject/k0s
+description: "k0s - Zero Friction Kubernetes "
+license: "Apache License 2.0"
