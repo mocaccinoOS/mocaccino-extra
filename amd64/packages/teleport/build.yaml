@@ -1,0 +1,22 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+package_dir: /teleport
+
+prelude:
+- luet install libs/libressl utils/ca-certificates utils/curl libs/zlib
+
+steps:
+- | 
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /teleport/usr/bin && \
+   curl -L https://get.gravitational.com/teleport-v${PACKAGE_VERSION}-linux-amd64-bin.tar.gz -o teleport.tar.gz && \
+   tar xvf teleport.tar.gz -C ./ && \
+   mv teleport/tctl /teleport/usr/bin && \
+   mv teleport/teleport /teleport/usr/bin && \
+   mv teleport/tsh /teleport/usr/bin && \
+   chmod +x /teleport/usr/bin/tsh && \
+   chmod +x /teleport/usr/bin/teleport && \
+   chmod +x /teleport/usr/bin/tctl

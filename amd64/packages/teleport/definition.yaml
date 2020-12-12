@@ -1,0 +1,10 @@
+name: teleport
+category: utils
+version: "5.0.0"
+labels:
+  github.repo: "teleport"
+  github.owner: "gravitational"
+uri:
+  - https://github.com/gravitational/teleport
+description: " Secure Access for Developers that doesn't get in the way. "
+license: "Apache 2.0"
