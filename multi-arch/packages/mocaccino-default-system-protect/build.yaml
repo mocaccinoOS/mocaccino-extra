@@ -1,5 +1,0 @@
-image: "quay.io/mocaccino/extra"
-package_dir: /protect
-steps:
-- mkdir -p /protect/etc/luet
-- mv conf.d /protect/etc/luet/config.protect.d
