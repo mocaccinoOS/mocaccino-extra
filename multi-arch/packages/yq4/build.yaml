@@ -3,7 +3,7 @@ requires:
   name: "toolchain"
   version: ">=0"
 
-package_dir: /yq
+package_dir: /{{.Values.name}}
 
 prelude:
 - luet install libs/libressl utils/ca-certificates utils/curl libs/zlib
