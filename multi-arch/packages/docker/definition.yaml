@@ -1,9 +1,9 @@
 name: docker
 category: container
-version: "19.03.13"
+version: "19.03.14"
 labels:
   github.repo: "docker-ce"
   github.owner: "docker"
 uri:
-- https://dockerproject.org
+  - https://dockerproject.org
 license: "Apache-2.0"
