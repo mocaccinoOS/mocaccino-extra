@@ -5,6 +5,6 @@ prelude:
 env:
 - GIT_HASH=v{{ .Values.version }}
 steps:
-- cd lxd-compose && git checkout "${GIT_HASH}" && make build && mv lxd-compose /usr/bin/lxd-compose
+- cd lxd-compose && git checkout "${GIT_HASH%\+*}" && make build && mv lxd-compose /usr/bin/lxd-compose
 includes:
 - /usr/bin/lxd-compose
