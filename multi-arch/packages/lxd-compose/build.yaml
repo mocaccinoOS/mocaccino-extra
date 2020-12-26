@@ -3,7 +3,7 @@ prelude:
 - luet install -y development/make lang/go vcs/git
 - git clone https://github.com/MottainaiCI/lxd-compose.git
 env:
-- GIT_HASH=a865040e1b55558e295f023d78e85ec39904c9aa
+- GIT_HASH=v{{ .version }}
 steps:
 - cd lxd-compose && git checkout "${GIT_HASH}" && make build && mv lxd-compose /usr/bin/lxd-compose
 includes:
