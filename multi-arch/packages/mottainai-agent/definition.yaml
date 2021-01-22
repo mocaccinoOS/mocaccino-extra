@@ -1,6 +1,6 @@
 category: "dev-util"
 name: "mottainai-agent"
-version: "0.0.1_pre20210122"
+version: "0.0.1_pre20210122+1"
 requires:
 - category: "users"
   name: "mottainai-agent"
