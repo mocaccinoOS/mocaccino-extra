@@ -75,5 +75,25 @@ auto-bump:
 
 autobump: auto-bump
 
-validate:
-	$(LUET)  tree validate --tree $(TREE) --tree=$(COMMON_TREE) $(VALIDATE_OPTIONS)
+
+repository:
+	mkdir -p $(ROOT_DIR)/repository
+
+repository/luet:
+	git clone -b master --single-branch https://github.com/Luet-lab/luet-repo $(ROOT_DIR)/repository/luet
+
+repository/commons:
+	git clone -b master --single-branch https://github.com/mocaccinoos/os-commons $(ROOT_DIR)/repository/commons
+
+repository/micro:
+	git clone -b master --single-branch https://github.com/mocaccinoos/mocaccino-micro $(ROOT_DIR)/repository/micro
+
+repository/desktop:
+	git clone -b master --single-branch https://github.com/mocaccinoos/desktop $(ROOT_DIR)/repository/desktop
+
+repository/musl-universe:
+	git clone -b master --single-branch https://github.com/mocaccinoos/mocaccino-musl-universe $(ROOT_DIR)/repository/musl-universe
+
+validate: repository repository/micro repository/luet repository/musl-universe repository/commons repository/desktop
+	$(LUET) tree validate --tree $(ROOT_DIR)/repository --tree $(TREE) --tree=$(COMMON_TREE) $(VALIDATE_OPTIONS)
+
