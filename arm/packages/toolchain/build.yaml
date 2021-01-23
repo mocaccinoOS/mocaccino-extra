@@ -10,3 +10,4 @@ env:
 - MUSL_ARCH=arm
 - MUSL_CPU=armv7a
 - MUSL_CPU_LD=armv7a
+- LUET_YES=true
