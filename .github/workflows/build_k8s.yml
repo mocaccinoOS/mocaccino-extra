@@ -2,7 +2,7 @@ name: Build packages
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master,test ]
 
 jobs:
   build:
@@ -29,6 +29,7 @@ jobs:
         curl https://get.mocaccino.org/luet/get_luet_root.sh | sudo sh
         sudo luet install -y repository/mocaccino-extra-stable
         sudo luet install -y system/luet-extensions system/luet-devkit utils/jq net-fs/minio-client container/kubectl
+        sudo curl -L https://raw.githubusercontent.com/Luet-lab/extensions/master/extensions/k8s-build-scheduler/luet-k8s-build-scheduler -o /usr/bin/luet-k8s-build-scheduler
     - name: Build repository 🔧
       run: |
         export KUBECONFIG=$GITHUB_WORKSPACE/kubeconfig
