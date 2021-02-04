@@ -1,6 +1,6 @@
 name: docker
 category: container
-version: "19.03.14"
+version: "19.03.15"
 labels:
   github.repo: "docker-ce"
   github.owner: "docker"
