@@ -1,6 +1,6 @@
 name: upterm
 category: utils
-version: "0.5.2"
+version: "0.6.3"
 labels:
   github.repo: "upterm"
   github.owner: "owenthereal"
