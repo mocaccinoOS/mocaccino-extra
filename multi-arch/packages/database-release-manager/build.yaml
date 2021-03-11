@@ -1,0 +1,20 @@
+image: "quay.io/mocaccino/extra"
+prelude:
+- luet install development/make development/automake utils/autoconf development/m4 vcs/git shells/bash
+- >-
+  git config --global advice.detachedHead false &&
+  git clone https://github.com/{{ ( index .Values.labels "github.owner" ) }}/{{ ( index .Values.labels "github.repo" ) }}.git --depth 1 -b v{{ .Values.version }} /dbrm
+env:
+- LUET_YES=true
+- DBRM_DEFAULT_CONFPATH=/etc/dbrm.conf
+package_dir: /{{ .Values.name }}
+steps:
+- >-
+  mkdir -p /{{ .Values.name }}/ &&
+  cd /dbrm &&
+  aclocal &&
+  autoconf &&
+  automake --add-missing &&
+  ./configure --with-configfile-path=$DBRM_DEFAULT_CONFPATH --prefix=/usr &&
+  make &&
+  DESTDIR=/{{ .Values.name }}/ make install
