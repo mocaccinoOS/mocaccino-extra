@@ -1,0 +1,8 @@
+category: "utils"
+name: "vagrant"
+version: "2.2.14"
+license: "MIT"
+description: "Vagrant is a tool for building and distributing development environments"
+labels:
+  github.repo: "vagrant"
+  github.owner: "hashicorp"
