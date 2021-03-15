@@ -2,7 +2,7 @@ image: "quay.io/mocaccino/extra"
 prelude:
 - luet install development/make development/automake utils/autoconf development/m4 vcs/git shells/bash
 - >-
-  PACKAGE_VERSION=${PACKAGE_VERSION%\+*}
+  PACKAGE_VERSION=${PACKAGE_VERSION%\+*} &&
   git config --global advice.detachedHead false &&
   git clone https://github.com/{{ ( index .Values.labels "github.owner" ) }}/{{ ( index .Values.labels "github.repo" ) }}.git --depth 1 -b v$PACKAGE_VERSION /dbrm
 env:
