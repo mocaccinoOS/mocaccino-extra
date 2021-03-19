@@ -1,0 +1,21 @@
+image: "quay.io/mocaccino/extra"
+prelude:
+- luet install -y development/make lang/go vcs/git
+- mkdir go/src/github.com/${GITHUB_ORG}/ -p
+- cd go/src/github.com/${GITHUB_ORG}/ && git clone https://github.com/${GITHUB_ORG}/{{ .Values.name }}.git
+env:
+- GOPATH=/luetbuild/go/
+- GITHUB_ORG={{ ( index .Values.labels "github.owner" ) }}
+- CGO_ENABLED=0
+steps:
+- luet install -y shells/bash
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/ && git checkout v"${PACKAGE_VERSION}" -b build && ./build_dist.sh tailscale.com/cmd/tailscale && ./build_dist.sh tailscale.com/cmd/tailscaled && \
+   mv {{ .Values.name }} /usr/bin/{{ .Values.name }} && \
+   mv {{ .Values.name }}d /usr/bin/{{ .Values.name }}d
+- chmod +x  /usr/bin/{{ .Values.name }}
+- chmod +x  /usr/bin/{{ .Values.name }}d
+includes:
+- /usr/bin/{{ .Values.name }}
+- /usr/bin/{{ .Values.name }}d
