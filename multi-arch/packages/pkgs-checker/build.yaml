@@ -8,6 +8,7 @@ prelude:
 - cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }} && git clone https://github.com/{{ ( index .Values.labels  "github.repo" ) }}/{{.Values.name}}
 env:
 - GOPATH=/go
+- LUET_YES=true
 steps:
 - |
   cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}/{{.Values.name}} && \
