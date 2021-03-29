@@ -1,7 +1,7 @@
 category: "dev-util"
 name: "pkgs-checker-minimal"
 description: "pkgs-checker version (without CGO stuff)"
-version: "0.8.1"
+version: "0.8.1+1"
 labels:
   github.repo: "Sabayon"
   github.owner: "pkgs-checker"

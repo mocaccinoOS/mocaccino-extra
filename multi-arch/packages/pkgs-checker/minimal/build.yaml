@@ -5,6 +5,7 @@ prelude:
 - cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }} && git clone https://github.com/{{ ( index .Values.labels  "github.repo" ) }}/{{ ( index .Values.labels "original.package.name" ) }}
 env:
 - GOPATH=/go
+- LUET_YES=true
 - PKGNAME={{ ( index .Values.labels "original.package.name" ) }}
 steps:
 - |
