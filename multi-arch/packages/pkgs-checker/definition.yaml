@@ -1,10 +1,10 @@
 category: "dev-util"
 name: "pkgs-checker"
-version: "0.8.0+3"
+version: "0.8.1"
 labels:
   github.repo: "Sabayon"
   github.owner: "pkgs-checker"
-  original.package.version: "0.8.0"
+  original.package.version: "0.8.1"
 conflicts:
 - name: "pkgs-checker-minimal"
   category: "dev-util"
