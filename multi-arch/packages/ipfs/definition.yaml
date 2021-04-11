@@ -1,0 +1,9 @@
+name: ipfs
+category: net-utils
+version: "0.8.0"
+labels:
+  github.repo: "go-ipfs"
+  github.owner: "ipfs"
+uri:
+  - https://github.com/ipfs/go-ipfs
+license: "MIT MIT/Apache-2.0"
