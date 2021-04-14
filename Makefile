@@ -13,7 +13,7 @@ export COMMON_TREE?=${ROOT_DIR}/multi-arch/packages
 export TREE?=$(ROOT_DIR)/amd64/packages
 REPO_CACHE?=quay.io/mocaccinocache/extra-amd64-cache
 export REPO_CACHE
-BUILD_ARGS?=--pull --no-spinner
+BUILD_ARGS?=--pull --no-spinner --live-output --only-target-package
 SUDO?=
 VALIDATE_OPTIONS?=-s
 ARCH?=amd64
