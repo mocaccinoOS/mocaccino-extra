@@ -1,0 +1,10 @@
+name: xmrig
+category: cryptocurrency
+version: "6.10.0"
+labels:
+  github.repo: "xmrig"
+  github.owner: "xmrig"
+uri:
+  - https://github.com/xmrig/xmrig
+description: "RandomX, CryptoNight, AstroBWT and Argon2 CPU/GPU miner"
+license: "GPL-3.0"
