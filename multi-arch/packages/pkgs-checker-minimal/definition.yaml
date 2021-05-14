@@ -7,7 +7,7 @@ labels:
   github.owner: "pkgs-checker"
   original.package.version: "0.8.1"
   original.package.name: "pkgs-checker"
-conflicts:
-- name: "pkgs-checker"
-  category: "dev-util"
-  version: ">=0"
+#conflicts:
+#- name: "pkgs-checker"
+#  category: "dev-util"
+#  version: ">=0"
