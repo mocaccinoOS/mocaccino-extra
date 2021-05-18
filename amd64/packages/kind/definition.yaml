@@ -1,6 +1,6 @@
 name: kind
 category: utils
-version: "0.10.0"
+version: "0.11.0"
 labels:
   github.repo: "kind"
   github.owner: "kubernetes-sigs"
