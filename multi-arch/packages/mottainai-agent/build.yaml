@@ -1,29 +1,18 @@
-image: "quay.io/mocaccino/extra"
 requires:
+- category: "dev-util"
+  name: "mottainai-server"
+  version: ">=0"
 - category: "users"
   name: "mottainai-agent"
   version: ">=0"
-- category: "groups"
-  name: "mottainai"
-  version: ">=0"
 
 prelude:
-- luet install development/make lang/go vcs/git
-- mkdir -p go/src/github.com/MottainaiCI/
-- cd go/src/github.com/MottainaiCI && git clone https://github.com/MottainaiCI/${PACKAGE_NAME}.git
-# turn the detached message off
-- git config --global advice.detachedHead false
 env:
 - GOPATH=/luetbuild/go/
-- GIT_HASH=8afe8f9b0d3c76fe9617df5b0575309994d8d005
 - LIB_DIR=/var/lib/mottainai
 - SRV_DIR=/srv/mottainai
-- GITHUB_ORG=MottainaiCI
-- LUET_YES=true
 package_dir: /mottainai-agent
 steps:
-- go env
-- cd ${GOPATH}/src/github.com/MottainaiCI/${PACKAGE_NAME} && git checkout "${GIT_HASH}" && make build
 # TODO: fix this with DESTDIR install on Makefile
 - mkdir /${PACKAGE_NAME}
 - mkdir -p /${PACKAGE_NAME}/usr/bin
@@ -33,7 +22,7 @@ steps:
 - mkdir -p /${PACKAGE_NAME}${SRV_DIR}/build/lxc
 - mkdir -p /${PACKAGE_NAME}/lib/systemd/system
 - |
-  cd ${GOPATH}/src/github.com/${GITHUB_ORG}/${PACKAGE_NAME}/ && \
+  cd ${GOPATH}/src/github.com/${GITHUB_ORG}/mottainai-server/${PACKAGE_NAME}/ && \
   mv ${PACKAGE_NAME} /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME} && \
   cp contrib/config/mottainai-agent.yaml.example /${PACKAGE_NAME}/etc/mottainai/mottainai-agent.yaml && \
   cp contrib/config/lxc/config.yml /${PACKAGE_NAME}${SRV_DIR}/build/lxc && \
