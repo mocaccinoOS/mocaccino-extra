@@ -13,6 +13,7 @@ jobs:
       ENCODED_KUBECONFIG: ${{ secrets.KUBECONFIG }}
       MINIO_API_URL: ${{ secrets.MINIO_API_URL }}
       MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
+      BACKEND: "docker-sidecar"
       MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
       IMAGE_REPOSITORY: quay.io/mocaccinocache/extra-amd64-cache
       BUCKET: mocaccino-extra
