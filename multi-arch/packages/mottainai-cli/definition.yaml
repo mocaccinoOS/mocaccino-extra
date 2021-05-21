@@ -1,8 +1,6 @@
 category: "dev-util"
 name: "mottainai-cli"
-version: "0.0.1_pre20201021"
+version: "0.1.0_pre20210521"
 labels:
   github.repo: "MottainaiCI"
   github.owner: "mottainai-cli"
-  autobump.prefix: "0.0.1_pre"
-  git.hash: "c4f2344d955a5104181e6784ce112c0f28a904c9"

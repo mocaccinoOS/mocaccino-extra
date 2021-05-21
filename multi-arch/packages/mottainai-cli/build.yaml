@@ -1,13 +1,10 @@
-image: "quay.io/mocaccino/extra"
-prelude:
-- luet install development/make lang/go vcs/git
-- mkdir go/src/github.com/${GITHUB_ORG}/ -p
-- cd go/src/github.com/${GITHUB_ORG}/ && git clone https://github.com/${GITHUB_ORG}/{{ .Values.name }}.git
+requires:
+- category: "dev-util"
+  name: "mottainai-server"
+  version: ">=0"
 env:
 - GOPATH=/luetbuild/go/
-- GITHUB_ORG={{ ( index .Values.labels "github.repo" ) }}
-- GIT_HASH={{ ( index .Values.labels "git.hash" ) }}
 steps:
-- cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/ && git checkout "${GIT_HASH}" && make build && mv {{ .Values.name }} /usr/bin/{{ .Values.name }}
+- cd go/src/github.com/${GITHUB_ORG}/mottainai-server/{{ .Values.name }}/ && mv {{ .Values.name }} /usr/bin/{{ .Values.name }}
 includes:
 - /usr/bin/mottainai-cli
