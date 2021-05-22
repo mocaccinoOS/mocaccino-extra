@@ -15,7 +15,6 @@ env:
 - LUET_YES=true
 package_dir: /{{ .Values.name }}
 steps:
-- go env
 - cd ${GOPATH}/src/github.com/MottainaiCI/{{ .Values.name }} && git checkout "${GIT_HASH}" && make build
 - mkdir -p /{{ .Values.name }}/etc/mottainai
 - mkdir -p /{{ .Values.name }}/usr/bin
