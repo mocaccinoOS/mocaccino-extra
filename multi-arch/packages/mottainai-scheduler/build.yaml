@@ -2,11 +2,7 @@ requires:
 - category: "dev-util"
   name: "mottainai-server"
   version: ">=0"
-- category: "users"
-  name: "mottainai-agent"
-  version: ">=0"
 
-prelude:
 env:
 - GOPATH=/luetbuild/go/
 package_dir: /mottainai-agent
