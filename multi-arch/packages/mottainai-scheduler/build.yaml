@@ -5,7 +5,7 @@ requires:
 
 env:
 - GOPATH=/luetbuild/go/
-package_dir: /mottainai-agent
+package_dir: /mottainai-scheduler
 steps:
 # TODO: fix this with DESTDIR install on Makefile
 - mkdir /${PACKAGE_NAME}
