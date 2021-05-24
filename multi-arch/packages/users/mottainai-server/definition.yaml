@@ -1,6 +1,6 @@
 category: "users"
 name: "mottainai-server"
-version: "0"
+version: "1"
 requires:
 - category: "system"
   name: "entities"
