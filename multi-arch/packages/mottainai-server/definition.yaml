@@ -1,6 +1,6 @@
 category: "dev-util"
 name: "mottainai-server"
-version: "0.1.0_pre20210524"
+version: "0.1.0_pre20210526"
 requires:
 - category: "users"
   name: "mottainai-server"
