@@ -1,6 +1,6 @@
 category: "utils"
 name: "whalebrew"
-version: "0.3.0+1"
+version: "0.3.1"
 license: "Apache License 2.0"
 description: "Homebrew, but with Docker images"
 labels:
