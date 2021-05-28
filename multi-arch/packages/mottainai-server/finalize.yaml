@@ -1,3 +1,3 @@
 install:
-- chown mottainai-server:mottainai /srv/mottainai
-- chown mottainai-server:mottainai /var/lib/mottainai
+- chown mottainai-server:mottainai -R /srv/mottainai
+- chown mottainai-server:mottainai -R /var/lib/mottainai
