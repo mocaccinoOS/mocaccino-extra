@@ -1,2 +1,3 @@
 install:
-- entities create -f /etc/group /etc/entities/mottainai-group_entity.yaml || true
+- entities apply -f /etc/group /etc/entities/mottainai-group_entity.yaml || true
+- entities apply -f /etc/gshadow /etc/entities/mottainai_gshadow_entity.yaml || true
