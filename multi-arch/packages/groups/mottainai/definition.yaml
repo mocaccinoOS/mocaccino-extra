@@ -1,6 +1,6 @@
 category: "groups"
 name: "mottainai"
-version: "1"
+version: "2"
 requires:
 - category: "system"
   name: "entities"

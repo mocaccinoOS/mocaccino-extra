@@ -1,3 +1,4 @@
 kind: "group"
 group_name: "mottainai"
 gid: 500
+password: "x"
