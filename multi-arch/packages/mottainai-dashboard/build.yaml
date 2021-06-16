@@ -1,0 +1,27 @@
+image: "node:14-alpine"
+prelude:
+- apk add git
+- git clone https://github.com/MottainaiCI/{{ .Values.name }}.git /build
+# turn the detached message off
+- git config --global advice.detachedHead false
+env:
+- GOPATH=/luetbuild/go/
+- GIT_HASH=316417882288c03d702a6c4f087809a23128d21c
+- GITHUB_ORG=MottainaiCI
+- GITHUB_BRANCH=develop
+- LIB_DIR=/var/lib/mottainai-dashboard
+package_dir: /{{ .Values.name }}
+steps:
+- >-
+  cd /build && git checkout "${GIT_HASH}" &&
+  npm ci --silent &&
+  npm run build
+- >-
+  cd /build &&
+  mkdir /{{ .Values.name }}/var/lib/mottainai-dashboard/ -p &&
+  mkdir /{{ .Values.name }}/usr/bin/ -p &&
+  mkdir /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/node_modules/ -p &&
+  mkdir /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/bin &&
+  cp -rvf /build/build/* /{{ .Values.name }}/var/lib/mottainai-dashboard/ &&
+  cp -v proxy.js /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/bin/
+
