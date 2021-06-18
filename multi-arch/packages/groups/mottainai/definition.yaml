@@ -1,7 +1,7 @@
 category: "groups"
 name: "mottainai"
-version: "2"
+version: "3"
 requires:
 - category: "system"
   name: "entities"
-  version: ">=0.1"
+  version: ">=0.5"
