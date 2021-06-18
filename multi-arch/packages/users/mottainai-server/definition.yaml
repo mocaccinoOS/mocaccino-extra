@@ -1,10 +1,10 @@
 category: "users"
 name: "mottainai-server"
-version: "2"
+version: "3"
 requires:
 - category: "groups"
   name: "mottainai"
   version: ">=0"
 - category: "system"
   name: "entities"
-  version: ">=0.1"
+  version: ">=0.5"
