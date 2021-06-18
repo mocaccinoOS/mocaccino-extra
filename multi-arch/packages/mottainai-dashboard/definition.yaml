@@ -1,11 +1,13 @@
 category: "www-apps"
 name: "mottainai-dashboard"
-version: "0.1.0_pre20210615"
+version: "0.1.0_pre20210618"
 requires:
 - category: "groups"
   name: "mottainai"
   version: ">=0"
-
+- category: "users"
+  name: "mottainai-server"
+  version: ">=0"
 labels:
   github.repo: "MottainaiCI"
   github.owner: "mottainai-dashboard"

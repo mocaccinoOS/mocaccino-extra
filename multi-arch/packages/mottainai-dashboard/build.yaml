@@ -6,7 +6,7 @@ prelude:
 - git config --global advice.detachedHead false
 env:
 - GOPATH=/luetbuild/go/
-- GIT_HASH=316417882288c03d702a6c4f087809a23128d21c
+- GIT_HASH=39275460543da2c93d3f0c068e4cb5e9f07a5ce8
 - GITHUB_ORG=MottainaiCI
 - GITHUB_BRANCH=develop
 - LIB_DIR=/var/lib/mottainai-dashboard
@@ -18,10 +18,16 @@ steps:
   npm run build
 - >-
   cd /build &&
+  mkdir /{{ .Values.name }}/
   mkdir /{{ .Values.name }}/var/lib/mottainai-dashboard/ -p &&
   mkdir /{{ .Values.name }}/usr/bin/ -p &&
   mkdir /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/node_modules/ -p &&
   mkdir /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/bin &&
+  mkdir -p /{{ .Values.name }}/lib/systemd/system &&
   cp -rvf /build/build/* /{{ .Values.name }}/var/lib/mottainai-dashboard/ &&
+  cp -rf node_modules/* /{{ .Values.name }}/node_modules/ &&
+  cp contrib/mottainai-dashboard.sh /{{ .Values.name }}/usr/bin/mottainai-dashboard &&
+  chmod a+x /{{ .Values.name }}/usr/bin/mottainai-dashboard &&
+  cp -v contrib/systemd/mottainai-dashboard.service /{{ .Values.name }}/lib/systemd/system/ &&
   cp -v proxy.js /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/bin/
 
