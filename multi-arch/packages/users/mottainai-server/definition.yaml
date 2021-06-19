@@ -1,6 +1,6 @@
 category: "users"
 name: "mottainai-server"
-version: "3"
+version: "4"
 requires:
 - category: "groups"
   name: "mottainai"
