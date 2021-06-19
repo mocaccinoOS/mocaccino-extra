@@ -22,12 +22,14 @@ steps:
   mkdir /{{ .Values.name }}/var/lib/mottainai-dashboard/ -p &&
   mkdir /{{ .Values.name }}/usr/bin/ -p &&
   mkdir /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/node_modules/ -p &&
+  mkdir /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/systemd/ -p &&
   mkdir /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/bin &&
-  mkdir -p /{{ .Values.name }}/lib/systemd/system &&
   cp -rvf /build/build/* /{{ .Values.name }}/var/lib/mottainai-dashboard/ &&
   cp -rvf node_modules/* /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/node_modules/ &&
   cp contrib/mottainai-dashboard.sh /{{ .Values.name }}/usr/bin/mottainai-dashboard &&
   chmod a+x /{{ .Values.name }}/usr/bin/mottainai-dashboard &&
-  cp -v contrib/systemd/mottainai-dashboard.service /{{ .Values.name }}/lib/systemd/system/ &&
+  cp -v contrib/systemd/mottainai-dashboard.service /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/systemd/ &&
   cp -v proxy.js /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/bin/
+
+#cp -v contrib/systemd/mottainai-dashboard.service /{{ .Values.name }}/lib/systemd/system/ &&
 
