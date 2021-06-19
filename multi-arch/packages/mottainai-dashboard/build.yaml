@@ -16,6 +16,11 @@ steps:
   cd /build && git checkout "${GIT_HASH}" &&
   npm ci --silent &&
   npm run build
+# TODO: Check how find a better solution
+- >-
+  cd /build &&
+  cp package-proxy.json package.json &&
+  npm install .
 - >-
   cd /build &&
   mkdir /{{ .Values.name }}/
