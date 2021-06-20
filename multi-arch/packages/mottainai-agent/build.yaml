@@ -15,7 +15,8 @@ steps:
 - mkdir -p /${PACKAGE_NAME}${LIB_DIR}
 - mkdir -p /${PACKAGE_NAME}${SRV_DIR}/build_temp
 - mkdir -p /${PACKAGE_NAME}${SRV_DIR}/build/lxc
-- mkdir -p /${PACKAGE_NAME}/lib/systemd/system
+- mkdir -p /${PACKAGE_NAME}${SRV_DIR}/systemd
+#- mkdir -p /${PACKAGE_NAME}/lib/systemd/system
 - |
   cd ${GOPATH}/src/github.com/${GITHUB_ORG}/mottainai-server/${PACKAGE_NAME}/ && \
   mv ${PACKAGE_NAME} /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME} && \
@@ -28,5 +29,6 @@ steps:
   chmod -R 774 /${PACKAGE_NAME}${SRV_DIR}/build/lxc && \
   chmod -R 774 /${PACKAGE_NAME}${SRV_DIR}/build && \
   chmod -R 774 /${PACKAGE_NAME}${SRV_DIR}/build_temp && \
-  cp contrib/systemd/mottainai* /${PACKAGE_NAME}/lib/systemd/system/
+  cp contrib/systemd/mottainai* /${PACKAGE_NAME}${SRV_DIR}/systemd/
 
+# cp contrib/systemd/mottainai* /${PACKAGE_NAME}/lib/systemd/system/
