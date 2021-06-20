@@ -11,10 +11,13 @@ steps:
 - mkdir /${PACKAGE_NAME}
 - mkdir -p /${PACKAGE_NAME}/usr/bin
 - mkdir -p /${PACKAGE_NAME}/etc/mottainai
-- mkdir -p /${PACKAGE_NAME}/lib/systemd/system
+- mkdir -p /${PACKAGE_NAME}/etc/mottainai
+- mkdir -p /${PACKAGE_NAME}/etc/mottainai/systemd/
+#- mkdir -p /${PACKAGE_NAME}/lib/systemd/system
 - |
   cd ${GOPATH}/src/github.com/${GITHUB_ORG}/mottainai-server/${PACKAGE_NAME}/ && \
   mv ${PACKAGE_NAME} /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME} && \
   cp contrib/config/mottainai-scheduler.yaml.example /${PACKAGE_NAME}/etc/mottainai/mottainai-scheduler.yaml && \
-  cp contrib/systemd/mottainai* /${PACKAGE_NAME}/lib/systemd/system/
+  cp contrib/systemd/mottainai* /${PACKAGE_NAME}/etc/mottainai/systemd/
 
+# cp contrib/systemd/mottainai* /${PACKAGE_NAME}/lib/systemd/system/
