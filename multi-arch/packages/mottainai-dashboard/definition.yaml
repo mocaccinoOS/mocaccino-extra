@@ -1,6 +1,6 @@
 category: "www-apps"
 name: "mottainai-dashboard"
-version: "0.1.0_pre20210619+2"
+version: "0.1.0_pre20210619+3"
 requires:
 - category: "groups"
   name: "mottainai"
