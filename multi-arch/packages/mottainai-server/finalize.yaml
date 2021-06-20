@@ -1,3 +1,5 @@
 install:
 - chown mottainai-server:mottainai -R /srv/mottainai
 - chown mottainai-server:mottainai -R /var/lib/mottainai
+# Workaround until https://github.com/mudler/luet/issues/188 is fixed
+- cd /usr/lib/systemd/system && if [ ! -e mottainai-server.service ] ; then ln -s /srv/mottainai/mottainai-server.service ; fi

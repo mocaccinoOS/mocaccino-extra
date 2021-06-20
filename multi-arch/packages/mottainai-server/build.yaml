@@ -7,7 +7,7 @@ prelude:
 - git config --global advice.detachedHead false
 env:
 - GOPATH=/luetbuild/go/
-- GIT_HASH=a8f5ac76706f6aafd9a6c9bff119d43e3167a3db
+- GIT_HASH=a48032f948d2e1491889e4391039a1109e550c49
 - GITHUB_ORG=MottainaiCI
 - GITHUB_BRANCH=develop
 - LIB_DIR=/var/lib/mottainai
@@ -23,7 +23,7 @@ steps:
 - mkdir -p /{{ .Values.name }}${SRV_DIR}/web/namespace
 - mkdir -p /{{ .Values.name }}${SRV_DIR}/web/db
 - mkdir -p /{{ .Values.name }}${SRV_DIR}/lock
-- mkdir -p /{{ .Values.name }}/lib/systemd/system
+#- mkdir -p /{{ .Values.name }}/lib/systemd/system
 - |
   cd ${GOPATH}/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/ && \
   mv {{ .Values.name }} /{{ .Values.name }}/usr/bin/{{ .Values.name }} && \
@@ -32,7 +32,9 @@ steps:
   cp contrib/config/mottainai-server.yaml.example /{{ .Values.name }}/etc/mottainai/mottainai-server.yaml && \
   cp -Rv templates /{{ .Values.name }}${LIB_DIR}/ && \
   cp -Rv public /{{ .Values.name }}${LIB_DIR} && \
-  cp -v contrib/systemd/mottainai-server.service /{{ .Values.name }}/lib/systemd/system/
+  cp -v contrib/systemd/mottainai-server.service /{{ .Values.name }}/${SRV_DIR}/
+
+# cp -v contrib/systemd/mottainai-server.service /{{ .Values.name }}/lib/systemd/system/
 - chmod -R 770 /{{ .Values.name }}${LIB_DIR}
 - chmod -R 774 /{{ .Values.name }}${LIB_DIR}/public
 - chmod -R 774 /{{ .Values.name }}${SRV_DIR}
