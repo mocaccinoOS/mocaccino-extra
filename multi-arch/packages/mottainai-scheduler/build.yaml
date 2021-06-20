@@ -13,6 +13,7 @@ steps:
 - mkdir -p /${PACKAGE_NAME}/etc/mottainai
 - mkdir -p /${PACKAGE_NAME}/etc/mottainai
 - mkdir -p /${PACKAGE_NAME}/etc/mottainai/systemd/
+- mkdir -p /${PACKAGE_NAME}/srv/mottainai
 #- mkdir -p /${PACKAGE_NAME}/lib/systemd/system
 - |
   cd ${GOPATH}/src/github.com/${GITHUB_ORG}/mottainai-server/${PACKAGE_NAME}/ && \
