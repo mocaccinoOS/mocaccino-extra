@@ -1,8 +1,8 @@
 category: "app-emulation"
 name: "distrobuilder"
-version: "1.2"
+version: "20210627"
 labels:
-  github.repo: "lxc"
+  github.repo: "geaaru"
   github.owner: "distrobuilder"
 description: "System container image builder for LXC and LXD"
 uri:
