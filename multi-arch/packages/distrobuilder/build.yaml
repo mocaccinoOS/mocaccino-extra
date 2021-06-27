@@ -1,0 +1,22 @@
+image: "ubuntu:20.04"
+prelude:
+- >-
+  apt-get update &&
+  apt-get upgrade -y &&
+  apt-get install -y golang-go debootstrap rsync gpg squashfs-tools git make &&
+  apt-get clean
+- >-
+  mkdir /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}/ -p &&
+  cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}/ &&
+  git clone https://github.com/{{ ( index .Values.labels "github.repo" ) }}/{{ .Values.name }}.git
+env:
+- GOPATH=/go
+- DEBIAN_FRONTEND=noninteractive
+package_dir: /{{ .Values.name }}
+steps:
+- >-
+  cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}/{{ .Values.name }} &&
+  git checkout distrobuilder-${PACKAGE_VERSION%\+*} &&
+  make &&
+  mkdir /{{ .Values.name }}/usr/bin -p &&
+  mv /go/bin/{{ .Values.name }} /{{ .Values.name }}/usr/bin/{{ .Values.name }}

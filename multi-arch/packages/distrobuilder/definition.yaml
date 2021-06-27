@@ -1,0 +1,10 @@
+category: "app-emulation"
+name: "distrobuilder"
+version: "1.2"
+labels:
+  github.repo: "lxc"
+  github.owner: "distrobuilder"
+description: "System container image builder for LXC and LXD"
+uri:
+- "https://github.com/lxc/distrobuilder"
+license: "Apache-2.0"
