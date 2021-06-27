@@ -1,0 +1,11 @@
+category: "app-emulation"
+name: "simplestreams-builder"
+version: "0.2.0_pre20210627"
+labels:
+  github.repo: "MottainaiCI"
+  github.owner: "simplestreams-builder"
+  github.hash: "1be64abb9df0102f75f8afc8e8539f1529255fc1"
+description: "LXC/LXD Simplestreams Tree Builder"
+uri:
+- "https://github.com/MottainaiCI/simplestreams-builder"
+license: "GPL-3.0"
