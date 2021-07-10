@@ -16,7 +16,7 @@ jobs:
       BACKEND: "docker-sidecar"
       MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
       IMAGE_REPOSITORY: quay.io/mocaccinocache/extra-amd64-cache
-      NODE_SELECTOR: "luet.io/workload: jobs"
+#      NODE_SELECTOR: "luet.io/workload: jobs"
       BUCKET: mocaccino-extra
       NAMESPACE: workload-mocaccino-extra
       TREE_DIR: "amd64 multi-arch"
