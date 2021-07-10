@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ENCODED_KUBECONFIG: ${{ secrets.KUBECONFIG }}
-      EDGEVPN: ${{ secrets.EDGEVPN }}
       MINIO_API_URL: ${{ secrets.MINIO_API_URL }}
       MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
       BACKEND: "docker-sidecar"
@@ -24,7 +23,9 @@ jobs:
       DOCKER_REGISTRY: quay.io
       DOCKER_USER: ${{ secrets.QUAY_USERNAME }}
       DOCKER_PASS: ${{ secrets.QUAY_PASSWORD }}
+      EDGEVPN: ${{ secrets.EDGEVPN }}
       MASTER: 10.1.0.20
+      ADDRESS: "10.1.0.200/24"
     steps:
     - uses: actions/checkout@v2
     - uses: fkirc/skip-duplicate-actions@master
