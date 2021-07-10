@@ -41,8 +41,6 @@ jobs:
       run: |
         if [ -z "$EDGEVPN" ]; then
           export KUBECONFIG=$GITHUB_WORKSPACE/kubeconfig
-          export REF=$GITHUB_SHA
-          export GITHUB_REPO=$GITHUB_REPOSITORY
           echo "$ENCODED_KUBECONFIG" | base64 -d > $KUBECONFIG
         else
           source .github/helpers.sh
@@ -50,6 +48,8 @@ jobs:
           prepare_jumpbox
           export KUBECONFIG=$PWD/k3s.yaml
         fi
+        export REF=$GITHUB_SHA
+        export GITHUB_REPO=$GITHUB_REPOSITORY
         kubectl create namespace $NAMESPACE || true
         luet k8s-build-scheduler
     - name: Create repository 🔧
