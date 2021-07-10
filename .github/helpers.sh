@@ -21,5 +21,5 @@ start_jumpbox() {
 
 prepare_jumpbox() {
     wait_master
-    curl http://10.1.0.20:9091/k3s.yaml | sed 's/127\.0\.0\.1/10.1.0.20/g' > k3s.yaml
+    curl http://$MASTER:9091/k3s.yaml | sed 's/127\.0\.0\.1/10.1.0.20/g' > k3s.yaml
 }

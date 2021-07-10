@@ -24,6 +24,7 @@ jobs:
       DOCKER_REGISTRY: quay.io
       DOCKER_USER: ${{ secrets.QUAY_USERNAME }}
       DOCKER_PASS: ${{ secrets.QUAY_PASSWORD }}
+      MASTER: 10.1.0.20
     steps:
     - uses: actions/checkout@v2
     - uses: fkirc/skip-duplicate-actions@master
