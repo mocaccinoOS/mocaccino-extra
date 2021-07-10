@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ENCODED_KUBECONFIG: ${{ secrets.KUBECONFIG }}
+      EDGEVPN: ${{ secrets.EDGEVPN }}
       MINIO_API_URL: ${{ secrets.MINIO_API_URL }}
       MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
       BACKEND: "docker-sidecar"
@@ -36,10 +37,17 @@ jobs:
         sudo curl https://raw.githubusercontent.com/Luet-lab/extensions/master/extensions/k8s-build-scheduler/luet-k8s-build-scheduler -o /usr/bin/luet-k8s-build-scheduler
     - name: Build repository 🔧
       run: |
-        export KUBECONFIG=$GITHUB_WORKSPACE/kubeconfig
-        export REF=$GITHUB_SHA
-        export GITHUB_REPO=$GITHUB_REPOSITORY
-        echo "$ENCODED_KUBECONFIG" | base64 -d > $KUBECONFIG
+        if [ -z "$EDGEVPN" ]; then
+          export KUBECONFIG=$GITHUB_WORKSPACE/kubeconfig
+          export REF=$GITHUB_SHA
+          export GITHUB_REPO=$GITHUB_REPOSITORY
+          echo "$ENCODED_KUBECONFIG" | base64 -d > $KUBECONFIG
+        else
+          source .github/helpers.sh
+          start_vpn
+          prepare_jumpbox
+          export KUBECONFIG=$PWD/k3s.yaml
+        fi
         kubectl create namespace $NAMESPACE || true
         luet k8s-build-scheduler
     - name: Create repository 🔧
