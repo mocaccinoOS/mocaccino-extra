@@ -1,6 +1,6 @@
 name: teleport
 category: utils
-version: "5.0.0"
+version: "7.0.0-dev.27"
 labels:
   github.repo: "teleport"
   github.owner: "gravitational"
