@@ -23,7 +23,7 @@ jobs:
       DOCKER_REGISTRY: quay.io
       DOCKER_USER: ${{ secrets.QUAY_USERNAME }}
       DOCKER_PASS: ${{ secrets.QUAY_PASSWORD }}
-      EDGEVPN: ${{ secrets.EDGEVPN }}
+#      EDGEVPN: ${{ secrets.EDGEVPN }}
       MASTER: 10.1.0.20
       ADDRESS: "10.1.0.200/24"
     steps:
