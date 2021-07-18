@@ -1,7 +1,6 @@
 category: "container"
 name: "img"
-version: "0.5.11"
-
+version: 0.5.11+1
 labels:
   github.repo: "img"
   github.owner: "genuinetools"
