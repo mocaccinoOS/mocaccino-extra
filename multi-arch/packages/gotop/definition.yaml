@@ -1,0 +1,10 @@
+name: gotop
+category: utils
+version: "4.1.2"
+description: "A terminal based graphical activity monitor inspired by gtop and vtop "
+labels:
+  github.repo: "gotop"
+  github.owner: "xxxserxxx"
+uri:
+  - https://github.com/xxxserxxx/gotop
+license: "The MIT License (Festival variant)"
