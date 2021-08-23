@@ -7,7 +7,7 @@ prelude:
 - git config --global advice.detachedHead false
 env:
 - GOPATH=/luetbuild/go/
-- GIT_HASH=cc19802220f179fe18473fad6a25fc89ff816779
+- GIT_HASH=fe1b0bd908efbfe00a9f52cacf8cfa5113780cf4
 - GITHUB_ORG=MottainaiCI
 - GITHUB_BRANCH=develop
 - LIB_DIR=/var/lib/mottainai
