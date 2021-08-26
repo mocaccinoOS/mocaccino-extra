@@ -6,7 +6,7 @@ prelude:
 - git config --global advice.detachedHead false
 env:
 - GOPATH=/luetbuild/go/
-- GIT_HASH=a7dc6b39ef69a4fd45319b99264550e0e982d8dc
+- GIT_HASH=9d17a1b16096c648f8cce006547b0d8d866773b2
 - GITHUB_ORG=MottainaiCI
 - GITHUB_BRANCH=develop
 - LIB_DIR=/var/lib/mottainai-dashboard
@@ -16,11 +16,8 @@ steps:
   cd /build && git checkout "${GIT_HASH}" &&
   npm ci --silent &&
   npm run build
-# TODO: Check how find a better solution
 - >-
-  cd /build &&
-  cp package-proxy.json package.json &&
-  npm install .
+  cd /build && npm install .
 - >-
   cd /build &&
   mkdir /{{ .Values.name }}/
