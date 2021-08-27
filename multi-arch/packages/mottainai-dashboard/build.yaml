@@ -6,7 +6,7 @@ prelude:
 - git config --global advice.detachedHead false
 env:
 - GOPATH=/luetbuild/go/
-- GIT_HASH=9d17a1b16096c648f8cce006547b0d8d866773b2
+- GIT_HASH=25ae045cb15635e8a32f65fcc616492e20eb8c44
 - GITHUB_ORG=MottainaiCI
 - GITHUB_BRANCH=develop
 - LIB_DIR=/var/lib/mottainai-dashboard
@@ -21,12 +21,12 @@ steps:
 - >-
   cd /build &&
   mkdir /{{ .Values.name }}/
-  mkdir /{{ .Values.name }}/var/lib/mottainai-dashboard/ -p &&
+  mkdir /{{ .Values.name }}${LIB_DIR}/ -p &&
   mkdir /{{ .Values.name }}/usr/bin/ -p &&
   mkdir /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/node_modules/ -p &&
   mkdir /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/systemd/ -p &&
   mkdir /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/bin &&
-  cp -rvf /build/build/* /{{ .Values.name }}/var/lib/mottainai-dashboard/ &&
+  cp -rvf /build/build/* /{{ .Values.name }}${LIB_DIR}/ &&
   cp -rvf node_modules/* /{{ .Values.name }}/usr/lib64/node_modules/{{ .Values.name }}/node_modules/ &&
   cp contrib/mottainai-dashboard.sh /{{ .Values.name }}/usr/bin/mottainai-dashboard &&
   chmod a+x /{{ .Values.name }}/usr/bin/mottainai-dashboard &&
