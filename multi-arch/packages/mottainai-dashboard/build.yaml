@@ -6,7 +6,7 @@ prelude:
 - git config --global advice.detachedHead false
 env:
 - GOPATH=/luetbuild/go/
-- GIT_HASH=25ae045cb15635e8a32f65fcc616492e20eb8c44
+- GIT_HASH=307f4fe405b06f531c90c53138031cdaedc5951f
 - GITHUB_ORG=MottainaiCI
 - GITHUB_BRANCH=develop
 - LIB_DIR=/var/lib/mottainai-dashboard

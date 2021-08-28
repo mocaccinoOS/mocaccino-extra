@@ -1,6 +1,6 @@
 category: "www-apps"
 name: "mottainai-dashboard"
-version: "0.1.0_pre20210827"
+version: "0.1.0_pre20210828"
 license: "GPL-3.0"
 description: "A web frontend for MottainaiCI"
 uri:
