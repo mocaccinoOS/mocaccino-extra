@@ -13,7 +13,7 @@ env:
 package_dir: /{{ .Values.name }}
 steps:
 - >-
-  cd /build && git checkout "${GIT_HASH%\+*}" &&
+  cd /build && git checkout v"${GIT_HASH%\+*}" &&
   npm ci --silent &&
   npm run build
 - >-
