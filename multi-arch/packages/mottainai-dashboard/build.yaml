@@ -6,14 +6,14 @@ prelude:
 - git config --global advice.detachedHead false
 env:
 - GOPATH=/luetbuild/go/
-- GIT_HASH=307f4fe405b06f531c90c53138031cdaedc5951f
+- GIT_HASH={{ .Values.version }}
 - GITHUB_ORG=MottainaiCI
 - GITHUB_BRANCH=develop
 - LIB_DIR=/var/lib/mottainai-dashboard
 package_dir: /{{ .Values.name }}
 steps:
 - >-
-  cd /build && git checkout "${GIT_HASH}" &&
+  cd /build && git checkout "${GIT_HASH%\+*}" &&
   npm ci --silent &&
   npm run build
 - >-
