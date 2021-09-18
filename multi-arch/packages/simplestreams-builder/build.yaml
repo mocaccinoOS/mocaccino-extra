@@ -1,24 +1,15 @@
-image: "ubuntu:20.04"
+image: "quay.io/mocaccino/extra"
 prelude:
 - >-
-  apt-get update &&
-  apt-get upgrade -y &&
-  apt-get install -y golang-go debootstrap rsync gpg squashfs-tools git make &&
-  apt-get clean
-- >-
-  mkdir /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}/ -p &&
-  cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}/ &&
+  luet install -y development/make lang/go vcs/git --force &&
+  luet cleanup &&
   git clone https://github.com/{{ ( index .Values.labels "github.repo" ) }}/{{ .Values.name }}.git
-env:
-- GOPATH=/go
-- GIT_HASH={{ ( index .Values.labels "github.hash" ) }}
-- DEBIAN_FRONTEND=noninteractive
-- CGO_ENABLED=0
-package_dir: /{{ .Values.name }}
-steps:
 - >-
-  cd /go/src/github.com/{{ ( index .Values.labels "github.repo" ) }}/{{ .Values.name }} &&
-  git checkout ${GIT_HASH%\+*} &&
-  go build . &&
+  cd {{ .Values.name }} && git checkout "${GIT_TAG%\+*}" &&
+  make build &&
   mkdir /{{ .Values.name }}/usr/bin -p &&
-  mv ./{{ .Values.name }} /{{ .Values.name }}/usr/bin/{{ .Values.name }}
+  cp {{ .Values.name }} /{{ .Values.name }}/usr/bin/
+env:
+- GIT_TAG=v{{ .Values.version }}
+- LUET_NOLOCK=true
+package_dir: /{{ .Values.name }}
