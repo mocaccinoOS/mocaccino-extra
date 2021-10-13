@@ -1,8 +1,17 @@
-{{ $org:= ( index .Values.labels "github.owner" ) }}
-{{ $repo:= ( index .Values.labels "github.repo" ) }}
-{{ $opts:= dict "org" $org "repo" $repo }}
-{{ template "golang_build" $opts}}
--  PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
-   cd go/src/github.com/{{$org}}/{{$repo}}/ && git checkout "v${PACKAGE_VERSION}" -b build && go build -o {{.Values.name}} \
-   && mv {{.Values.name}} /output/usr/bin/{{.Values.name}}
-- chmod +x /output/usr/bin/{{ .Values.name }}
+image: "golang"
+prelude:
+- apt-get update
+- apt-get install git
+- mkdir go/src/github.com/${GITHUB_ORG}/ -p
+- cd go/src/github.com/${GITHUB_ORG}/ && git clone https://github.com/${GITHUB_ORG}/{{ .Values.name }}.git
+env:
+- GOPATH=/luetbuild/go/
+- GITHUB_ORG={{ ( index .Values.labels "github.owner" ) }}
+- CGO_ENABLED=0
+steps:
+- |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/ && git checkout "v${PACKAGE_VERSION}" -b build && go build && mv {{ .Values.name }} /usr/bin/{{ .Values.name }}
+- chmod +x  /usr/bin/{{ .Values.name }}
+includes:
+- /usr/bin/{{ .Values.name }}
