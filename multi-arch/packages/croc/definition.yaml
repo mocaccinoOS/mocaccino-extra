@@ -1,0 +1,8 @@
+category: "utils"
+name: "croc"
+version: "9.4.2"
+license: "MIT"
+description: "Easily and securely send things from one computer to another"
+labels:
+  github.repo: "croc"
+  github.owner: "schollz"
