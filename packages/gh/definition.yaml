@@ -1,0 +1,10 @@
+name: gh
+category: utils
+version: "2.1.0"
+labels:
+  github.repo: "cli"
+  github.owner: "cli"
+
+uri:
+- https://github.com/cli/cli
+license: "MIT"

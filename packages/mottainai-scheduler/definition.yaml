@@ -1,0 +1,14 @@
+category: "dev-util"
+name: "mottainai-scheduler"
+version: "0.1.0"
+requires:
+- category: "users"
+  name: "mottainai-agent"
+  version: ">=0"
+- category: "groups"
+  name: "mottainai"
+  version: ">=0"
+
+labels:
+  github.repo: "MottainaiCI"
+  github.owner: "mottainai-agent"

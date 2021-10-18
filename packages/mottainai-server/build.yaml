@@ -1,0 +1,41 @@
+image: "quay.io/mocaccino/extra"
+prelude:
+- luet install development/make lang/go vcs/git
+- mkdir -p go/src/github.com/MottainaiCI/
+- cd go/src/github.com/MottainaiCI && git clone https://github.com/MottainaiCI/{{ .Values.name }}.git
+# turn the detached message off
+- git config --global advice.detachedHead false
+env:
+- GOPATH=/luetbuild/go/
+- GIT_HASH=v0.1.0
+- GITHUB_ORG=MottainaiCI
+- GITHUB_BRANCH=develop
+- LIB_DIR=/var/lib/mottainai
+- SRV_DIR=/srv/mottainai
+- LUET_YES=true
+package_dir: /{{ .Values.name }}
+steps:
+- cd ${GOPATH}/src/github.com/MottainaiCI/{{ .Values.name }} && git checkout "${GIT_HASH}" -b build && make build
+- mkdir -p /{{ .Values.name }}/etc/mottainai
+- mkdir -p /{{ .Values.name }}/usr/bin
+- mkdir -p /{{ .Values.name }}${LIB_DIR}
+- mkdir -p /{{ .Values.name }}${SRV_DIR}/web/artefact
+- mkdir -p /{{ .Values.name }}${SRV_DIR}/web/namespace
+- mkdir -p /{{ .Values.name }}${SRV_DIR}/web/db
+- mkdir -p /{{ .Values.name }}${SRV_DIR}/lock
+#- mkdir -p /{{ .Values.name }}/lib/systemd/system
+- |
+  cd ${GOPATH}/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/ && \
+  mv {{ .Values.name }} /{{ .Values.name }}/usr/bin/{{ .Values.name }} && \
+  mv mottainai-exporter/mottainai-exporter /{{ .Values.name }}/usr/bin/mottainai-exporter && \
+  mv mottainai-importer/mottainai-importer /{{ .Values.name }}/usr/bin/mottainai-importer && \
+  cp contrib/config/mottainai-server.yaml.example /{{ .Values.name }}/etc/mottainai/mottainai-server.yaml && \
+  cp -Rv templates /{{ .Values.name }}${LIB_DIR}/ && \
+  cp -Rv public /{{ .Values.name }}${LIB_DIR} && \
+  cp -v contrib/systemd/mottainai-server.service /{{ .Values.name }}/${SRV_DIR}/
+
+# cp -v contrib/systemd/mottainai-server.service /{{ .Values.name }}/lib/systemd/system/
+- chmod -R 770 /{{ .Values.name }}${LIB_DIR}
+- chmod -R 774 /{{ .Values.name }}${LIB_DIR}/public
+- chmod -R 774 /{{ .Values.name }}${SRV_DIR}
+

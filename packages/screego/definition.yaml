@@ -1,0 +1,10 @@
+name: screego
+category: util
+version: "1.5.1"
+labels:
+  github.repo: "server"
+  github.owner: "screego"
+description: "screen sharing for developers https://screego.net/"
+uri:
+  - https://github.com/screego/server
+license: "GPL-3"

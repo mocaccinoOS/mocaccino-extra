@@ -1,9 +1,13 @@
 #!/bin/bash
 
-start_vpn() {
+install_deps() {
     curl https://get.mocaccino.org/luet/get_luet_root.sh | sudo sh
     sudo luet install -y repository/mocaccino-extra-stable
     sudo luet install -y utils/edgevpn container/k3s container/kubectl
+}
+
+start_vpn() {
+    install_deps
     echo "$EDGEVPN" | base64 -d > config.yaml
     sudo -E EDGEVPNCONFIG=config.yaml IFACE=edgevpn0 edgevpn > /dev/null 2>&1 &
 }

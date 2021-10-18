@@ -1,0 +1,18 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+package_dir: /k3sup
+
+prelude:
+- luet install libs/libressl utils/ca-certificates utils/curl libs/zlib
+
+{{if eq .Values.arch "amd64" }}
+steps:
+- | 
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME}/usr/bin && \
+   curl -L https://github.com/alexellis/k3sup/releases/download/${PACKAGE_VERSION}/k3sup -o /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME} && \
+   chmod +x /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME}
+{{end}}

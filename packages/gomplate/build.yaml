@@ -1,0 +1,16 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+package_dir: /gomplate
+
+prelude:
+- luet install libs/libressl utils/ca-certificates utils/curl libs/zlib
+
+steps:
+- | 
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME}/usr/bin && \
+   curl -L https://github.com/hairyhenderson/gomplate/releases/download/v${PACKAGE_VERSION}/gomplate_linux-{{.Values.arch}} -o /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME} && \
+   chmod +x /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME}

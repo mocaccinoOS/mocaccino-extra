@@ -1,5 +1,0 @@
-name: toolchain
-category: development
-version: "0.20210822"
-labels:
-  autobump.strategy: "snapshot"

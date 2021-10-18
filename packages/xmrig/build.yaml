@@ -1,0 +1,24 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+package_dir: /{{.Values.name}}
+
+prelude:
+- luet install libs/libressl utils/ca-certificates utils/curl libs/zlib
+
+{{$arch := ""}}
+{{ if eq .Values.arch "amd64" }}
+{{$arch = "x64"}}
+{{end}}
+steps:
+- | 
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /{{.Values.name}}/usr/bin && \
+   mkdir -p /{{.Values.name}}/etc/{{.Values.name}} && \
+   curl -L https://github.com/xmrig/xmrig/releases/download/v${PACKAGE_VERSION}/xmrig-${PACKAGE_VERSION}-linux-static-{{$arch}}.tar.gz -o package.tar.gz && \
+   tar xvf package.tar.gz -C ./ && \
+   mv {{.Values.name}}-${PACKAGE_VERSION}/{{.Values.name}} /{{.Values.name}}/usr/bin && \
+   mv {{.Values.name}}-${PACKAGE_VERSION}/config.json /{{.Values.name}}/etc/{{.Values.name}}/config.json && \
+   chmod +x /{{.Values.name}}/usr/bin/{{.Values.name}}

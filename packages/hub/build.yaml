@@ -1,0 +1,17 @@
+image: "golang"
+package_dir: "/output"
+env:
+- GOPATH=/luetbuild/go/
+- GITHUB_ORG={{ ( index .Values.labels "github.owner" ) }}
+- GIT_HASH={{ ( index .Values.labels "git.hash" ) }}
+- CGO_ENABLED=0
+- LUET_YES=true
+steps:
+- apt-get update && apt-get install -y bash
+- mkdir go/src/github.com/${GITHUB_ORG}/ -p
+- mkdir /output/usr/bin/ -p
+- cd go/src/github.com/${GITHUB_ORG}/ && git clone https://github.com/${GITHUB_ORG}/{{ .Values.name }}.git
+- | 
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/  && git checkout v"${PACKAGE_VERSION}" -b build && bash ./script/build -o bin/hub && mv bin/{{ .Values.name }} /output/usr/bin/{{ .Values.name }}
+- chmod +x  /output/usr/bin/{{ .Values.name }}
