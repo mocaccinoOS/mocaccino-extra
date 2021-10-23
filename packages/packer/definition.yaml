@@ -1,6 +1,6 @@
 category: "utils"
 name: "packer"
-version: "1.7.6"
+version: "1.7.7"
 license: "MPL-2.0"
 description: "Packer is a tool for creating identical machine images for multiple platforms from a single source configuration"
 labels:
