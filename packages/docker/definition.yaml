@@ -2,8 +2,10 @@ name: docker
 category: container
 version: "20.10.9"
 labels:
-  github.repo: "docker-ce"
-  github.owner: "docker"
+  github.repo: "moby"
+  github.owner: "moby"
 uri:
   - https://dockerproject.org
 license: "Apache-2.0"
+
+description: "Docker provides a simple and powerful developer experience, workflows and collaboration for creating applications"
