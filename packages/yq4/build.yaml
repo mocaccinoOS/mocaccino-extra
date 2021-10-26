@@ -11,8 +11,6 @@ prelude:
 steps:
 - | 
    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
-   YQ_ARCH=${MUSL_ARCH} && \
-   YQ_ARCH="${YQ_ARCH/x86/amd64}" && \
    mkdir -p /${PACKAGE_NAME}/usr/bin && \
-   curl -L https://github.com/mikefarah/${PACKAGE_NAME}/releases/download/${PACKAGE_VERSION}/yq_linux_${YQ_ARCH} -o /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME} && \
+   curl -L https://github.com/mikefarah/${PACKAGE_NAME}/releases/download/${PACKAGE_VERSION}/yq_linux_{{.Values.arch}} -o /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME} && \
    chmod +x /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME}
