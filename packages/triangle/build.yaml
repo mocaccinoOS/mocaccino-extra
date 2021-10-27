@@ -1,0 +1,19 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+package_dir: /{{.Values.name}}
+
+prelude:
+- luet install libs/libressl utils/ca-certificates utils/curl libs/zlib
+
+steps:
+- | 
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+   mkdir -p /${PACKAGE_NAME}/usr/bin && \
+   curl -L https://github.com/esimov/triangle/releases/download/v${PACKAGE_VERSION}/triangle-$PACKAGE_VERSION-linux-{{.Values.arch}}.tar.gz | tar -xvf - -C /${PACKAGE_NAME}/usr/bin && \
+   chmod +x /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME}
+
+includes:
+- /usr/bin/{{.Values.name}}

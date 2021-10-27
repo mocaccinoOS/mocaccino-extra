@@ -1,0 +1,11 @@
+name: triangle
+category: image-processing
+version: "1.2.3"
+labels:
+  github.repo: "triangle"
+  github.owner: "esimov"
+  autobump.strategy: "release"
+uri:
+  - https://github.com/esimov/triangle
+license: "MIT"
+description: "Convert images to computer generated art using delaunay triangulation"
