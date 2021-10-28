@@ -1,0 +1,10 @@
+name: cosign
+category: container
+version: "1.2.1"
+labels:
+  github.repo: "cosign"
+  github.owner: "sigstore"
+uri:
+  - https://github.com/sigstore/cosign
+license: "Apache-2.0 License"
+description: "Container Signing"
