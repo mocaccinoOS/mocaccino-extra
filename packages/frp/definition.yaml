@@ -1,6 +1,6 @@
 name: frp
 category: utils
-version: "0.37.1"
+version: "0.38.0"
 labels:
   github.repo: "frp"
   github.owner: "fatedier"
