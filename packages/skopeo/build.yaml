@@ -15,6 +15,6 @@ env:
 {{ end }}
 steps:
 - cd go/src/github.com/${GITHUB_ORG}/$GITHUB_REPO/  && git checkout v"${PACKAGE_VERSION}" -b build && make bin/skopeo && mv bin/skopeo /usr/bin/
-- chmod +x /usr/bin/{{.Values.name}}
+- chmod +x /usr/bin/{{.Values.binary_name}}
 includes:
-- /usr/bin/{{.Values.name}}
+- /usr/bin/{{.Values.binary_name}}

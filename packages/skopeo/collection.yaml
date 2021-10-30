@@ -2,6 +2,7 @@ packages:
   - &skopeo
     name: skopeo 
     category: container
+    binary_name: "skopeo"
     version: "1.5.0"
     labels:
       github.repo: "skopeo"
