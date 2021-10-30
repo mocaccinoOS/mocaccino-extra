@@ -1,5 +1,6 @@
 image: "golang"
 prelude:
+- apt-get update && apt-get install -y libgpgme-dev
 - mkdir go/src/github.com/${GITHUB_ORG}/ -p
 - cd go/src/github.com/${GITHUB_ORG}/ && git clone https://github.com/${GITHUB_ORG}/${GITHUB_REPO}.git
 env:
