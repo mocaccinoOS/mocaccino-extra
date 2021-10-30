@@ -1,6 +1,5 @@
-image: "quay.io/mocaccino/extra"
+image: "golang"
 prelude:
-- luet install -y development/make lang/go vcs/git
 - mkdir go/src/github.com/${GITHUB_ORG}/ -p
 - cd go/src/github.com/${GITHUB_ORG}/ && git clone https://github.com/${GITHUB_ORG}/${GITHUB_REPO}.git
 env:
@@ -10,7 +9,6 @@ env:
 - GIT_HASH={{ ( index .Values.labels "git.hash" ) }}
 - CGO_ENABLED=0
 steps:
-- luet install -y shells/bash
 - cd go/src/github.com/${GITHUB_ORG}/$GITHUB_REPO/  && git checkout v"${PACKAGE_VERSION}" -b build && make bin/skopeo && mv bin/skopeo /usr/bin/
 - chmod +x /usr/bin/{{.Values.name}}
 includes:
