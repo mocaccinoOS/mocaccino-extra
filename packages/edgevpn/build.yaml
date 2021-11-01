@@ -12,7 +12,7 @@ steps:
 - luet install -y --force shells/bash
 - |
   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
-  cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/  && git checkout v"${PACKAGE_VERSION}" -b build && go build && mv {{.Values.name}} /usr/bin/
+  cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/  && git checkout v"${PACKAGE_VERSION}" -b build && go build -ldflags="-w -s -X github.com/mudler/edgevpn/internal.Version=$PACKAGE_VERSION" && mv {{.Values.name}} /usr/bin/
 - chmod +x /usr/bin/{{.Values.name}}
 includes:
 - /usr/bin/{{.Values.name}}
