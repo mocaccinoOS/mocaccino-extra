@@ -1,6 +1,6 @@
 category: "utils"
 name: "yip"
-version: "0.9.19"
+version: "0.9.21"
 labels:
   github.repo: "yip"
   github.owner: "mudler"
