@@ -1,6 +1,6 @@
 name: xmrig
 category: cryptocurrency
-version: "6.15.2"
+version: "6.15.3"
 labels:
   github.repo: "xmrig"
   github.owner: "xmrig"
