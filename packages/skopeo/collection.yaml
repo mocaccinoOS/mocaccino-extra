@@ -1,6 +1,6 @@
 packages:
   - &skopeo
-    name: skopeo 
+    name: skopeo
     category: container
     binary_name: "skopeo"
     version: "1.5.0"
@@ -8,10 +8,11 @@ packages:
       github.repo: "skopeo"
       github.owner: "containers"
     uri:
-    - https://github.com/containers/skopeo
+      - https://github.com/containers/skopeo
     license: "Apache-2.0 License"
     static: false
     description: "Work with remote images registries - retrieving information, images, signing content"
-  - <<: *skopeo
+  - !!merge <<: *skopeo
     name: skopeo-static
     static: true
+    version: "1.5.1"
