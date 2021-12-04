@@ -5,9 +5,6 @@ requires:
 
 package_dir: /jq
 
-prelude:
-- luet install libs/libressl utils/ca-certificates utils/curl libs/zlib
-
 {{$arch := ""}}
 {{if eq .Values.arch "amd64" }}
 {{$arch = "linux64"}}

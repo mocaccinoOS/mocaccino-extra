@@ -12,13 +12,13 @@ fi
 if [ "$PUSH_CACHE" == "true" ]; then
   sudo -E luet build $PULL_ARGS \
           --only-target-package \
-          --values values/amd64.yaml \
+          --values values/$ARCH.yaml --backend-args "--platform" --backend-args "linux/$ARCH" --backend-args "--load" \
           --pull --push --image-repository $FINAL_REPO \
           --no-spinner --live-output --tree packages "$1"
 else
   sudo -E luet build $PULL_ARGS \
           --only-target-package \
-          --values values/amd64.yaml \
+          --values values/$ARCH.yaml --backend-args "--platform" --backend-args "linux/$ARCH" --backend-args "--load" \
           --pull --image-repository $FINAL_REPO \
           --no-spinner --live-output --tree packages "$1"
 fi

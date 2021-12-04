@@ -4,8 +4,6 @@ package_dir: /keybase-tools
 env:
 - LUET_YES=true
 - LUET_NOLOCK=true
-prelude:
-- luet install libs/libressl utils/ca-certificates utils/curl libs/zlib
 
 steps:
 - | 

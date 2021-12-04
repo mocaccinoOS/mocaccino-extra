@@ -1,7 +1,0 @@
-kind: "shadow"
-username: "mottainai-server"
-password: "*"
-last_changed: "now"
-minimum_changed: 0
-maximum_changed: 99999
-warn: 7

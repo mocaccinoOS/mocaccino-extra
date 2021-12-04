@@ -1,3 +1,4 @@
+{{ if eq .Values.arch "amd64" }}
 image: "alpine"
 package_dir: /{{.Values.name}}
 prelude:
@@ -9,3 +10,4 @@ steps:
    curl -L https://releases.hashicorp.com/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}_${PACKAGE_VERSION}_linux_{{.Values.arch}}.zip -o $PACKAGE_NAME.zip && \
    unzip $PACKAGE_NAME.zip && mv $PACKAGE_NAME /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME} && \
    chmod +x /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME}
+{{end}}

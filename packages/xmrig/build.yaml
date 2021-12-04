@@ -1,3 +1,4 @@
+{{ if eq .Values.arch "amd64" }}
 requires:
 - category: "development"
   name: "toolchain"
@@ -6,12 +7,9 @@ requires:
 package_dir: /{{.Values.name}}
 
 prelude:
-- luet install libs/libressl utils/ca-certificates utils/curl libs/zlib
 
-{{$arch := ""}}
-{{ if eq .Values.arch "amd64" }}
 {{$arch = "x64"}}
-{{end}}
+
 steps:
 - | 
    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
@@ -22,3 +20,5 @@ steps:
    mv {{.Values.name}}-${PACKAGE_VERSION}/{{.Values.name}} /{{.Values.name}}/usr/bin && \
    mv {{.Values.name}}-${PACKAGE_VERSION}/config.json /{{.Values.name}}/etc/{{.Values.name}}/config.json && \
    chmod +x /{{.Values.name}}/usr/bin/{{.Values.name}}
+
+{{ end }}
