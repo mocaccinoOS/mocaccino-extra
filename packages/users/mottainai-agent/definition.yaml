@@ -1,7 +1,0 @@
-category: "users"
-name: "mottainai-agent"
-version: "2"
-requires:
-- category: "system"
-  name: "entities"
-  version: ">=0.5"

@@ -4,7 +4,7 @@ requires:
   version: ">=0"
 
 env:
-{{ if .Values.arch eq "arm" }}
+{{ if eq .Values.arch "arm" }}
 - ARCH=armv7
 {{ else }}
 - ARCH={{.Values.arch}}
