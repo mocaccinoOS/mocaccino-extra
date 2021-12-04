@@ -61,7 +61,7 @@ jobs:
       uses: docker/setup-buildx-action@master
     # CONFIGURE: we might use quay here in our example, adapt as needed
     - name: Login to Quay Registry
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+      if: ${{ github.event_name == 'push' }}
       run: echo ${{ secrets.QUAY_ROBOT_PASSWORD }} | docker login -u ${{ secrets.QUAY_ROBOT_USERNAME }} --password-stdin quay.io
 
     # - if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
@@ -78,7 +78,7 @@ jobs:
       uses: actions/setup-go@v2
       with:
           go-version: '^1.16'
-    - if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+    - if: ${{ github.event_name == 'push' }}
       name: "Push cache"
       run: echo "PUSH_CACHE=true" >> $GITHUB_ENV
     - name: Build packages 🔧
