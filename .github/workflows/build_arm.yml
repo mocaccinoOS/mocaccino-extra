@@ -1,4 +1,4 @@
-name: Build
+name: ARM build
 
 on: [push, pull_request]
 
@@ -34,11 +34,11 @@ jobs:
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     env:
       LUET_VERSION: 0.18.1
-      ARCH: amd64
+      ARCH: arm/v7
       # CONFIGURE: FINAL_REPO is the container image which will be used
       # to push packages to.
       #FINAL_REPO: quay.io/mocaccino/mocaccino-community
-      FINAL_REPO: quay.io/mocaccino/extra
+      FINAL_REPO: quay.io/mocaccino/extra-arm
       CURRENT_PACKAGE:  ${{ matrix.category }}/${{ matrix.name }}@${{ matrix.version }}
       # Repository used to pull images from. needed if you list any repo in .luet.yaml
       #PULL_REPOSITORY: quay.io/mocaccinocache/desktop
@@ -51,6 +51,14 @@ jobs:
         sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
     - run: |
         git fetch --prune --unshallow
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@master
+      with:
+        platforms: all
+
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@master
     # CONFIGURE: we might use quay here in our example, adapt as needed
     - name: Login to Quay Registry
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
@@ -66,7 +74,6 @@ jobs:
     - name: Install deps 🔧
       run: |
         curl https://get.mocaccino.org/luet/get_luet_root.sh | sudo sh
-        docker buildx
     - name: Install Go
       uses: actions/setup-go@v2
       with:
@@ -76,6 +83,8 @@ jobs:
       run: echo "PUSH_CACHE=true" >> $GITHUB_ENV
     - name: Build packages 🔧
       run: |
+        docker buildx install
+        sudo docker buildx install
         export PATH=$PATH:/usr/local/go/bin
         mkdir build || true
         pushd ./.github
@@ -94,7 +103,7 @@ jobs:
     needs: build
     env:
       LUET_VERSION: 0.18.1
-      FINAL_REPO: quay.io/mocaccino/extra
+      FINAL_REPO: quay.io/mocaccino/extra-arm
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
