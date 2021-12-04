@@ -1,7 +1,0 @@
-category: "dev-util"
-name: "replicant"
-version: "0.0.1_pre20200920"
-labels:
-  github.repo: "MottainaiCI"
-  github.owner: "replicant"
-
