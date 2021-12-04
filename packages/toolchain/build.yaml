@@ -18,8 +18,6 @@ env:
 image: "quay.io/mocaccino/micro-toolchain:latest"
 prelude:
 - >-
-  luet install repository/mocaccino-micro-stable &&
-  luet uninstall repository/mocaccino-micro &&
   luet install
   utils/autoconf utils/curl development/make libs/zlib vcs/git
   development/automake development/pkg-config development/m4
@@ -30,5 +28,5 @@ env:
 - MUSL_ARCH=x86
 - MUSL_CPU=x86-64
 - LUET_YES=true
-
+- LUET_FORCE=true
 {{ end }}
