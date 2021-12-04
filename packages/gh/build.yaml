@@ -16,5 +16,5 @@ steps:
    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
    mkdir -p /${PACKAGE_NAME}/usr/bin && \
    curl -L https://github.com/cli/cli/releases/download/v${PACKAGE_VERSION}/gh_${PACKAGE_VERSION}_linux_$ARCH.tar.gz -o archive.tar.gz && \
-   tar xvf archive.tar.gz && mv gh_${PACKAGE_VERSION}_linux_{{.Values.arch}}/bin/${PACKAGE_NAME} /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME} && \
+   tar xvf archive.tar.gz && mv gh_${PACKAGE_VERSION}_linux_$ARCH/bin/${PACKAGE_NAME} /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME} && \
    chmod +x /${PACKAGE_NAME}/usr/bin/${PACKAGE_NAME}

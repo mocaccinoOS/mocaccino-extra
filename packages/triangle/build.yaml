@@ -1,4 +1,4 @@
-{{ if .Values.arch eq "amd64" }}
+{{ if eq .Values.arch "amd64" }}
 requires:
 - category: "development"
   name: "toolchain"

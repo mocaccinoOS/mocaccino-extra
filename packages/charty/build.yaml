@@ -1,3 +1,4 @@
+{{ if eq .Values.arch "amd64" }}
 image: golang
 prelude:
 - apt-get update
@@ -9,3 +10,4 @@ steps:
   cd charty && git checkout "v${PACKAGE_VERSION}" && make deps multiarch-build && mv release/charty-*-linux-{{.Values.arch}} /usr/bin/charty
 includes:
 - /usr/bin/charty
+{{ end }}

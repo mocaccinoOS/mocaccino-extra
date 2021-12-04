@@ -6,7 +6,7 @@ image: "alpine"
 {{ end }}
 prelude:
 - apk update
-- apk add curl make git
+- apk add curl make git bash
 - curl -L https://github.com/mudler/luet/releases/download/0.20.10/luet-0.20.10-linux-armv7 --output /usr/bin/luet
 - chmod +x /usr/bin/luet
 - LUET_YES=true
