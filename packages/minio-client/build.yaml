@@ -2,14 +2,10 @@ requires:
 - category: "development"
   name: "toolchain"
   version: ">=0"
-prelude:
-- luet install utils/curl && luet cleanup
 package_dir: /minio-client
 steps:
 - |
-  MC_ARCH=${MUSL_ARCH} && \
-  MC_ARCH="${MC_ARCH/x86/amd64}" && \
-  RES=$(curl --no-progress-meter -L https://dl.min.io/client/mc/release/linux-${MC_ARCH}/mc --output /usr/bin/mc -w '%{http_code}') && \
+  RES=$(curl --no-progress-meter -L https://dl.min.io/client/mc/release/linux-{{.Values.arch}}/mc --output /usr/bin/mc -w '%{http_code}') && \
   eval 'if [[ $RES != "200" ]]; then exit 1 ; fi'
 - chmod a+x /usr/bin/mc && mkdir /${PACKAGE_NAME}/usr/bin -p
 - mv /usr/bin/mc /${PACKAGE_NAME}/usr/bin/mc

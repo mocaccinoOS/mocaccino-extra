@@ -5,8 +5,6 @@ requires:
 
 package_dir: /{{.Values.name}}
 
-prelude:
-- luet install libs/libressl utils/ca-certificates utils/curl libs/zlib
 steps:
 - | 
    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \

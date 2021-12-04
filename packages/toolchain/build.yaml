@@ -1,9 +1,13 @@
 {{ if eq .Values.arch "arm" }}
+{{ if eq .Values.name "toolchain-go" }}
+image: "golang:alpine"
+{{ else }}
 image: "alpine"
+{{ end }}
 prelude:
 - apk update
 - apk add curl make git
-- curl -L https://github.com/mudler/luet/releases/download/0.20.10/luet-0.20.10-linux-arm64 --output /usr/bin/luet
+- curl -L https://github.com/mudler/luet/releases/download/0.20.10/luet-0.20.10-linux-armv7 --output /usr/bin/luet
 - chmod +x /usr/bin/luet
 - LUET_YES=true
 {{ else }}
@@ -11,10 +15,14 @@ image: "quay.io/mocaccino/micro-toolchain:latest"
 prelude:
 - >-
   luet install
+  libs/libressl utils/ca-certificates
   utils/autoconf utils/curl development/make libs/zlib vcs/git
   development/automake development/pkg-config development/m4
-  system/musl-compat &&
-  luet cleanup
+  system/musl-compat
+{{ if eq .Values.name "toolchain-go" }}
+- luet install lang/go
+{{ end }}
+- luet cleanup
 env:
 - MUSL_TARGET=x86_64-mocaccino-linux-musl
 - MUSL_ARCH=x86

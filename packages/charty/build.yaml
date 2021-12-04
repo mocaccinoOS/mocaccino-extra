@@ -6,6 +6,6 @@ prelude:
 steps:
 - |
   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
-  cd charty && git checkout "v${PACKAGE_VERSION}" && make deps multiarch-build && mv release/charty-*-linux-amd64 /usr/bin/charty
+  cd charty && git checkout "v${PACKAGE_VERSION}" && make deps multiarch-build && mv release/charty-*-linux-{{.Values.arch}} /usr/bin/charty
 includes:
 - /usr/bin/charty

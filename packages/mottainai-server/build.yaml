@@ -1,6 +1,8 @@
-image: "quay.io/mocaccino/extra"
+requires:
+- name: "toolchain-go"
+  category: "development"
+  version: ">=0"
 prelude:
-- luet install development/make lang/go vcs/git
 - mkdir -p go/src/github.com/MottainaiCI/
 - cd go/src/github.com/MottainaiCI && git clone https://github.com/MottainaiCI/{{ .Values.name }}.git
 # turn the detached message off
@@ -8,6 +10,7 @@ prelude:
 env:
 - GOPATH=/luetbuild/go/
 - GIT_HASH=v0.1.0
+- CGO_ENABLED=0
 - GITHUB_ORG=MottainaiCI
 - GITHUB_BRANCH=develop
 - LIB_DIR=/var/lib/mottainai

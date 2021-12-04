@@ -1,3 +1,0 @@
-install:
-- |
-  echo "Install database client tools to use correctly database-release-manager: mongo, sqliplus, mysql, etc.."

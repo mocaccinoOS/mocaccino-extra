@@ -81,10 +81,10 @@ jobs:
     - if: ${{ github.event_name == 'push' }}
       name: "Push cache"
       run: echo "PUSH_CACHE=true" >> $GITHUB_ENV
+
     - name: Build packages 🔧
       run: |
         docker buildx install
-        sudo docker buildx install
         export PATH=$PATH:/usr/local/go/bin
         mkdir build || true
         pushd ./.github
