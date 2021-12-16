@@ -82,6 +82,9 @@ jobs:
     - if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       name: "Push cache"
       run: echo "PUSH_CACHE=true" >> $GITHUB_ENV
+    - if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+      name: "Enable Buildx"
+      run: echo "BUILDX=true" >> $GITHUB_ENV
     - name: Build packages 🔧
       run: |
         docker buildx install
@@ -226,8 +229,11 @@ jobs:
     - if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       name: "Push cache"
       run: echo "PUSH_CACHE=true" >> $GITHUB_ENV
-
+    - if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+      name: "Enable Buildx"
+      run: echo "BUILDX=true" >> $GITHUB_ENV
     - name: Build packages 🔧
+    - if: ${{ github.event_name == 'push' }}
       run: |
         docker buildx install
         export PATH=$PATH:/usr/local/go/bin
