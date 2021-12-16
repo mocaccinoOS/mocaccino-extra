@@ -233,7 +233,7 @@ jobs:
       name: "Enable Buildx"
       run: echo "BUILDX=true" >> $GITHUB_ENV
     - name: Build packages 🔧
-    - if: ${{ github.event_name == 'push' }}
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       run: |
         docker buildx install
         export PATH=$PATH:/usr/local/go/bin
