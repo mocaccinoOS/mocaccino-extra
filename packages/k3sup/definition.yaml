@@ -1,6 +1,6 @@
 name: k3sup
 category: utils
-version: "0.11.1"
+version: "0.11.2"
 labels:
   github.repo: "k3sup"
   github.owner: "alexellis"
