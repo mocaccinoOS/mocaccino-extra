@@ -176,7 +176,7 @@ jobs:
     #     SINGLE_COMMIT: true
 
   build-arm:
-    needs: generate-matrix
+    needs: [ generate-matrix, create-repo ]
     strategy:
       fail-fast: false
       matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
@@ -246,7 +246,7 @@ jobs:
         sudo chmod -R 777 $PWD/build
     - uses: actions/upload-artifact@v2
       with:
-        name: ${{ matrix.category }}-${{ matrix.name }}-${{ matrix.version }}.zip
+        name: arm-${{ matrix.category }}-${{ matrix.name }}-${{ matrix.version }}.zip
         path: |
           build/
 
@@ -283,7 +283,7 @@ jobs:
     - name: Merge artifacts 🔧
       run: |
         mkdir build || true
-        for i in $(ls | grep zip); do
+        for i in $(ls | grep zip | grep arm); do
           cp -rfv $i/* build
         done
         ls -liah
