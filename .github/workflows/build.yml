@@ -2,6 +2,9 @@ name: Build
 
 on: [push, pull_request]
 
+concurrency:
+  group: ci-${{ github.head_ref || github.ref }}-${{ github.repository }}
+  cancel-in-progress: true
 jobs:
 
   generate-matrix:
