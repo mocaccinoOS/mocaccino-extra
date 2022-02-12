@@ -11,7 +11,9 @@ env:
 - GIT_HASH={{ ( index .Values.labels "git.hash" ) }}
 - CGO_ENABLED=0
 steps:
-- cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/  && git checkout v"${PACKAGE_VERSION}" -b build && make build && mv execs/{{ .Values.name }} /usr/bin/{{ .Values.name }}
+- |
+  PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+  cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/ && git checkout v"${PACKAGE_VERSION}" -b build && make build && mv execs/{{ .Values.name }} /usr/bin/{{ .Values.name }}
 - chmod +x  /usr/bin/{{ .Values.name }}
 includes:
 - /usr/bin/k9s
