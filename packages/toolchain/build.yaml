@@ -15,7 +15,7 @@ image: "quay.io/mocaccino/micro-toolchain:latest"
 prelude:
 - >-
   luet install
-  libs/libressl utils/ca-certificates
+  libs/libressl utils/ca-certificates shells/bash
   utils/autoconf utils/curl development/make libs/zlib vcs/git
   development/automake development/pkg-config development/m4
   system/musl-compat
