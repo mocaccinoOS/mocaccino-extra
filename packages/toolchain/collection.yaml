@@ -4,4 +4,4 @@ packages:
   version: "0.5"
 - name: toolchain-go
   category: development
-  version: "0.6"
+  version: "0.7"
