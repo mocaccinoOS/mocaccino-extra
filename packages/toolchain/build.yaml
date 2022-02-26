@@ -1,6 +1,6 @@
 {{ if eq .Values.arch "arm" }}
 {{ if eq .Values.name "toolchain-go" }}
-image: "golang:alpine"
+image: "golang:1.17-alpine"
 {{ else }}
 image: "alpine"
 {{ end }}
