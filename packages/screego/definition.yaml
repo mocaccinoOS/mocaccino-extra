@@ -1,6 +1,6 @@
 name: screego
 category: util
-version: "1.5.2"
+version: "1.6.0"
 labels:
   github.repo: "server"
   github.owner: "screego"
