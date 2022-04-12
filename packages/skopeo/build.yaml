@@ -7,7 +7,6 @@ env:
 - GOPATH=/luetbuild/go/
 - GITHUB_ORG={{ ( index .Values.labels "github.owner" ) }}
 - GITHUB_REPO={{ ( index .Values.labels "github.repo" ) }}
-- GIT_HASH={{ ( index .Values.labels "git.hash" ) }}
 {{ if .Values.static }}
 - CGO_ENABLED=0
 - BUILDTAGS=containers_image_openpgp
