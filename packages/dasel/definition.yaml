@@ -1,6 +1,6 @@
 name: dasel
 category: utils
-version: "1.24.1"
+version: "1.24.3"
 labels:
   github.repo: "dasel"
   github.owner: "TomWright"
