@@ -1,6 +1,6 @@
 {{ if eq .Values.arch "arm" }}
 {{ if eq .Values.name "toolchain-go" }}
-image: "golang:1.17-alpine"
+image: "golang:{{.Values.version}}-alpine"
 {{ else }}
 image: "alpine"
 {{ end }}
@@ -12,7 +12,7 @@ prelude:
 - LUET_YES=true
 {{ else }}
 {{ if eq .Values.name "toolchain-go" }}
-image: "golang:1.17-alpine"
+image: "golang:{{.Values.version}}-alpine"
 prelude:
 - apk update
 - apk add curl make git bash
