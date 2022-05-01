@@ -5,7 +5,6 @@ prelude:
 env:
 - GOPATH=/luetbuild/go/
 - GITHUB_ORG={{ ( index .Values.labels "github.owner" ) }}
-- GIT_HASH={{ ( index .Values.labels "git.hash" ) }}
 - CGO_ENABLED=0
 steps:
 - cd go/src/github.com/${GITHUB_ORG}/{{ .Values.name }}/  && git checkout "${PACKAGE_VERSION}" -b build && make && mv {{ .Values.name }} /usr/bin/{{ .Values.name }}

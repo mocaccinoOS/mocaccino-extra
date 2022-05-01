@@ -9,7 +9,6 @@ env:
 - GOPATH=/luetbuild/go/
 - GITHUB_ORG={{ ( index .Values.labels "github.owner" ) }}
 - GITHUB_REPO={{ ( index .Values.labels "github.repo" ) }}
-- GIT_HASH={{ ( index .Values.labels "git.hash" ) }}
 - CGO_ENABLED=0
 steps:
 - cd go/src/github.com/${GITHUB_ORG}/$GITHUB_REPO/  && git checkout v"${PACKAGE_VERSION}" -b build && make cosign && mv cosign /usr/bin/
