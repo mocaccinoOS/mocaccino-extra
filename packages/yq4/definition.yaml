@@ -1,6 +1,6 @@
 name: yq4
 category: utils
-version: "4.24.5"
+version: "4.25.1"
 labels:
   github.repo: "yq"
   github.owner: "mikefarah"
