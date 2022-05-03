@@ -1,6 +1,6 @@
 name: docker
 category: container
-version: "20.10.9"
+version: "20.10.14"
 labels:
   github.repo: "moby"
   github.owner: "moby"
