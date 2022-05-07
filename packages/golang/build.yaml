@@ -1,0 +1,13 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+prelude:
+- |
+  PACKAGE_VERSION=${PACKAGE_VERSION%\-*} && \
+  curl -L {{.Values.base_url}}/go$PACKAGE_VERSION.linux-{{.Values.golang_arch}}.tar.gz -o golang.tar.gz
+{{ template "do_checksum" (dict "values" .Values "filename" "golang.tar.gz")}}
+
+steps:
+- tar -C /usr/local -xzf golang.tar.gz
