@@ -1,6 +1,6 @@
 name: teleport
 category: utils
-version: "10.0.0-roman.1"
+version: "8.3.1"
 labels:
   github.repo: "teleport"
   github.owner: "gravitational"
