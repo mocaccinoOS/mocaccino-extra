@@ -1,6 +1,6 @@
 name: k0s
 category: container
-version: "1.23.6+k0s.1"
+version: "1.23.6+k0s.2"
 labels:
   github.repo: "k0s"
   github.owner: "k0sproject"
