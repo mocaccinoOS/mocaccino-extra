@@ -7,7 +7,8 @@ prelude:
 - |
   PACKAGE_VERSION=${PACKAGE_VERSION%\-*} && \
   curl -L {{.Values.base_url}}/go$PACKAGE_VERSION.linux-{{.Values.golang_arch}}.tar.gz -o golang.tar.gz
+{{ if ne .Values.arch "arm" }}
 - echo "{{ ( index .Values.labels "package.checksum" ) }}  golang.tar.gz" | sha256sum -c
-
+{{ end }}
 steps:
 - tar -C /usr/local -xzf golang.tar.gz
