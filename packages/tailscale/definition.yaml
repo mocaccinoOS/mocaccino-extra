@@ -1,6 +1,6 @@
 category: "utils"
 name: "tailscale"
-version: "1.26.0"
+version: "1.26.2"
 license: "BSD 3-Clause License"
 description: "The easiest, most secure way to use WireGuard and 2FA."
 labels:
