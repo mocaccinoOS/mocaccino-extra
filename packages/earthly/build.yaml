@@ -3,7 +3,11 @@ requires:
   category: "development"
   version: ">=0"
 prelude:
+{{ if eq .Values.arch "arm" }}
+- wget https://github.com/$GITHUB_OWNER/$GITHUB_REPO/releases/download/v{{.Values.version}}/{{.Values.name}}-linux-arm64 -O earthly
+{{ else }}
 - wget https://github.com/$GITHUB_OWNER/$GITHUB_REPO/releases/download/v{{.Values.version}}/{{.Values.name}}-linux-{{.Values.arch}} -O earthly
+{{ end }}
 env:
 - GITHUB_OWNER={{ ( index .Values.labels "github.owner" ) }}
 - GITHUB_REPO={{ ( index .Values.labels "github.repo" ) }}
