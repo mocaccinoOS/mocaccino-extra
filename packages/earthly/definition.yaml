@@ -1,0 +1,10 @@
+name: earthly
+category: utils
+version: "0.6.19"
+labels:
+  github.repo: "earthly"
+  github.owner: "earthly"
+uri:
+  - https://github.com/earthly/earthly
+license: "MPL License"
+description: "The effortless CI/CD framework that runs anywhere"
