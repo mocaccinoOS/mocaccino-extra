@@ -9,8 +9,7 @@ export ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 DESTINATION?=$(ROOT_DIR)/build
 COMPRESSION?=gzip
 CLEAN?=false
-export COMMON_TREE?=${ROOT_DIR}/multi-arch/packages
-export TREE?=$(ROOT_DIR)/amd64/packages
+export TREE?=$(ROOT_DIR)/packages
 REPO_CACHE?=quay.io/mocaccinocache/extra-amd64-cache
 export REPO_CACHE
 BUILD_ARGS?=--pull --no-spinner --live-output --only-target-package
@@ -38,20 +37,20 @@ clean:
 .PHONY: build
 build: clean
 	mkdir -p $(ROOT_DIR)/build
-	$(SUDO) $(LUET) build $(BUILD_ARGS) --tree=$(COMMON_TREE) --tree=$(TREE) $(PACKAGES) --destination $(ROOT_DIR)/build --backend $(BACKEND) --concurrency $(CONCURRENCY) --compression $(COMPRESSION)
+	$(SUDO) $(LUET) build $(BUILD_ARGS)  --tree=$(TREE) $(PACKAGES) --destination $(ROOT_DIR)/build --backend $(BACKEND) --concurrency $(CONCURRENCY) --compression $(COMPRESSION)
 
 .PHONY: build-all
 build-all: clean
 	mkdir -p $(ROOT_DIR)/build
-	$(SUDO) $(LUET) build $(BUILD_ARGS) --tree=$(COMMON_TREE) --tree=$(TREE) --full --destination $(ROOT_DIR)/build --backend $(BACKEND) --concurrency $(CONCURRENCY) --compression $(COMPRESSION)
+	$(SUDO) $(LUET) build $(BUILD_ARGS)  --tree=$(TREE) --full --destination $(ROOT_DIR)/build --backend $(BACKEND) --concurrency $(CONCURRENCY) --compression $(COMPRESSION)
 
 .PHONY: rebuild
 rebuild:
-	$(SUDO) $(LUET) build $(BUILD_ARGS) --tree=$(COMMON_TREE) --tree=$(TREE) $(PACKAGES) --destination $(ROOT_DIR)/build --backend $(BACKEND) --concurrency $(CONCURRENCY) --compression $(COMPRESSION)
+	$(SUDO) $(LUET) build $(BUILD_ARGS)  --tree=$(TREE) $(PACKAGES) --destination $(ROOT_DIR)/build --backend $(BACKEND) --concurrency $(CONCURRENCY) --compression $(COMPRESSION)
 
 .PHONY: rebuild-all
 rebuild-all:
-	$(SUDO) $(LUET) build $(BUILD_ARGS) --tree=$(COMMON_TREE) --tree=$(TREE) --full --destination $(ROOT_DIR)/build --backend $(BACKEND) --concurrency $(CONCURRENCY) --compression $(COMPRESSION)
+	$(SUDO) $(LUET) build $(BUILD_ARGS)  --tree=$(TREE) --full --destination $(ROOT_DIR)/build --backend $(BACKEND) --concurrency $(CONCURRENCY) --compression $(COMPRESSION)
 
 .PHONY: create-repo
 create-repo:
@@ -95,5 +94,5 @@ repository/musl-universe:
 	git clone -b master --single-branch https://github.com/mocaccinoos/mocaccino-musl-universe $(ROOT_DIR)/repository/musl-universe
 
 validate: repository repository/micro repository/luet repository/musl-universe repository/commons repository/desktop
-	$(LUET) tree validate --tree $(ROOT_DIR)/repository --tree $(TREE) --tree=$(COMMON_TREE) $(VALIDATE_OPTIONS)
+	$(LUET) tree validate --tree $(ROOT_DIR)/repository --tree $(TREE)  $(VALIDATE_OPTIONS)
 
