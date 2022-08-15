@@ -3,7 +3,7 @@ packages:
     name: skopeo
     category: container
     binary_name: "skopeo"
-    version: "1.8.0"
+    version: "1.9.2"
     labels:
       github.repo: "skopeo"
       github.owner: "containers"
