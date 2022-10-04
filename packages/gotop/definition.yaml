@@ -1,6 +1,6 @@
 name: gotop
 category: utils
-version: "4.1.4"
+version: "4.2.0"
 description: "A terminal based graphical activity monitor inspired by gtop and vtop "
 labels:
   github.repo: "gotop"
