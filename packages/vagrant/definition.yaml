@@ -1,6 +1,6 @@
 category: "utils"
 name: "vagrant"
-version: "2.3.2"
+version: "2.3.3"
 license: "MIT"
 description: "Vagrant is a tool for building and distributing development environments"
 labels:
