@@ -1,6 +1,6 @@
 category: "utils"
 name: "croc"
-version: "9.6.4"
+version: "9.6.5"
 license: "MIT"
 description: "Easily and securely send things from one computer to another"
 labels:
