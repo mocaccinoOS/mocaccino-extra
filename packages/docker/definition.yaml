@@ -1,11 +1,10 @@
 name: docker
 category: container
-version: "20.10.14"
+version: "xdocs-v1.10-28-mar-2016"
 labels:
   github.repo: "moby"
   github.owner: "moby"
 uri:
   - https://dockerproject.org
 license: "Apache-2.0"
-
 description: "Docker provides a simple and powerful developer experience, workflows and collaboration for creating applications"
