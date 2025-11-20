@@ -8,3 +8,6 @@ packages:
 - name: toolchain-go
   category: development
   version: "1.18"
+- name: toolchain-go
+  category: development
+  version: "1.21"
