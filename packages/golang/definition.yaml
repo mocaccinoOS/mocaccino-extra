@@ -1,6 +1,6 @@
 category: "development"
 name: "golang"
-version: "1.18.3"
+version: "1.20.7"
 base_url: https://golang.org/dl
 labels:
   autobump.arch: "amd64"
@@ -12,6 +12,6 @@ labels:
     curl -s -L 'https://golang.org/VERSION?m=text' | sed 's/go//g'
   autobump.version_hook: |
     curl -s -L 'https://golang.org/VERSION?m=text' | sed 's/go//g'
-  package.version: "1.18.3"
+  package.version: "1.20.7"
   autobump.checksum_hook: "curl -q -L https://storage.googleapis.com/golang/go{{.Values.labels.package.version}}.linux-{{.Values.labels.autobump.arch}}.tar.gz.sha256"
-  package.checksum: "956f8507b302ab0bb747613695cdae10af99bbd39a90cae522b7c0302cc27245"
+  package.checksum: "f0a87f1bcae91c4b69f8dc2bc6d7e6bfcd7524fceec130af525058c0c17b1b44"
