@@ -6,11 +6,21 @@ requires:
 package_dir: /docker
 env:
 - DOCKER_ARCH=x86_64
+- BUILDX_VERSION=0.14.1
 
 steps:
 - | 
    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
    if [ "${MUSL_ARCH}" == "arm" ] ; then DOCKER_ARCH=armhf ; fi && \
+   if [ "${MUSL_ARCH}" == "aarch64" ] ; then DOCKER_ARCH=aarch64 ; fi && \
    mkdir -p /${PACKAGE_NAME}/usr/bin && \
+   mkdir -p /${PACKAGE_NAME}/usr/libexec/docker/cli-plugins && \
    curl -L https://download.docker.com/linux/static/stable/${DOCKER_ARCH}/docker-${PACKAGE_VERSION}.tgz -o docker.tgz && \
-   tar -xvf docker.tgz && cp -rfv docker/* /${PACKAGE_NAME}/usr/bin/
+   tar -xvf docker.tgz && cp -rfv docker/* /${PACKAGE_NAME}/usr/bin/ && \
+   # Download and install buildx CLI plugin
+   BUILDX_ARCH=${DOCKER_ARCH} && \
+   if [ "${BUILDX_ARCH}" == "x86_64" ] ; then BUILDX_ARCH=amd64 ; fi && \
+   if [ "${BUILDX_ARCH}" == "armhf" ] ; then BUILDX_ARCH=arm-v7 ; fi && \
+   if [ "${BUILDX_ARCH}" == "aarch64" ] ; then BUILDX_ARCH=arm64 ; fi && \
+   curl -L https://github.com/docker/buildx/releases/download/v${BUILDX_VERSION}/buildx-v${BUILDX_VERSION}.linux-${BUILDX_ARCH} -o /${PACKAGE_NAME}/usr/libexec/docker/cli-plugins/docker-buildx && \
+   chmod +x /${PACKAGE_NAME}/usr/libexec/docker/cli-plugins/docker-buildx

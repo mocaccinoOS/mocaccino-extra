@@ -1,11 +1,10 @@
 name: docker
 category: container
-version: "25.0.5"
+version: "26.1.4"
 labels:
   github.repo: "moby"
   github.owner: "moby"
 uri:
   - https://dockerproject.org
 license: "Apache-2.0"
-
-description: "Docker provides a simple and powerful developer experience, workflows and collaboration for creating applications"
+description: "Docker Engine with Buildx CLI plugin"
