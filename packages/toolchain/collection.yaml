@@ -11,3 +11,6 @@ packages:
 - name: toolchain-go
   category: development
   version: "1.21"
+- name: toolchain-go
+  category: development
+  version: "1.24"
