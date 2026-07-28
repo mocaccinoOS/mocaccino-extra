@@ -1,12 +1,12 @@
 requires:
 - category: "development"
   name: "toolchain-go"
-  version: ">=1.21"
+  version: ">=1.24"
 
 package_dir: /docker
 env:
 - DOCKER_ARCH=x86_64
-- BUILDX_VERSION=0.14.1
+- BUILDX_VERSION=0.20.0
 
 steps:
 - | 
