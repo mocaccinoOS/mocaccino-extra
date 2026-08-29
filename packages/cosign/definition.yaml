@@ -1,6 +1,6 @@
 name: cosign
 category: container
-version: "1.13.1"
+version: "2.2.0"
 labels:
   github.repo: "cosign"
   github.owner: "sigstore"
