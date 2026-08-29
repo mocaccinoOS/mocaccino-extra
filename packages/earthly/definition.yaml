@@ -1,6 +1,6 @@
 name: earthly
 category: utils
-version: "0.6.19"
+version: "scode-syntax-highlighting-v0.0.12"
 labels:
   github.repo: "earthly"
   github.owner: "earthly"
